@@ -1,10 +1,12 @@
+package hello;
+
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
 
-public class Prova {
+public class Download {
 
-	public static void main(String[] args) throws MalformedURLException, IOException {
+	public Download(String[] args) throws MalformedURLException, IOException {
 		String FILE_URL = "https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969";
 		String FILE_NAME = "Prova.txt";
 		URLConnection connection = new URL(FILE_URL).openConnection();
