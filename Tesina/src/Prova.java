@@ -19,8 +19,10 @@ public class Prova {
 		while ((line = r.readLine()) != null) {
 			out.println(line);
 		}
-
+		
+		// JSONObject 
 		out.close();
+		System.out.println("closed");
 	}
 
 }
