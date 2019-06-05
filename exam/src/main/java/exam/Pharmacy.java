@@ -18,28 +18,28 @@ public class Pharmacy {
 	private double latitude;
 	private double longitude;
 	private double localize;
-	
-	public Pharmacy(String city, double regionCode, double latitude, String address, double id, double cap, double iva,
-			String provinceName, double longitude, String regionName, String beginValidity, String endValidity,
-			String provinceAbbreviation, String name, double localize, double cityCode, double provinceCode) {
+
+	public Pharmacy(double id, String name, String address, double iva, double cap, double cityCode, String city,
+			double provinceCode, String provinceAbbreviation, String provinceName, double regionCode, String regionName,
+			String beginValidity, String endValidity, double latitude, double longitude, double localize) {
 		super();
-		this.city = city;
-		this.regionCode = regionCode;
-		this.latitude = latitude;
-		this.address = address;
 		this.id = id;
-		this.cap = cap;
+		this.name = name;
+		this.address = address;
 		this.iva = iva;
+		this.cap = cap;
+		this.cityCode = cityCode;
+		this.city = city;
+		this.provinceCode = provinceCode;
+		this.provinceAbbreviation = provinceAbbreviation;
 		this.provinceName = provinceName;
-		this.longitude = longitude;
+		this.regionCode = regionCode;
 		this.regionName = regionName;
 		this.beginValidity = beginValidity;
 		this.endValidity = endValidity;
-		this.provinceAbbreviation = provinceAbbreviation;
-		this.name = name;
+		this.latitude = latitude;
+		this.longitude = longitude;
 		this.localize = localize;
-		this.cityCode = cityCode;
-		this.provinceCode = provinceCode;
 	}
 
 	public double getId() {
