@@ -45,22 +45,15 @@ public class CSVReader {
 
 					if (test[14].contains(",")) {
 						test[14] = test[14].replace(',', '.');
-						System.out.println(test[14]);
+						//System.out.println(test[14]);
 					}
 					if (test[15].contains(",")) {
 						test[15] = test[15].replace(',', '.');
-						System.out.println(test[15]);
+						//System.out.println(test[15]);
 					}
 
 					if (test[3].contains("163")) {
-						//test[i-1] = test[i-1] + test[i];
-
-						//System.out.println(test[i-1]);
 						System.out.println("163!!!!!!!!!");
-						//test[i] = test[i].replace(';', ',');
-						//for (int i = 2; i < test.length; i++) {
-							
-						//}
 					}
 
 
