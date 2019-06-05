@@ -7,8 +7,9 @@ public class CSVReader {
 	private static String fileName;
 	
 	public CSVReader(String fileName) {
-		
+		fileName = this.fileName;
 	}
+	
 	public static String getFileName() {
 		return fileName;
 	}
@@ -60,10 +61,10 @@ public class CSVReader {
 				}	
 				for(Pharmacy item : pharmacies) {		
 						System.out.println(pharmacies.toString());
-					}
+					
 				}
-			
-		catch (FileNotFoundException e) {
+	}
+	 catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();

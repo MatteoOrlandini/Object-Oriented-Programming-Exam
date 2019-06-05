@@ -13,7 +13,6 @@ public class Application {
 		String fileName = JSONparseranddownload.getFileName();
 		CSVReader.setFileName(fileName);
 		CSVReader.reader();
-		
 		//SpringApplication.run(Application.class, args);
 	}
 
