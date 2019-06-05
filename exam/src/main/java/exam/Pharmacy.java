@@ -1,52 +1,52 @@
 package exam;
 
 public class Pharmacy {
-	private long id;
+	private double id;
 	private String name;
 	private String address;
-	private long VATNumber;
-	private long CAP;
-	private long ISTATCityCode;
+	private double iva;
+	private double cap;
+	private double cityCode;
 	private String city;
-	private long ISTATProvinceCode;
+	private double provinceCode;
 	private String provinceAbbreviation;
 	private String provinceName;
-	private long regionCode;
+	private double regionCode;
 	private String regionName;
-	private String beginningValidity;
+	private String beginValidity;
 	private String endValidity;
-	private long latitude;
-	private long longitude;
-	private long localize;
+	private double latitude;
+	private double longitude;
+	private double localize;
 	
-	public Pharmacy(long id, String name, String address, long VATNumber, long CAP, long ISTATCityCode, String city,
-			long iSTATProvinceCode, String provinceAbbreviation, String provinceName, long regionCode,
-			String regionName, String beginningValidity, String endValidity, long latitude, long longitude,
-			long localize) {
-		this.id = id;
-		this.name = name;
-		this.address = address;
-		this.VATNumber = VATNumber;
-		this.CAP = CAP;
-		this.ISTATCityCode = ISTATCityCode;
+	public Pharmacy(String city, double regionCode, double latitude, String address, double id, double cap, double iva,
+			String provinceName, double longitude, String regionName, String beginValidity, String endValidity,
+			String provinceAbbreviation, String name, double localize, double cityCode, double provinceCode) {
+		super();
 		this.city = city;
-		this.ISTATProvinceCode = iSTATProvinceCode;
-		this.provinceAbbreviation = provinceAbbreviation;
-		this.provinceName = provinceName;
 		this.regionCode = regionCode;
-		this.regionName = regionName;
-		this.beginningValidity = beginningValidity;
-		this.endValidity = endValidity;
 		this.latitude = latitude;
+		this.address = address;
+		this.id = id;
+		this.cap = cap;
+		this.iva = iva;
+		this.provinceName = provinceName;
 		this.longitude = longitude;
+		this.regionName = regionName;
+		this.beginValidity = beginValidity;
+		this.endValidity = endValidity;
+		this.provinceAbbreviation = provinceAbbreviation;
+		this.name = name;
 		this.localize = localize;
+		this.cityCode = cityCode;
+		this.provinceCode = provinceCode;
 	}
 
-	public long getId() {
+	public double getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(double id) {
 		this.id = id;
 	}
 
@@ -66,28 +66,28 @@ public class Pharmacy {
 		this.address = address;
 	}
 
-	public long getVATNumber() {
-		return VATNumber;
+	public double getIva() {
+		return iva;
 	}
 
-	public void setVATNumber(long VATNumber) {
-		VATNumber = VATNumber;
+	public void setIva(double iva) {
+		this.iva = iva;
 	}
 
-	public long getCAP() {
-		return CAP;
+	public double getCap() {
+		return cap;
 	}
 
-	public void setCAP(long cAP) {
-		CAP = CAP;
+	public void setCap(double cap) {
+		this.cap = cap;
 	}
 
-	public long getISTATCityCode() {
-		return ISTATCityCode;
+	public double getCityCode() {
+		return cityCode;
 	}
 
-	public void setISTATCityCode(long iSTATCityCode) {
-		ISTATCityCode = ISTATCityCode;
+	public void setCityCode(double cityCode) {
+		this.cityCode = cityCode;
 	}
 
 	public String getCity() {
@@ -98,12 +98,12 @@ public class Pharmacy {
 		this.city = city;
 	}
 
-	public long getISTATProvinceCode() {
-		return ISTATProvinceCode;
+	public double getProvinceCode() {
+		return provinceCode;
 	}
 
-	public void setISTATProvinceCode(long iSTATProvinceCode) {
-		ISTATProvinceCode = ISTATProvinceCode;
+	public void setProvinceCode(double provinceCode) {
+		this.provinceCode = provinceCode;
 	}
 
 	public String getProvinceAbbreviation() {
@@ -122,11 +122,11 @@ public class Pharmacy {
 		this.provinceName = provinceName;
 	}
 
-	public long getRegionCode() {
+	public double getRegionCode() {
 		return regionCode;
 	}
 
-	public void setRegionCode(long regionCode) {
+	public void setRegionCode(double regionCode) {
 		this.regionCode = regionCode;
 	}
 
@@ -138,12 +138,12 @@ public class Pharmacy {
 		this.regionName = regionName;
 	}
 
-	public String getBeginningValidity() {
-		return beginningValidity;
+	public String getBeginValidity() {
+		return beginValidity;
 	}
 
-	public void setBeginningValidity(String beginningValidity) {
-		this.beginningValidity = beginningValidity;
+	public void setBeginValidity(String beginValidity) {
+		this.beginValidity = beginValidity;
 	}
 
 	public String getEndValidity() {
@@ -154,27 +154,27 @@ public class Pharmacy {
 		this.endValidity = endValidity;
 	}
 
-	public long getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(long latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
-	public long getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(long longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
-	public long getLocalize() {
+	public double getLocalize() {
 		return localize;
 	}
 
-	public void setLocalize(long localize) {
+	public void setLocalize(double localize) {
 		this.localize = localize;
 	}
 	
