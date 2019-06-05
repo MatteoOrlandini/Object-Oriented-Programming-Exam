@@ -35,7 +35,7 @@ public class JSONparseranddownload {
 			  
 			   while ( ( line = buf.readLine() ) != null ) {
 				   data+= line;
-				   System.out.println( line );
+				   //System.out.println( line );
 			   }
 			 } finally {
 			   in.close();
@@ -49,13 +49,14 @@ public class JSONparseranddownload {
 			        JSONObject o1 = (JSONObject)o; 
 			        String format = (String)o1.get("format");
 			        String urlD = (String)o1.get("url");
-			        System.out.println(format + " | " + urlD);
+			        System.out.println(format + " url : " + urlD);
 			        if(format.equals("csv")) {
-			        	download(urlD, "t1.csv");
+						System.out.println( "Dataset found!" );
+						String fileName = "dataset.csv";
+			        	download(urlD, fileName);
 			        }
 			    }
 			}
-			System.out.println( "OK" );
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -67,6 +68,7 @@ public class JSONparseranddownload {
 	public static void download(String url, String fileName) throws Exception {
 	    try (InputStream in = URI.create(url).toURL().openStream()) {
 	        Files.copy(in, Paths.get(fileName));
+			System.out.println( "Dataset downloaded!" );
 	    }
 	}
 }
