@@ -15,12 +15,46 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
-public class JSONparseranddownload {
+public class JSONparseranddownload  {
+	private static String fileName;
+	private static String url;
 
-	//public static void main(String[] args) {
-	public static void parser(String url){
-		//if(args.length == 1)
-			//url = args[0]; //Url by args ;-)
+	
+
+	public JSONparseranddownload(String fileName, String url) {
+		super();
+		this.fileName = fileName;
+		this.url = url;
+	}
+	
+	
+
+	public static String getFileName() {
+		return fileName;
+	}
+
+
+
+	public static void setFileName(String fileName) {
+		JSONparseranddownload.fileName = fileName;
+	}
+
+
+
+	public static String getUrl() {
+		return url;
+	}
+
+
+
+	public static void setUrl(String url) {
+		JSONparseranddownload.url = url;
+	}
+
+
+
+	public static void parser(){
+		
 		try {
 			
 			URLConnection openConnection = new URL(url).openConnection();
@@ -48,12 +82,11 @@ public class JSONparseranddownload {
 			    if ( o instanceof JSONObject ) {
 			        JSONObject o1 = (JSONObject)o; 
 			        String format = (String)o1.get("format");
-			        String urlD = (String)o1.get("url");
-			        System.out.println(format + " url : " + urlD);
+			        String urlDataset = (String)o1.get("url");
+			        System.out.println(format + " url : " + urlDataset);
 			        if(format.equals("csv")) {
 						System.out.println( "Dataset found!" );
-						String fileName = "dataset.csv";
-			        	download(urlD, fileName);
+			        	download(urlDataset, fileName);
 			        }
 			    }
 			}
@@ -63,12 +96,14 @@ public class JSONparseranddownload {
 			e.printStackTrace();
 		}
 	}
-	//}
 	
 	public static void download(String url, String fileName) throws Exception {
 	    try (InputStream in = URI.create(url).toURL().openStream()) {
-	        Files.copy(in, Paths.get(fileName));
-			System.out.println( "Dataset downloaded!" );
+	    	//if (Files.exists(Paths.get(fileName), fileName)) {
+		        Files.copy(in, Paths.get(fileName));
+				System.out.println( "Dataset downloaded!" );
+	    	//}
+
 	    }
 	}
 }
