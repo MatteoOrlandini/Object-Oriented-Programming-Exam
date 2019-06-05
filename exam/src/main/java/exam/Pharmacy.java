@@ -177,5 +177,16 @@ public class Pharmacy {
 	public void setLocalize(double localize) {
 		this.localize = localize;
 	}
+
+	@Override
+	public String toString() {
+		return "Pharmacy [id=" + id + ", name=" + name + ", address=" + address + ", iva=" + iva + ", cap=" + cap
+				+ ", cityCode=" + cityCode + ", city=" + city + ", provinceCode=" + provinceCode
+				+ ", provinceAbbreviation=" + provinceAbbreviation + ", provinceName=" + provinceName + ", regionCode="
+				+ regionCode + ", regionName=" + regionName + ", beginValidity=" + beginValidity + ", endValidity="
+				+ endValidity + ", latitude=" + latitude + ", longitude=" + longitude + ", localize=" + localize + "]";
+	}
+	
+	
 	
 }

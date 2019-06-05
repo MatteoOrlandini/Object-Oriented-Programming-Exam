@@ -9,6 +9,11 @@ public class Application {
 	public static void main(String[] args) {
 		JSONparseranddownload.setFileName("dataset.csv");
 		JSONparseranddownload.setUrl( "https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969");
+		JSONparseranddownload.parser();
+		String fileName = JSONparseranddownload.getFileName();
+		CSVReader.setFileName(fileName);
+		CSVReader.reader();
+		
 		//SpringApplication.run(Application.class, args);
 	}
 

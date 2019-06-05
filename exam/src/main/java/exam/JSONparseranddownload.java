@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -99,11 +100,11 @@ public class JSONparseranddownload  {
 	
 	public static void download(String url, String fileName) throws Exception {
 	    try (InputStream in = URI.create(url).toURL().openStream()) {
-	    	//if (Files.exists(Paths.get(fileName), fileName)) {
 		        Files.copy(in, Paths.get(fileName));
 				System.out.println( "Dataset downloaded!" );
-	    	//}
-
 	    }
+		catch (FileAlreadyExistsException e) {
+			System.out.println ("File already exists!");
+		}
 	}
 }
