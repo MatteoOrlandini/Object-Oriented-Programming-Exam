@@ -7,8 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
 	public static void main(String[] args) {
-		JSONparseranddownload.setFileName("dataset.csv");
-		JSONparseranddownload.setUrl( "https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969");
+		String filename="dataset.csv";
+		String url="https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969";
+		// new JSONparseanddownload jpd = JSONparseanddownload (filename,url);
+		
+		// JSONparseranddownload.setFileName("dataset.csv");
+		// JSONparseranddownload.setUrl("https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969");
 		//SpringApplication.run(Application.class, args);
 	}
 
