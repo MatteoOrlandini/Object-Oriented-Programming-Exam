@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_oddMAIgwEem0FL6wmq89Wg" name="NewModel">
+  <packagedElement xmi:type="uml:Package" xmi:id="_ZKQSQIgxEem0FL6wmq89Wg" name="ExamPackage">
+    <packagedElement xmi:type="uml:Class" xmi:id="_ml1GkIgxEem0FL6wmq89Wg" name="Pharmacy" visibility="public">
+      <ownedAttribute xmi:id="_y_KawIgxEem0FL6wmq89Wg" name="p1" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_y_KawYgxEem0FL6wmq89Wg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_y_KawogxEem0FL6wmq89Wg" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_ANut0IgyEem0FL6wmq89Wg" name="getId"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hgXzMIgyEem0FL6wmq89Wg" name="CSVReader" visibility="public">
+      <ownedAttribute xmi:id="_n5MWcIgyEem0FL6wmq89Wg" name="fileName" visibility="private" isStatic="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n5MWcYgyEem0FL6wmq89Wg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n5MWcogyEem0FL6wmq89Wg" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_t4aG4IgyEem0FL6wmq89Wg" name="getFileName"/>
+      <ownedOperation xmi:id="_xVZLIIgyEem0FL6wmq89Wg" name="setFileName" isStatic="true">
+        <ownedParameter xmi:id="_FhAv4IgzEem0FL6wmq89Wg" name="fileName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JnW6MIgzEem0FL6wmq89Wg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KlG74IgzEem0FL6wmq89Wg" value="1"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_7FqgcIg0Eem0FL6wmq89Wg" name="reader" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_SATQMIg1Eem0FL6wmq89Wg" name="Application" visibility="public">
+      <ownedOperation xmi:id="_XP790Ig1Eem0FL6wmq89Wg" name="main" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_a-YlgIg1Eem0FL6wmq89Wg" name="JSONparseanddownload" visibility="public">
+      <ownedAttribute xmi:id="_5Q2MgIg3Eem0FL6wmq89Wg" name="fileName" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5Q2MgYg3Eem0FL6wmq89Wg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5Q2Mgog3Eem0FL6wmq89Wg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-JL0cIg3Eem0FL6wmq89Wg" name="url" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-JMbgIg3Eem0FL6wmq89Wg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-JMbgYg3Eem0FL6wmq89Wg" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_AsYJ8Ig4Eem0FL6wmq89Wg" name="reader"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
