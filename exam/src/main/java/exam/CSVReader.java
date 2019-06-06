@@ -30,6 +30,11 @@ public class CSVReader {
 			br = new BufferedReader(new FileReader(csvFile));
 			br.readLine();
 			while ((line = br.readLine()) != null) {
+				if (line.contains("\"Via Cappuccini ;163\"")) {
+					System.out.println(line);
+					line = line.replace("\"Via Cappuccini ;163\"", "\"Via Cappuccini ,163\"");
+					System.out.println(line);
+				}
 
 				String[] test = line.split(cvsSplitBy);
 				// for (String s : test) {
@@ -43,30 +48,24 @@ public class CSVReader {
 				 */
 				///////////////////////////////////////
 
-					if (test[14].contains(",")) {
-						test[14] = test[14].replace(',', '.');
-						//System.out.println(test[14]);
-					}
-					if (test[15].contains(",")) {
-						test[15] = test[15].replace(',', '.');
-						//System.out.println(test[15]);
-					}
+				if (test[14].contains(",")) {
+					test[14] = test[14].replace(',', '.');
+					// System.out.println(test[14]);
+				}
+				if (test[15].contains(",")) {
+					test[15] = test[15].replace(',', '.');
+					// System.out.println(test[15]);
+				}
 
-					if (test[3].contains("163")) {
-						System.out.println("163!!!!!!!!!");
-					}
-
-
-				/*pharmacies.add(new Pharmacy(Double.parseDouble(test[0]), test[1], test[2], Double.parseDouble(test[3]),
+				pharmacies.add(new Pharmacy(Double.parseDouble(test[0]), test[1], test[2], Double.parseDouble(test[3]),
 						Double.parseDouble(test[4]), Double.parseDouble(test[5]), test[6], Double.parseDouble(test[7]),
-						test[8], test[9], Double.parseDouble(test[10]), test[11], test[12], test[13],  Double.parseDouble(test[14]),  Double.parseDouble(test[15]),
-						Double.parseDouble(test[16])));
-						
-				*/
-			//for (Pharmacy item : pharmacies) {
-			//	System.out.println(pharmacies.toString());
+						test[8], test[9], Double.parseDouble(test[10]), test[11], test[12], test[13],
+						Double.parseDouble(test[14]), Double.parseDouble(test[15]), Double.parseDouble(test[16])));
 
-			//	}
+				for (Pharmacy item : pharmacies) {
+					System.out.println(item.toString() + "\n");
+
+				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
