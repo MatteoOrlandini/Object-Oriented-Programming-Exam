@@ -15,7 +15,8 @@ public class Application {
 		Vector<Pharmacy> pharmacies = new Vector<Pharmacy>();
 		CSVReader csv = new CSVReader("dataset.csv", pharmacies);
 		csv.reader();
-		// SpringApplication.run(Application.class, args);
+		PharmacyService.setPharmacies(pharmacies);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

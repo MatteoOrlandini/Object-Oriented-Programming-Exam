@@ -10,7 +10,6 @@ import java.net.URLConnection;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -41,7 +40,7 @@ public class JSONparseranddownload {
 	public static void setUrl(String url) {
 		JSONparseranddownload.url = url;
 	}
-
+	 
 	public static void parser() {
 
 		try {

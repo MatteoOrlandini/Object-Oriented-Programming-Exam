@@ -34,27 +34,20 @@ public class CSVReader {
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ";";
-		// Vector<Pharmacy> pharmacies = new Vector<Pharmacy>();
 		try {
 
 			br = new BufferedReader(new FileReader(fileName));
 			br.readLine();
 			while ((line = br.readLine()) != null) {
 				if (line.contains("\"Via Cappuccini ;163\"")) {
-					// System.out.println(line);
 					line = line.replace("\"Via Cappuccini ;163\"", "\"Via Cappuccini ,163\"");
-					// System.out.println(line);
 				}
 
 				if (line.contains("\"via vespucci;26\"")) {
-					// System.out.println(line);
 					line = line.replace("\"via vespucci;26\"", "\"via vespucci,26\"");
-					// System.out.println(line);
 				}
 				if (line.contains("\'9,258444")) {
-					// System.out.println(line);
 					line = line.replace("\'9,258444", "9.258444");
-					// System.out.println(line);
 				}
 
 				String[] test = line.split(cvsSplitBy);
