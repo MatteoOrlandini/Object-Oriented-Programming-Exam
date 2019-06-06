@@ -4,8 +4,8 @@ import java.io.*;
 import java.util.Vector;
 
 public class CSVReader {
-	private static String fileName;
-	private static Vector<Pharmacy> pharmacies;
+	private String fileName;
+	private Vector<Pharmacy> pharmacies;
 
 	public CSVReader(String fileName, Vector<Pharmacy> pharmacies) {
 		super();
@@ -13,12 +13,12 @@ public class CSVReader {
 		this.pharmacies = pharmacies;
 	}
 
-	public static String getFileName() {
+	public String getFileName() {
 		return fileName;
 	}
 
-	public static void setFileName(String fileName) {
-		CSVReader.fileName = fileName;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public Vector<Pharmacy> getPharmacies() {
@@ -29,7 +29,7 @@ public class CSVReader {
 		this.pharmacies = pharmacies;
 	}
 
-	public static void reader() {
+	public void reader() {
 
 		BufferedReader br = null;
 		String line = "";

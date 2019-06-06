@@ -16,8 +16,8 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
 public class JSONparseranddownload {
-	private static String fileName;
-	private static String url;
+	private String fileName;
+	private String url;
 
 	public JSONparseranddownload(String fileName, String url) {
 		super();
@@ -25,23 +25,23 @@ public class JSONparseranddownload {
 		this.url = url;
 	}
 
-	public static String getFileName() {
+	public String getFileName() {
 		return fileName;
 	}
 
-	public static void setFileName(String fileName) {
-		JSONparseranddownload.fileName = fileName;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
-	public static String getUrl() {
+	public String getUrl() {
 		return url;
 	}
 
-	public static void setUrl(String url) {
-		JSONparseranddownload.url = url;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	 
-	public static void parser() {
+	public void parser() {
 
 		try {
 

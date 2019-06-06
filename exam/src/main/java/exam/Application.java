@@ -8,13 +8,17 @@ import java.util.Vector;
 public class Application {
 
 	public static void main(String[] args) {
-		JSONparseranddownload.setFileName("dataset.csv");
-		JSONparseranddownload
-				.setUrl("https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969");
-		JSONparseranddownload.parser();
+		String dataset = new String("dataset.csv");
+		String url = new String(
+				"https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969");
+		JSONparseranddownload jpad = new JSONparseranddownload(dataset, url);
+		jpad.parser();
+		
 		Vector<Pharmacy> pharmacies = new Vector<Pharmacy>();
+		
 		CSVReader csv = new CSVReader("dataset.csv", pharmacies);
 		csv.reader();
+		
 		PharmacyService.setPharmacies(pharmacies);
 		SpringApplication.run(Application.class, args);
 	}

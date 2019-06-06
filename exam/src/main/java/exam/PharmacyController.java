@@ -1,6 +1,7 @@
 package exam;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class PharmacyController {
 	@GetMapping("/pharmacy")
 	public Vector <Pharmacy> retrieveAllPharmacies() {
 		return pharmacyService.retrieveAllPharmacies();
+	}
+	
+	@GetMapping("/search/{name}")
+	public Vector <Pharmacy> searchName(@PathVariable String name) {
+		return pharmacyService.searchName(name);
 	}
 	
 	@GetMapping("/si")
