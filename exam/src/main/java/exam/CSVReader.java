@@ -47,16 +47,6 @@ public class CSVReader {
 				}
 
 				String[] test = line.split(cvsSplitBy);
-				// for (String s : test) {
-				///////////////////////////////////////
-				/*
-				 * try{ float i = Float.valueOf(str); //Float.parseFloat(str);
-				 * 
-				 * System.out.println("Value parsed :"+i); }catch(NumberFormatException ex){
-				 * System.err.println("Ilegal input"); // Discard input or request new input ...
-				 * // clean up if necessary }
-				 */
-				///////////////////////////////////////
 
 				if (test[14].contains(",")) {
 					test[14] = test[14].replace(',', '.');
@@ -66,11 +56,19 @@ public class CSVReader {
 					test[15] = test[15].replace(',', '.');
 					// System.out.println(test[15]);
 				}
+				try {
+					pharmacies.add(new Pharmacy(Double.parseDouble(test[0]), test[1], test[2],
+							Double.parseDouble(test[3]), Double.parseDouble(test[4]), Double.parseDouble(test[5]),
+							test[6], Double.parseDouble(test[7]), test[8], test[9], Double.parseDouble(test[10]),
+							test[11], test[12], test[13], Double.parseDouble(test[14]), Double.parseDouble(test[15]),
+							Double.parseDouble(test[16])));
+				} catch (NumberFormatException ex) {
+					// Thrown to indicate that the application has attempted to convert a string to
+					// one of the numeric types, but that the string does not have the appropriate
+					// format.
+					System.err.println("Ilegal input");
 
-				pharmacies.add(new Pharmacy(Double.parseDouble(test[0]), test[1], test[2], Double.parseDouble(test[3]),
-						Double.parseDouble(test[4]), Double.parseDouble(test[5]), test[6], Double.parseDouble(test[7]),
-						test[8], test[9], Double.parseDouble(test[10]), test[11], test[12], test[13],
-						Double.parseDouble(test[14]), Double.parseDouble(test[15]), Double.parseDouble(test[16])));
+				}
 
 				for (Pharmacy item : pharmacies) {
 					System.out.println(item.toString() + "\n");
