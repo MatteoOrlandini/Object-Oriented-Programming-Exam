@@ -5,9 +5,12 @@ import java.util.Vector;
 
 public class CSVReader {
 	private static String fileName;
+	private static Vector<Pharmacy> pharmacies;
 
-	public CSVReader(String fileName) {
-		fileName = this.fileName;
+	public CSVReader(String fileName, Vector<Pharmacy> pharmacies) {
+		super();
+		this.fileName = fileName;
+		this.pharmacies = pharmacies;
 	}
 
 	public static String getFileName() {
@@ -18,16 +21,23 @@ public class CSVReader {
 		CSVReader.fileName = fileName;
 	}
 
+	public Vector<Pharmacy> getPharmacies() {
+		return pharmacies;
+	}
+
+	public void setPharmacies(Vector<Pharmacy> pharmacies) {
+		this.pharmacies = pharmacies;
+	}
+
 	public static void reader() {
 
-		String csvFile = fileName;
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ";";
-		Vector<Pharmacy> pharmacies = new Vector<Pharmacy>();
+		// Vector<Pharmacy> pharmacies = new Vector<Pharmacy>();
 		try {
 
-			br = new BufferedReader(new FileReader(csvFile));
+			br = new BufferedReader(new FileReader(fileName));
 			br.readLine();
 			while ((line = br.readLine()) != null) {
 				if (line.contains("\"Via Cappuccini ;163\"")) {

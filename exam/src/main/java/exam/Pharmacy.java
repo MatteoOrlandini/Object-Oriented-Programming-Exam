@@ -186,7 +186,5 @@ public class Pharmacy {
 				+ regionCode + ", regionName=" + regionName + ", beginValidity=" + beginValidity + ", endValidity="
 				+ endValidity + ", latitude=" + latitude + ", longitude=" + longitude + ", localize=" + localize + "]";
 	}
-	
-	
-	
+
 }
