@@ -26,22 +26,22 @@ public class PharmacyController {
 	@Autowired
 	private PharmacyService pharmacyService;
 
-	@GetMapping("/pharmacy")
-	public Vector <Pharmacy> retrieveAllPharmacies() {
+	@GetMapping("/data")
+	public Vector<Pharmacy> retrieveAllPharmacies() {
 		return pharmacyService.retrieveAllPharmacies();
 	}
-	
+
 	@GetMapping("/search/{name}")
-	public Vector <Pharmacy> searchName(@PathVariable String name) {
+	public Vector<Pharmacy> searchName(@PathVariable String name) {
 		return pharmacyService.searchName(name);
 	}
-	
+
 	@GetMapping("/si")
 	public String si() {
 		return "si";
 	}
-	/*
-	//i parametri possono essere passati mediante una POST (nel body della richiesta)
+
+	// da correggere
 	@PostMapping(value = "/filter")
 	public String filter(@RequestBody String param) {
 		try {
@@ -55,26 +55,19 @@ public class PharmacyController {
 		JSONObject obj = null;
 		try {
 			obj = (JSONObject) JSONValue.parseWithException(param);
-			*/
-			/*
-			 * esempio JSON
-			   {
-					"metadata": "id",
-					"operator": "in", 
-					"value": ["2000","5000"]
-				}
-			 */
-	/*
+
+		// esempio JSON { "metadata": "id", "operator": "in", "value": ["2000","5000"] }
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JSONObject objO = (JSONObject) (obj.get("metadata"));
+		String objO = (String) (obj.get("metadata"));
 		System.out.println(objO);
-		JSONObject objO2 = (JSONObject) (obj.get("operator"));
+		String objO2 = (String) (obj.get("operator"));
 		System.out.println(objO2);
 		JSONArray objA = (JSONArray) (obj.get("value"));
 		System.out.println(objA);
 		return new String("filter. Body: " + param);
-	}*/
+	}
 }
