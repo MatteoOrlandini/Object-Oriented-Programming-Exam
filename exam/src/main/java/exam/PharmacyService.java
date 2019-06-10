@@ -1,7 +1,7 @@
 package exam;
 
 import java.util.*;
-
+import java.lang.Math;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,5 +29,23 @@ public class PharmacyService {
 			}
 		}
 		return temp;
+	}
+
+	public Vector<Pharmacy> localize(double x, double y, double range) {
+		Vector<Pharmacy> temp = new Vector<Pharmacy>();
+		for (Pharmacy item : pharmacies) {
+			double dist = Math.acos(Math.sin(degToRad(x)) * Math.sin(degToRad(item.getLatitude()))
+					+ Math.cos(degToRad(x)) * Math.cos(degToRad(item.getLatitude()))
+							* Math.cos(degToRad(item.getLongitude()) - degToRad(y)))
+					* 6371;
+			if (dist <= range) {
+				temp.add(item);
+			}
+		}
+		return temp;
+	}
+
+	public double degToRad(double deg) {
+		return deg * Math.PI / 180;
 	}
 }

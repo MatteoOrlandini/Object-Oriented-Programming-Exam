@@ -1,17 +1,17 @@
 package exam;
 
 public class Pharmacy {
-	private double id;
+	private String id;
 	private String name;
 	private String address;
-	private double iva;
-	private double cap;
-	private double cityCode;
+	private String iva;
+	private String cap;
+	private String cityCode;
 	private String city;
-	private double provinceCode;
+	private String provinceCode;
 	private String provinceAbbreviation;
 	private String provinceName;
-	private double regionCode;
+	private String regionCode;
 	private String regionName;
 	private String beginValidity;
 	private String endValidity;
@@ -19,8 +19,8 @@ public class Pharmacy {
 	private double longitude;
 	private double localize;
 
-	public Pharmacy(double id, String name, String address, double iva, double cap, double cityCode, String city,
-			double provinceCode, String provinceAbbreviation, String provinceName, double regionCode, String regionName,
+	public Pharmacy(String id, String name, String address, String iva, String cap, String cityCode, String city,
+			String provinceCode, String provinceAbbreviation, String provinceName, String regionCode, String regionName,
 			String beginValidity, String endValidity, double latitude, double longitude, double localize) {
 		super();
 		this.id = id;
@@ -42,11 +42,11 @@ public class Pharmacy {
 		this.localize = localize;
 	}
 
-	public double getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(double id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -66,27 +66,27 @@ public class Pharmacy {
 		this.address = address;
 	}
 
-	public double getIva() {
+	public String getIva() {
 		return iva;
 	}
 
-	public void setIva(double iva) {
+	public void setIva(String iva) {
 		this.iva = iva;
 	}
 
-	public double getCap() {
+	public String getCap() {
 		return cap;
 	}
 
-	public void setCap(double cap) {
+	public void setCap(String cap) {
 		this.cap = cap;
 	}
 
-	public double getCityCode() {
+	public String getCityCode() {
 		return cityCode;
 	}
 
-	public void setCityCode(double cityCode) {
+	public void setCityCode(String cityCode) {
 		this.cityCode = cityCode;
 	}
 
@@ -98,11 +98,11 @@ public class Pharmacy {
 		this.city = city;
 	}
 
-	public double getProvinceCode() {
+	public String getProvinceCode() {
 		return provinceCode;
 	}
 
-	public void setProvinceCode(double provinceCode) {
+	public void setProvinceCode(String provinceCode) {
 		this.provinceCode = provinceCode;
 	}
 
@@ -122,11 +122,11 @@ public class Pharmacy {
 		this.provinceName = provinceName;
 	}
 
-	public double getRegionCode() {
+	public String getRegionCode() {
 		return regionCode;
 	}
 
-	public void setRegionCode(double regionCode) {
+	public void setRegionCode(String regionCode) {
 		this.regionCode = regionCode;
 	}
 
@@ -176,15 +176,6 @@ public class Pharmacy {
 
 	public void setLocalize(double localize) {
 		this.localize = localize;
-	}
-
-	@Override
-	public String toString() {
-		return "Pharmacy [id=" + id + ", name=" + name + ", address=" + address + ", iva=" + iva + ", cap=" + cap
-				+ ", cityCode=" + cityCode + ", city=" + city + ", provinceCode=" + provinceCode
-				+ ", provinceAbbreviation=" + provinceAbbreviation + ", provinceName=" + provinceName + ", regionCode="
-				+ regionCode + ", regionName=" + regionName + ", beginValidity=" + beginValidity + ", endValidity="
-				+ endValidity + ", latitude=" + latitude + ", longitude=" + longitude + ", localize=" + localize + "]";
 	}
 
 }
