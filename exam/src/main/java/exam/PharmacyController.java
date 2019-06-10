@@ -63,11 +63,11 @@ public class PharmacyController {
 			e.printStackTrace();
 		}
 		String objO = (String) (obj.get("metadata"));
-		System.out.println(objO);
+		System.out.println("metadata" + objO);
 		String objO2 = (String) (obj.get("operator"));
-		System.out.println(objO2);
+		System.out.println("operator" + objO2);
 		JSONArray objA = (JSONArray) (obj.get("value"));
-		System.out.println(objA);
+		System.out.println("value" + objA);
 		return new String("filter. Body: " + param);
 	}
 }

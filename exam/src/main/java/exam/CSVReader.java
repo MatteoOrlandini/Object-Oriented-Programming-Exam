@@ -37,7 +37,13 @@ public class CSVReader {
 		try {
 
 			br = new BufferedReader(new FileReader(fileName));
-			br.readLine();
+			/*	get metadata */
+			line = br.readLine();
+			String[] test = line.split(cvsSplitBy);
+			for (int i=0; i<test.length; i++) {
+			System.out.println (test[i]);
+			}
+			/*	get metadata */
 			while ((line = br.readLine()) != null) {
 				if (line.contains("\"Via Cappuccini ;163\"")) {
 					line = line.replace("\"Via Cappuccini ;163\"", "\"Via Cappuccini ,163\"");
@@ -50,23 +56,19 @@ public class CSVReader {
 					line = line.replace("\'9,258444", "9.258444");
 				}
 
-				String[] test = line.split(cvsSplitBy);
+				test = line.split(cvsSplitBy);
 
 				if (test[14].contains(",")) {
 					test[14] = test[14].replace(',', '.');
-					// System.out.println(test[14]);
 				}
 				if (test[14].contains("-")) {
 					test[14] = test[14].replace('-', '0');
-					// System.out.println(test[15]);
 				}
 				if (test[15].contains(",")) {
 					test[15] = test[15].replace(',', '.');
-					// System.out.println(test[15]);
 				}
 				if (test[15].contains("-")) {
 					test[15] = test[15].replace('-', '0');
-					// System.out.println(test[15]);
 				}
 
 				pharmacies.add(new Pharmacy(Double.parseDouble(test[0]), test[1], test[2], Double.parseDouble(test[3]),
@@ -90,17 +92,17 @@ public class CSVReader {
 			if (br != null) {
 				try {
 					br.close();
-					System.out.println("\nCLOSED\n");
+					System.out.println("File closed!");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 		}
-
+		/*
 		for (Pharmacy item : pharmacies) {
 			System.out.println(item.toString() + "\n");
 
-		}
+		}*/
 	}
 
 }
