@@ -19,6 +19,10 @@ public class Pharmacy {
 	private double longitude;
 	private double localize;
 
+	public Pharmacy() {
+	
+	}
+	
 	public Pharmacy(String id, String name, String address, String iva, String cap, String cityCode, String city,
 			String provinceCode, String provinceAbbreviation, String provinceName, String regionCode, String regionName,
 			String beginValidity, String endValidity, double latitude, double longitude, double localize) {
@@ -177,5 +181,4 @@ public class Pharmacy {
 	public void setLocalize(double localize) {
 		this.localize = localize;
 	}
-
 }

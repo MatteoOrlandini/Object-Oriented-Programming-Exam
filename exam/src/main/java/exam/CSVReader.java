@@ -1,6 +1,7 @@
 package exam;
 
 import java.io.*;
+import java.lang.reflect.Field;
 import java.util.Vector;
 
 public class CSVReader {
@@ -37,13 +38,23 @@ public class CSVReader {
 		try {
 
 			br = new BufferedReader(new FileReader(fileName));
-			/*	get metadata */
+			/* get metadata */
 			line = br.readLine();
 			String[] test = line.split(cvsSplitBy);
-			for (int i=0; i<test.length; i++) {
-			System.out.println (test[i]);
+			Vector<Metadata> metadata = new Vector<Metadata>();
+			Pharmacy pharmacyobj = new Pharmacy();
+			Class<?> pharmacy = pharmacyobj.getClass();
+			int i=0;
+			for (Field field : pharmacy.getDeclaredFields()) {
+					// you can also use .toGenericString() instead of .getName(). This will
+					// give you the type information as well.
+					System.out.println("alias: "+field.getName());
+					System.out.println("source field: "+test[i]);
+					System.out.println("type: "+test[i].getClass().getSimpleName());
+					metadata.add(new Metadata(field.getName(), test[i], pharmacy.getClass().getSimpleName()));
+					i++;
 			}
-			/*	get metadata */
+			/* get metadata */
 			while ((line = br.readLine()) != null) {
 				if (line.contains("\"Via Cappuccini ;163\"")) {
 					line = line.replace("\"Via Cappuccini ;163\"", "\"Via Cappuccini ,163\"");
