@@ -36,11 +36,6 @@ public class PharmacyController {
 		return pharmacyService.searchName(name);
 	}
 
-	@GetMapping("/si")
-	public String si() {
-		return "si";
-	}
-
 	// da correggere
 	@PostMapping(value = "/filter")
 	public String filter(@RequestBody String param) {
@@ -49,15 +44,15 @@ public class PharmacyController {
 			Map<String, Object> jsonMap = null;
 			jsonMap = jsonParser.parseMap(param);
 		} catch (Exception e) {
-			throw new RuntimeException("Filed", e);
+			throw new RuntimeException("Failed", e);
 		}
 
 		JSONObject obj = null;
 		try {
 			obj = (JSONObject) JSONValue.parseWithException(param);
 
-		// esempio JSON { "metadata": "id", "operator": "in", "value": ["2000","5000"] }
-			
+			// esempio JSON { "metadata": "id", "operator": "in", "value": ["2000","5000"] }
+
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,5 +64,22 @@ public class PharmacyController {
 		JSONArray objA = (JSONArray) (obj.get("value"));
 		System.out.println(objA);
 		return new String("filter. Body: " + param);
+	}
+
+	// localizza
+	@PostMapping(value = "/localize")
+	public Vector<Pharmacy> localize(@RequestBody String param) {
+		JSONObject obj = null;
+		try {
+			obj = (JSONObject) JSONValue.parseWithException(param);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		double latitude = ((Number) obj.get("latitude")).doubleValue();		
+		double longitude = ((Number) obj.get("longitude")).doubleValue();
+		double range = ((Number) obj.get("range")).doubleValue();
+		
+		return pharmacyService.localize(latitude, longitude, range);
 	}
 }

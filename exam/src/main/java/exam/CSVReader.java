@@ -69,10 +69,9 @@ public class CSVReader {
 					// System.out.println(test[15]);
 				}
 
-				pharmacies.add(new Pharmacy(Double.parseDouble(test[0]), test[1], test[2], Double.parseDouble(test[3]),
-						Double.parseDouble(test[4]), Double.parseDouble(test[5]), test[6], Double.parseDouble(test[7]),
-						test[8], test[9], Double.parseDouble(test[10]), test[11], test[12], test[13],
-						Double.parseDouble(test[14]), Double.parseDouble(test[15]), Double.parseDouble(test[16])));
+				pharmacies.add(new Pharmacy(test[0], test[1], test[2], test[3], test[4], test[5], test[6], test[7],
+						test[8], test[9], test[10], test[11], test[12], test[13], Double.parseDouble(test[14]),
+						Double.parseDouble(test[15]), Double.parseDouble(test[16])));
 
 			}
 
@@ -97,10 +96,12 @@ public class CSVReader {
 			}
 		}
 
-		for (Pharmacy item : pharmacies) {
-			System.out.println(item.toString() + "\n");
-
-		}
+		/*
+		 * for (Pharmacy item : pharmacies) { System.out.println(item.toString() +
+		 * "\n");
+		 * 
+		 * }
+		 */
 	}
 
 }
