@@ -127,7 +127,7 @@ public class CSVReader {
 		Date date = null;
 		if (!str.equals("-")){
 			try {
-			    date = new SimpleDateFormat("dd/MM/yyyy").parse(str); 
+				date = new SimpleDateFormat("dd/MM/yyyy").parse(str);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -102,9 +102,9 @@ public class PharmacyService {
 			if (operator.equals("==")) 
 				return 	dateInputValue.equals(datePharmacyValue);
 			else if (operator.equals(">"))
-				return 	dateInputValue.after(datePharmacyValue);
+				return 	dateInputValue.before(datePharmacyValue);
 			else if (operator.equals("<"))
-				return 	dateInputValue.before(datePharmacyValue);;
+				return 	dateInputValue.after(datePharmacyValue);;
 		}
 			
 		return false;		
