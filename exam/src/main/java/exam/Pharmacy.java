@@ -17,7 +17,7 @@ public class Pharmacy {
 	private String endValidity;
 	private double latitude;
 	private double longitude;
-	private double localize;
+	private int localize;
 
 	public Pharmacy() {
 	
@@ -25,7 +25,7 @@ public class Pharmacy {
 	
 	public Pharmacy(String id, String name, String address, String iva, String cap, String cityCode, String city,
 			String provinceCode, String provinceAbbreviation, String provinceName, String regionCode, String regionName,
-			String beginValidity, String endValidity, double latitude, double longitude, double localize) {
+			String beginValidity, String endValidity, double latitude, double longitude, int localize) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -174,11 +174,11 @@ public class Pharmacy {
 		this.longitude = longitude;
 	}
 
-	public double getLocalize() {
+	public int getLocalize() {
 		return localize;
 	}
 
-	public void setLocalize(double localize) {
+	public void setLocalize(int localize) {
 		this.localize = localize;
 	}
 }

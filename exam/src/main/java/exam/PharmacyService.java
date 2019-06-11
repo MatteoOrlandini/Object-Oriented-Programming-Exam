@@ -34,7 +34,7 @@ public class PharmacyService {
 				Method m = item.getClass()
 						.getMethod("get" + attribute.substring(0, 1).toUpperCase() + attribute.substring(1));
 				try {
-					if (m.invoke(item).equals(text)) {
+					if (m.invoke(item).toString().equals(text)) {
 						temp.add(item);
 					}
 				} catch (IllegalAccessException e) {

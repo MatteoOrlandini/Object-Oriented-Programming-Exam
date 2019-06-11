@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
@@ -36,8 +37,8 @@ public class PharmacyController {
 		return pharmacyService.getMetadata();
 	}
 
-	@GetMapping("/search/{attribute}/{text}")
-	public Vector<Pharmacy> searchName(@PathVariable String attribute,@PathVariable String text) {
+	@GetMapping("/search/{attribute}")
+	public Vector<Pharmacy> searchName(@PathVariable String attribute, @RequestParam(value="value") String text) {
 		return pharmacyService.search(attribute,text);
 	}
 
