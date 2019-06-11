@@ -7,11 +7,13 @@ import java.util.Vector;
 public class CSVReader {
 	private String fileName;
 	private Vector<Pharmacy> pharmacies;
+	private Vector<Metadata> metadata;
 
-	public CSVReader(String fileName, Vector<Pharmacy> pharmacies) {
+	public CSVReader(String fileName, Vector<Pharmacy> pharmacies, Vector<Metadata> metadata) {
 		super();
 		this.fileName = fileName;
 		this.pharmacies = pharmacies;
+		this.metadata = metadata;
 	}
 
 	public String getFileName() {
@@ -30,31 +32,35 @@ public class CSVReader {
 		this.pharmacies = pharmacies;
 	}
 
+	public Vector<Metadata> getMetadata() {
+		return metadata;
+	}
+
+	public void setMetadata(Vector<Metadata> metadata) {
+		this.metadata = metadata;
+	}
+
 	public void reader() {
 
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ";";
 		try {
-
 			br = new BufferedReader(new FileReader(fileName));
 			/* get metadata */
 			line = br.readLine();
 			String[] test = line.split(cvsSplitBy);
-			Vector<Metadata> metadata = new Vector<Metadata>();
+
 			Pharmacy pharmacyobj = new Pharmacy();
 			Class<?> pharmacy = pharmacyobj.getClass();
-			int i=0;
+			int i = 0;
 			for (Field field : pharmacy.getDeclaredFields()) {
-					// you can also use .toGenericString() instead of .getName(). This will
-					// give you the type information as well.
-					System.out.println("alias: "+field.getName());
-					System.out.println("source field: "+test[i]);
-					System.out.println("type: "+test[i].getClass().getSimpleName());
-					metadata.add(new Metadata(field.getName(), test[i], pharmacy.getClass().getSimpleName()));
-					i++;
+				// you can also use .toGenericString() instead of .getName(). This will
+				// give you the type information as well.
+				metadata.add(new Metadata(field.getName(), test[i], field.getType().toString()));
+				i++;
 			}
-			/* get metadata */
+			/* end get metadata */
 			while ((line = br.readLine()) != null) {
 				if (line.contains("\"Via Cappuccini ;163\"")) {
 					line = line.replace("\"Via Cappuccini ;163\"", "\"Via Cappuccini ,163\"");

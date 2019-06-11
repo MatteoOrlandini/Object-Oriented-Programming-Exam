@@ -2,14 +2,16 @@ package exam;
 
 import java.util.*;
 import java.lang.Math;
+import java.lang.reflect.*;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PharmacyService {
 
 	private static Vector<Pharmacy> pharmacies;
+	private static Vector<Metadata> metadata;
 
-	public static Vector<Pharmacy> getPharmacies() {
+	public Vector<Pharmacy> getPharmacies() {
 		return pharmacies;
 	}
 
@@ -17,15 +19,40 @@ public class PharmacyService {
 		PharmacyService.pharmacies = pharmacies;
 	}
 
-	public Vector<Pharmacy> retrieveAllPharmacies() {
-		return pharmacies;
+	public Vector<Metadata> getMetadata() {
+		return metadata;
 	}
 
-	public Vector<Pharmacy> searchName(String text) {
+	public static void setMetadata(Vector<Metadata> metadata) {
+		PharmacyService.metadata = metadata;
+	}
+
+	public Vector<Pharmacy> search(String attribute, String text) {
 		Vector<Pharmacy> temp = new Vector<Pharmacy>();
 		for (Pharmacy item : pharmacies) {
-			if (item.getName().contentEquals(text)) {
-				temp.add(item);
+			try {
+				Method m = item.getClass()
+						.getMethod("get" + attribute.substring(0, 1).toUpperCase() + attribute.substring(1));
+				try {
+					if (m.invoke(item).equals(text)) {
+						temp.add(item);
+					}
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		return temp;

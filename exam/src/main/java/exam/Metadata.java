@@ -35,6 +35,11 @@ public class Metadata {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		return "Metadata [alias=" + alias + ", sourceField=" + sourceField + ", type=" + type + "]";
+	}
 }
 
 

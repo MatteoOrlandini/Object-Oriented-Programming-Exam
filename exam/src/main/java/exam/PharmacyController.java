@@ -28,42 +28,17 @@ public class PharmacyController {
 
 	@GetMapping("/data")
 	public Vector<Pharmacy> retrieveAllPharmacies() {
-		return pharmacyService.retrieveAllPharmacies();
+		return pharmacyService.getPharmacies();
+	}
+	
+	@GetMapping("/metadata")
+	public Vector<Metadata> retrieveMetadata() {
+		return pharmacyService.getMetadata();
 	}
 
-	@GetMapping("/search/{name}")
-	public Vector<Pharmacy> searchName(@PathVariable String name) {
-		return pharmacyService.searchName(name);
-	}
-
-	// da correggere
-	@PostMapping(value = "/filter")
-	public String filter(@RequestBody String param) {
-		try {
-			JsonParser jsonParser = new BasicJsonParser();
-			Map<String, Object> jsonMap = null;
-			jsonMap = jsonParser.parseMap(param);
-		} catch (Exception e) {
-			throw new RuntimeException("Failed", e);
-		}
-
-		JSONObject obj = null;
-		try {
-			obj = (JSONObject) JSONValue.parseWithException(param);
-
-			// esempio JSON { "metadata": "id", "operator": "in", "value": ["2000","5000"] }
-
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String objO = (String) (obj.get("metadata"));
-		System.out.println("metadata" + objO);
-		String objO2 = (String) (obj.get("operator"));
-		System.out.println("operator" + objO2);
-		JSONArray objA = (JSONArray) (obj.get("value"));
-		System.out.println("value" + objA);
-		return new String("filter. Body: " + param);
+	@GetMapping("/search/{attribute}/{text}")
+	public Vector<Pharmacy> searchName(@PathVariable String attribute,@PathVariable String text) {
+		return pharmacyService.search(attribute,text);
 	}
 
 	// localizza

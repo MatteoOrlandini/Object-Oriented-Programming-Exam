@@ -15,11 +15,12 @@ public class Application {
 		jpad.parser();
 		
 		Vector<Pharmacy> pharmacies = new Vector<Pharmacy>();
-		
-		CSVReader csv = new CSVReader("dataset.csv", pharmacies);
+		Vector<Metadata> metadata = new Vector<Metadata>();
+		CSVReader csv = new CSVReader("dataset.csv", pharmacies, metadata);
 		csv.reader();
 		
 		PharmacyService.setPharmacies(pharmacies);
+		PharmacyService.setMetadata(metadata);
 		SpringApplication.run(Application.class, args);
 	}
 
