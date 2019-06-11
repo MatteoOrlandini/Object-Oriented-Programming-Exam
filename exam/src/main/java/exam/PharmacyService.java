@@ -80,7 +80,7 @@ public class PharmacyService {
 		return deg * Math.PI / 180;
 	}
 	
-	////////////////////////////////////////////////////////////////////////// filtro generico
+	// filtro generico
 	
 	public static boolean check(Object value, String operator, Object th) {
 		if (th instanceof Number && value instanceof Number) {	
@@ -92,10 +92,10 @@ public class PharmacyService {
 				return valueC > thC;
 			else if (operator.equals("<"))
 				return valueC < thC;
-		}if(th instanceof String && value instanceof String)
+		}
+		else if(th instanceof String && value instanceof String)
 			return value.equals(th);
-		if(th instanceof Object && value instanceof Date) {
-			System.out.println("sono qui");
+		else if(th instanceof Object && value instanceof Date) {
 			Date valueD  = (Date)value;
 			String thString = (String) th;
 			Date thDate = null;
