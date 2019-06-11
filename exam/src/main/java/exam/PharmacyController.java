@@ -32,15 +32,15 @@ public class PharmacyController {
 	public Vector<Pharmacy> retrieveAllPharmacies() {
 		return pharmacyService.getPharmacies();
 	}
-	
+
 	@GetMapping("/metadata")
 	public Vector<Metadata> retrieveMetadata() {
 		return pharmacyService.getMetadata();
 	}
 
 	@GetMapping("/search/{attribute}")
-	public Vector<Pharmacy> searchName(@PathVariable String attribute, @RequestParam(value="value") String text) {
-		return pharmacyService.search(attribute,text);
+	public Vector<Pharmacy> searchName(@PathVariable String attribute, @RequestParam(value = "value") String text) {
+		return pharmacyService.search(attribute, text);
 	}
 
 	// localizza
@@ -53,14 +53,14 @@ public class PharmacyController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		double latitude = ((Number) obj.get("latitude")).doubleValue();		
+		double latitude = ((Number) obj.get("latitude")).doubleValue();
 		double longitude = ((Number) obj.get("longitude")).doubleValue();
 		double range = ((Number) obj.get("range")).doubleValue();
-		
+
 		return pharmacyService.localize(latitude, longitude, range);
 	}
-	
-	@PostMapping(value="/filter")
+
+	@PostMapping(value = "/filter")
 	public Vector<Pharmacy> filter(@RequestBody String param) {
 		JSONObject obj = null;
 		try {
@@ -69,10 +69,10 @@ public class PharmacyController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String fieldName= (String) obj.get("fieldName");
-		String operator= (String) obj.get("operator");
-		Object value= obj.get("value");
-		
-		return pharmacyService.select(pharmacyService.getPharmacies(),fieldName,operator,value);
+		String fieldName = (String) obj.get("fieldName");
+		String operator = (String) obj.get("operator");
+		Object value = obj.get("value");
+
+		return pharmacyService.filter(pharmacyService.getPharmacies(), fieldName, operator, value);
 	}
 }

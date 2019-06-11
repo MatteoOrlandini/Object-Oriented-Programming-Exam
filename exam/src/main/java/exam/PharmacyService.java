@@ -75,56 +75,50 @@ public class PharmacyService {
 		}
 		return temp;
 	}
-
-	public double degToRad(double deg) {
-		return deg * Math.PI / 180;
-	}
 	
-	// filtro generico
-	
-	public static boolean check(Object value, String operator, Object th) {
-		if (th instanceof Number && value instanceof Number) {	
-			Double thC = ((Number)th).doubleValue();
-			Double valueC = ((Number)value).doubleValue();
+	public static boolean check(Object pharmacyValue, String operator, Object inputValue) {
+		if (inputValue instanceof Number && pharmacyValue instanceof Number) {	
+			Double doubleInputValue = ((Number)inputValue).doubleValue();
+			Double doublePharmacyValue = ((Number)pharmacyValue).doubleValue();
 			if (operator.equals("==")) 
-				return value.equals(th);
+				return pharmacyValue.equals(inputValue);
 			else if (operator.equals(">"))
-				return valueC > thC;
+				return doublePharmacyValue > doubleInputValue;
 			else if (operator.equals("<"))
-				return valueC < thC;
+				return doublePharmacyValue < doubleInputValue;
 		}
-		else if(th instanceof String && value instanceof String)
-			return value.equals(th);
-		else if(th instanceof Object && value instanceof Date) {
-			Date valueD  = (Date)value;
-			String thString = (String) th;
-			Date thDate = null;
+		else if(inputValue instanceof String && pharmacyValue instanceof String)
+			return pharmacyValue.equals(inputValue);
+		else if(inputValue instanceof Object && pharmacyValue instanceof Date) {
+			Date datePharmacyValue  = (Date)pharmacyValue;
+			String stringInputValue = (String) inputValue;
+			Date dateInputValue = null;
 			try {
-				thDate = new SimpleDateFormat("dd/MM/yyyy").parse(thString);
+				dateInputValue = new SimpleDateFormat("dd/MM/yyyy").parse(stringInputValue);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (operator.equals("==")) 
-				return 	thDate.equals(valueD);
+				return 	dateInputValue.equals(datePharmacyValue);
 			else if (operator.equals(">"))
-				return 	thDate.after(valueD);
+				return 	dateInputValue.after(datePharmacyValue);
 			else if (operator.equals("<"))
-				return 	thDate.before(valueD);;
+				return 	dateInputValue.before(datePharmacyValue);;
 		}
 			
 		return false;		
 		
 	}
 	
-	public Vector<Pharmacy> select (Vector<Pharmacy> src, String fieldName, String operator, Object value) {
+	public Vector<Pharmacy> filter (Vector<Pharmacy> pharmacies, String fieldName, String operator, Object inputValue) {
 		Vector<Pharmacy> out = new Vector<Pharmacy>();
-		for(Pharmacy item:src) {
+		for(Pharmacy item:pharmacies) {
 			try {
 				Method m = item.getClass().getMethod("get"+fieldName.substring(0, 1).toUpperCase()+fieldName.substring(1));
 				try {
-					Object tmp = m.invoke(item);
-					if(PharmacyService.check(tmp, operator, value))
+					Object pharmacyValue = m.invoke(item);
+					if(PharmacyService.check(pharmacyValue, operator, inputValue))
 						out.add(item);
 				} catch (IllegalAccessException e) {
 					// TODO Auto-generated catch block
@@ -145,5 +139,9 @@ public class PharmacyService {
 			}					
 		}
 		return out;
+	}
+	
+	public double degToRad(double deg) {
+		return deg * Math.PI / 180;
 	}
 }
