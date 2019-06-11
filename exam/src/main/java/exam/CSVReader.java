@@ -63,7 +63,6 @@ public class CSVReader {
 			/* end get metadata */
 			while ((line = br.readLine()) != null) {
 				line = lineCorrection(line);
-				System.out.println(line);
 				test = line.split(cvsSplitBy);
 				test = coordinateCorrection(test);
 				pharmacies.add(new Pharmacy(test[0], test[1], test[2], test[3], test[4], test[5], test[6], test[7],
@@ -113,7 +112,6 @@ public class CSVReader {
 			for (int i = 14; i <= 15; i++) {
 				str2[i] = str[i].replace(',', '.');
 				str2[i] = str[i].replace('-', '0');
-				System.out.println(str2[i]);
 			}
 		}
 		return str2;

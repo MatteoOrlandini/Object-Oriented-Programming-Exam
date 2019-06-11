@@ -58,4 +58,20 @@ public class PharmacyController {
 		
 		return pharmacyService.localize(latitude, longitude, range);
 	}
+	
+	@PostMapping(value="/filter")
+	public Vector<Pharmacy> filter(@RequestBody String param) {
+		JSONObject obj = null;
+		try {
+			obj = (JSONObject) JSONValue.parseWithException(param);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String fieldName= (String) obj.get("fieldName");
+		String operator= (String) obj.get("operator");
+		Object value= obj.get("value");
+		
+		return pharmacyService.select(pharmacyService.getPharmacies(),fieldName,operator,value);
+	}
 }

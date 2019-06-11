@@ -4,6 +4,8 @@ import java.util.*;
 import java.lang.Math;
 import java.lang.reflect.*;
 import org.springframework.stereotype.Component;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 @Component
 public class PharmacyService {
@@ -74,5 +76,52 @@ public class PharmacyService {
 
 	public double degToRad(double deg) {
 		return deg * Math.PI / 180;
+	}
+	
+	////////////////////////////////////////////////////////////////////////// filtro generico
+	
+	public static boolean check(Object value, String operator, Object th) {
+		if (th instanceof Number && value instanceof Number) {	
+			Double thC = ((Number)th).doubleValue();
+			Double valuec = ((Number)value).doubleValue();
+			if (operator.equals("==")) 
+				return value.equals(th);
+			else if (operator.equals(">"))
+				return valuec > thC;
+			else if (operator.equals("<"))
+				return valuec < thC;
+		}else if(th instanceof String && value instanceof String)
+			return value.equals(th);
+		return false;		
+	}
+	
+	public Vector<Pharmacy> select (Vector<Pharmacy> src, String fieldName, String operator, Object value) {
+		Vector<Pharmacy> out = new Vector<Pharmacy>();
+		for(Pharmacy item:src) {
+			try {
+				Method m = item.getClass().getMethod("get"+fieldName.substring(0, 1).toUpperCase()+fieldName.substring(1));
+				try {
+					Object tmp = m.invoke(item);
+					if(PharmacyService.check(tmp, operator, value))
+						out.add(item);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}					
+		}
+		return out;
 	}
 }
