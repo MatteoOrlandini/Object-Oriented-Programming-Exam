@@ -183,4 +183,5 @@ public class Pharmacy {
 	public void setLocalize(int localize) {
 		this.localize = localize;
 	}
+	
 }

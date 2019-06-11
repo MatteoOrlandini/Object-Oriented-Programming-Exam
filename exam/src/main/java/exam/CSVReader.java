@@ -2,6 +2,9 @@ package exam;
 
 import java.io.*;
 import java.lang.reflect.Field;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 
 public class CSVReader {
@@ -61,12 +64,16 @@ public class CSVReader {
 				i++;
 			}
 			/* end get metadata */
+		    Date beginDate = null;
+		    Date endDate = null;
 			while ((line = br.readLine()) != null) {
 				line = lineCorrection(line);
 				test = line.split(cvsSplitBy);
 				test = coordinateCorrection(test);
+				beginDate = stringTodate(test [12]);
+				endDate = stringTodate(test [13]);
 				pharmacies.add(new Pharmacy(test[0], test[1], test[2], test[3], test[4], test[5], test[6], test[7],
-						test[8], test[9], test[10], test[11], test[12], test[13], Double.parseDouble(test[14]),
+						test[8], test[9], test[10], test[11], beginDate, endDate, Double.parseDouble(test[14]),
 						Double.parseDouble(test[15]), Integer.parseInt(test[16])));
 			}
 		} catch (NumberFormatException ex) {
@@ -115,5 +122,16 @@ public class CSVReader {
 			}
 		}
 		return str2;
+	}
+	public Date stringTodate(String str){
+		Date date = null;
+		if (!str.equals("-")){
+			try {
+			    date = new SimpleDateFormat("dd/MM/yyyy").parse(str); 
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		} 			 
+	} return date;
 	}
 }

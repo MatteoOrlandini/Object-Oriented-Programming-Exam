@@ -6,6 +6,8 @@ import java.lang.reflect.*;
 import org.springframework.stereotype.Component;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @Component
 public class PharmacyService {
@@ -83,16 +85,36 @@ public class PharmacyService {
 	public static boolean check(Object value, String operator, Object th) {
 		if (th instanceof Number && value instanceof Number) {	
 			Double thC = ((Number)th).doubleValue();
-			Double valuec = ((Number)value).doubleValue();
+			Double valueC = ((Number)value).doubleValue();
 			if (operator.equals("==")) 
 				return value.equals(th);
 			else if (operator.equals(">"))
-				return valuec > thC;
+				return valueC > thC;
 			else if (operator.equals("<"))
-				return valuec < thC;
-		}else if(th instanceof String && value instanceof String)
+				return valueC < thC;
+		}if(th instanceof String && value instanceof String)
 			return value.equals(th);
+		if(th instanceof Object && value instanceof Date) {
+			System.out.println("sono qui");
+			Date valueD  = (Date)value;
+			String thString = (String) th;
+			Date thDate = null;
+			try {
+				thDate = new SimpleDateFormat("dd/MM/yyyy").parse(thString);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (operator.equals("==")) 
+				return 	thDate.equals(valueD);
+			else if (operator.equals(">"))
+				return 	thDate.after(valueD);
+			else if (operator.equals("<"))
+				return 	thDate.before(valueD);;
+		}
+			
 		return false;		
+		
 	}
 	
 	public Vector<Pharmacy> select (Vector<Pharmacy> src, String fieldName, String operator, Object value) {
