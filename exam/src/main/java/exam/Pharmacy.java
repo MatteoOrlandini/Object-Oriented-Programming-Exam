@@ -15,8 +15,8 @@ public class Pharmacy {
 	private String provinceName;
 	private String regionCode;
 	private String regionName;
-	private Date beginValidity;
-	private Date endValidity;
+	private String beginValidity;
+	private String endValidity;
 	private double latitude;
 	private double longitude;
 	private int localize;
@@ -27,7 +27,7 @@ public class Pharmacy {
 	
 	public Pharmacy(String id, String name, String address, String iva, String cap, String cityCode, String city,
 			String provinceCode, String provinceAbbreviation, String provinceName, String regionCode, String regionName,
-			Date beginValidity, Date endValidity, double latitude, double longitude, int localize) {
+			String beginValidity, String endValidity, double latitude, double longitude, int localize) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -144,19 +144,19 @@ public class Pharmacy {
 		this.regionName = regionName;
 	}
 
-	public Date getBeginValidity() {
+	public String getBeginValidity() {
 		return beginValidity;
 	}
 
-	public void setBeginValidity(Date beginValidity) {
+	public void setBeginValidity(String beginValidity) {
 		this.beginValidity = beginValidity;
 	}
 
-	public Date getEndValidity() {
+	public String getEndValidity() {
 		return endValidity;
 	}
 
-	public void setEndValidity(Date endValidity) {
+	public void setEndValidity(String endValidity) {
 		this.endValidity = endValidity;
 	}
 
