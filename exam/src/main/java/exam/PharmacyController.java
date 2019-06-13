@@ -62,17 +62,25 @@ public class PharmacyController {
 
 	@PostMapping(value = "/filter")
 	public Vector<Pharmacy> filter(@RequestBody String param) {
-		JSONObject obj = null;
+		JSONArray objA = null;
 		try {
-			obj = (JSONObject) JSONValue.parseWithException(param);
+			objA = (JSONArray) JSONValue.parseWithException(param);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String fieldName = (String) obj.get("fieldName");
-		String operator = (String) obj.get("operator");
-		Object value = obj.get("value");
+		Vector<Pharmacy> temp = pharmacyService.getPharmacies();
+		
+		for (Object obj : objA) {
+			if (obj instanceof JSONObject) {
+				JSONObject o = (JSONObject) obj;
 
-		return pharmacyService.filter(pharmacyService.getPharmacies(), fieldName, operator, value);
+				String fieldName = (String) o.get("fieldName");
+				String operator = (String) o.get("operator");
+				Object value = o.get("value");
+				temp = pharmacyService.filter(temp, fieldName, operator, value);
+			}
+		}
+		return temp;
 	}
 }
