@@ -6,8 +6,8 @@ public class Pharmacy {
 	private String id;
 	private String name;
 	private String address;
-	private String iva;
-	private String cap;
+	private String VATNumber;
+	private String postalCode;
 	private String cityCode;
 	private String city;
 	private String provinceCode;
@@ -25,15 +25,15 @@ public class Pharmacy {
 	
 	}
 	
-	public Pharmacy(String id, String name, String address, String iva, String cap, String cityCode, String city,
+	public Pharmacy(String id, String name, String address, String VATNumber, String postalCode, String cityCode, String city,
 			String provinceCode, String provinceAbbreviation, String provinceName, String regionCode, String regionName,
 			String beginValidity, String endValidity, double latitude, double longitude, int localize) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
-		this.iva = iva;
-		this.cap = cap;
+		this.VATNumber = VATNumber;
+		this.postalCode = postalCode;
 		this.cityCode = cityCode;
 		this.city = city;
 		this.provinceCode = provinceCode;
@@ -72,20 +72,20 @@ public class Pharmacy {
 		this.address = address;
 	}
 
-	public String getIva() {
-		return iva;
+	public String getVATNumber() {
+		return VATNumber;
 	}
 
-	public void setIva(String iva) {
-		this.iva = iva;
+	public void setVATNumber(String VATNumber) {
+		this.VATNumber = VATNumber;
 	}
 
-	public String getCap() {
-		return cap;
+	public String getPostalCode() {
+		return postalCode;
 	}
 
-	public void setCap(String cap) {
-		this.cap = cap;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
 	public String getCityCode() {
@@ -186,7 +186,7 @@ public class Pharmacy {
 
 	@Override
 	public String toString() {
-		return "Pharmacy [id=" + id + ", name=" + name + ", address=" + address + ", iva=" + iva + ", cap=" + cap
+		return "Pharmacy [id=" + id + ", name=" + name + ", address=" + address + ", VAT Number=" + VATNumber + ", postal code=" + postalCode
 				+ ", cityCode=" + cityCode + ", city=" + city + ", provinceCode=" + provinceCode
 				+ ", provinceAbbreviation=" + provinceAbbreviation + ", provinceName=" + provinceName + ", regionCode="
 				+ regionCode + ", regionName=" + regionName + ", beginValidity=" + beginValidity + ", endValidity="
