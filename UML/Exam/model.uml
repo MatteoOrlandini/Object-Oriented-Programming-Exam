@@ -2,12 +2,124 @@
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_oddMAIgwEem0FL6wmq89Wg" name="NewModel">
   <packagedElement xmi:type="uml:Package" xmi:id="_ZKQSQIgxEem0FL6wmq89Wg" name="ExamPackage">
     <packagedElement xmi:type="uml:Class" xmi:id="_ml1GkIgxEem0FL6wmq89Wg" name="Pharmacy" visibility="public">
-      <ownedAttribute xmi:id="_y_KawIgxEem0FL6wmq89Wg" name="p1" visibility="public">
+      <ownedAttribute xmi:id="_y_KawIgxEem0FL6wmq89Wg" name="id" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_y_KawYgxEem0FL6wmq89Wg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_y_KawYgxEem0FL6wmq89Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_y_KawogxEem0FL6wmq89Wg" value="1"/>
       </ownedAttribute>
-      <ownedOperation xmi:id="_ANut0IgyEem0FL6wmq89Wg" name="getId"/>
+      <ownedAttribute xmi:id="_amwZUI2_EemkLI_G8cJr0Q" name="name" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_euZkII2_EemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_euZkIY2_EemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_n7bUYI2_EemkLI_G8cJr0Q" name="address" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_22hIwI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_22hIwY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_rxni0I2_EemkLI_G8cJr0Q" name="VATNumber" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_30WqAI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_30WqAY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_D0fQgI3BEemkLI_G8cJr0Q" name="postalCode" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4WoQoI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4WoQoY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ZmLbMI3BEemkLI_G8cJr0Q" name="cityCode" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5DogkI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5DogkY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Z8V4cI3BEemkLI_G8cJr0Q" name="city" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5tD4EI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5tD4EY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Z_EcUI3BEemkLI_G8cJr0Q" name="provinceCode" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6uxMsI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6uxMsY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_aDjTsI3BEemkLI_G8cJr0Q" name="provinceAbbreviation" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7XTMUI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7XTMUY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_aH8rgI3BEemkLI_G8cJr0Q" name="provinceName" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_74-WAI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_74-WAY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_oQtV8I3BEemkLI_G8cJr0Q" name="regionCode" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8VvKgI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8VvKgY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qaHScI3BEemkLI_G8cJr0Q" name="regionName" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_817GcI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_817GcY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_sEZC8I3BEemkLI_G8cJr0Q" name="beginValidity" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9XJkMI3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9XJkMY3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_t_1b8I3BEemkLI_G8cJr0Q" name="endValidity" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9-oa8I3BEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9-oa8Y3BEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_vskDgI3BEemkLI_G8cJr0Q" name="latitude" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_xZVuYI3BEemkLI_G8cJr0Q" name="longitude" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_yk8l4I3BEemkLI_G8cJr0Q" name="localize" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CTMncI3CEemkLI_G8cJr0Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CAuXYI3CEemkLI_G8cJr0Q" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_ANut0IgyEem0FL6wmq89Wg" name="Pharmacy" visibility="public"/>
+      <ownedOperation xmi:id="_fIe7QI3DEemkLI_G8cJr0Q" name="Pharmacy (id String, name String, VATNumber String, postalCode String, cityCode String, city String, provinceCode String, provinceAbbreviation String, provinceName String, regionCode String, regionName String, beginValidity String, endValidity String, latitude double, longitude double, localize int)" visibility="public"/>
+      <ownedOperation xmi:id="_RURvEI3EEemkLI_G8cJr0Q" name="getId:String" visibility="public"/>
+      <ownedOperation xmi:id="_RjxjoI3EEemkLI_G8cJr0Q" name="setId (id String):void" visibility="public"/>
+      <ownedOperation xmi:id="_Ry-dQI3EEemkLI_G8cJr0Q" name=" getName:String" visibility="public"/>
+      <ownedOperation xmi:id="_8bxZsI3EEemkLI_G8cJr0Q" name="setName (name String) : void" visibility="public"/>
+      <ownedOperation xmi:id="_8pUtgI3EEemkLI_G8cJr0Q" name="getAddres:String" visibility="public"/>
+      <ownedOperation xmi:id="_86nR0I3EEemkLI_G8cJr0Q" name="setAddress (address String):void" visibility="public"/>
+      <ownedOperation xmi:id="_9JNugI3EEemkLI_G8cJr0Q" name="getVATNumber: String" visibility="public"/>
+      <ownedOperation xmi:id="_9lh3EI3EEemkLI_G8cJr0Q" name="setVATNumber (VATNumber Sting) : void" visibility="public"/>
+      <ownedOperation xmi:id="_92z0UI3EEemkLI_G8cJr0Q" name="getPostalCode : String" visibility="public"/>
+      <ownedOperation xmi:id="_-GTo4I3EEemkLI_G8cJr0Q" name="setPostalCode (postalCode String) : void" visibility="public"/>
+      <ownedOperation xmi:id="_BF0cEI3HEemkLI_G8cJr0Q" name="getCityCode: String" visibility="public"/>
+      <ownedOperation xmi:id="_BURu0I3HEemkLI_G8cJr0Q" name="setCityCode (cityCode String) :void" visibility="public"/>
+      <ownedOperation xmi:id="_Bmwl8I3HEemkLI_G8cJr0Q" name="getCity : String" visibility="public"/>
+      <ownedOperation xmi:id="_B7dqoI3HEemkLI_G8cJr0Q" name="setCity (city String):void" visibility="public"/>
+      <ownedOperation xmi:id="_CMJyAI3HEemkLI_G8cJr0Q" name="getProvinceCode: String" visibility="public"/>
+      <ownedOperation xmi:id="_CYEuII3HEemkLI_G8cJr0Q" name="setProvinceCode(provinceCode String) : void" visibility="public"/>
+      <ownedOperation xmi:id="_CkcWMI3HEemkLI_G8cJr0Q" name="getProvinceAbbreviation: String" visibility="public"/>
+      <ownedOperation xmi:id="_CzWU4I3HEemkLI_G8cJr0Q" name="setProvinceAbbreviation (provinceAbbreviation String) : void" visibility="public"/>
+      <ownedOperation xmi:id="_DC_6cI3HEemkLI_G8cJr0Q" name="getProvinceName : String" visibility="public"/>
+      <ownedOperation xmi:id="_DRJrMI3HEemkLI_G8cJr0Q" name="setProvinceName(provinceName String) :void" visibility="public"/>
+      <ownedOperation xmi:id="_Dg8asI3HEemkLI_G8cJr0Q" name="getRegionCode : String" visibility="public"/>
+      <ownedOperation xmi:id="_Dt6fsI3HEemkLI_G8cJr0Q" name="setRegionCode(regionCode String):void" visibility="public"/>
+      <ownedOperation xmi:id="_NyXKsI3IEemkLI_G8cJr0Q" name="getRegionName : String" visibility="public"/>
+      <ownedOperation xmi:id="_OAOAgI3IEemkLI_G8cJr0Q" name="setRegionName (regionName String) : void" visibility="public"/>
+      <ownedOperation xmi:id="_OMI8oI3IEemkLI_G8cJr0Q" name="getBeginValidity : String" visibility="public"/>
+      <ownedOperation xmi:id="_OdH-8I3IEemkLI_G8cJr0Q" name="setBeginValidity (beginValidity String) : void" visibility="public"/>
+      <ownedOperation xmi:id="_OzU4cI3IEemkLI_G8cJr0Q" name="getEndValidity : String" visibility="public"/>
+      <ownedOperation xmi:id="_PCO3II3IEemkLI_G8cJr0Q" name="setEndValidity (endValidity String) : void" visibility="public"/>
+      <ownedOperation xmi:id="_PTXDYI3IEemkLI_G8cJr0Q" name="getLatitude : double" visibility="public"/>
+      <ownedOperation xmi:id="_PhqlII3IEemkLI_G8cJr0Q" name="setLatitude (latitude double) : void" visibility="public"/>
+      <ownedOperation xmi:id="_PtcXUI3IEemkLI_G8cJr0Q" name="getLongitude : double" visibility="public"/>
+      <ownedOperation xmi:id="_u2mnsI3IEemkLI_G8cJr0Q" name="setLongitude (longitude double) : void" visibility="public"/>
+      <ownedOperation xmi:id="_vJFe0I3IEemkLI_G8cJr0Q" name="getLocalize : int" visibility="public"/>
+      <ownedOperation xmi:id="_vYudUI3IEemkLI_G8cJr0Q" name="setLocalize (localize int) : void" visibility="public"/>
+      <ownedOperation xmi:id="_v5g2MI3IEemkLI_G8cJr0Q" name="toString (id String, name String, VATNumber String, postalCode String, cityCode String, city String, provinceCode String, provinceAbbreviation String, provinceName String, regionCode String, regionName String, beginValidity String, endValidity String, latitude double, longitude double, localize int): String" visibility="public"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_hgXzMIgyEem0FL6wmq89Wg" name="CSVReader" visibility="public">
       <ownedAttribute xmi:id="_n5MWcIgyEem0FL6wmq89Wg" name="fileName" visibility="private" isStatic="true">
