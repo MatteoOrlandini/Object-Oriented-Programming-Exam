@@ -7,6 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
+/**
+ * used to read a CSV file and fill a {@link Pharmacy} and a {@link Metadata} vectors
+ */
 public class CSVReader {
 	private String fileName;
 	private Vector<Pharmacy> pharmacies;
@@ -42,7 +45,15 @@ public class CSVReader {
 	public void setMetadata(Vector<Metadata> metadata) {
 		this.metadata = metadata;
 	}
-
+	/**
+	 * This method read the file through the field fileName 
+	 * and parse it in order to fill the vectors pharmacies and metadata
+	 * @throws NumberFormatException thrown to indicate that the application 
+	 * has attempted to convert a string to one of the numeric types,
+	 * but that the string does not have the appropriate format.
+	 * @throws FileNotFoundException if the file is not found
+	 * @throws IOException exception produced by failed or interrupted I/O operations
+	 */
 	public void reader() {
 
 		BufferedReader br = null;
@@ -77,9 +88,6 @@ public class CSVReader {
 		}
 
 		catch (NumberFormatException ex) {
-			// Thrown to indicate that the application has attempted to convert a string to
-			// one of the numeric types, but that the string does not have the appropriate
-			// format.
 			System.err.println("Illegal input");
 
 		}
@@ -104,7 +112,15 @@ public class CSVReader {
 		}
 
 	}
-
+	
+	/**
+	 * Function to corrects the misspelled fields in the CSV
+	 * There are 2 cases in which there are semicolons instead of commas that the function reader
+	 * can't read properly. The other case is an apex in front of a number that makes 
+	 * impossible the parsing from String to double.
+	 * @param str line read by the {@link reader}
+	 * @return str2 corrected line
+	 */
 	public String lineCorrection(String str) {
 		String str2 = str;
 		if (str.contains("\"Via Cappuccini ;163\"")) {
@@ -118,7 +134,12 @@ public class CSVReader {
 		}
 		return str2;
 	}
-
+	/**
+	 * This function corrects the latitude and longitude fiels by replacing
+	 * the comma with a point and the dash with a zero.
+	 * @param str line read by the {@link reader}
+	 * @return str2 corrected line
+	 */
 	public String[] coordinateCorrection(String[] str) {
 		String[] str2 = str;
 		if (str[14].contains(",") || str[14].contains("-")) {

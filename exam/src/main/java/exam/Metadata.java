@@ -1,5 +1,8 @@
 package exam;
-
+/**
+ * This class is used by {@link CSVReader} to store the first line with the fields of the dataset.
+ *
+ */
 public class Metadata {
 	private String alias;
 	private String sourceField;
