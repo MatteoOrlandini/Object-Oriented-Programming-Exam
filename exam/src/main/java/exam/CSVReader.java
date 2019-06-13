@@ -48,6 +48,7 @@ public class CSVReader {
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ";";
+
 		try {
 			br = new BufferedReader(new FileReader(fileName));
 			/* get metadata */
@@ -63,28 +64,35 @@ public class CSVReader {
 				metadata.add(new Metadata(field.getName(), test[i], field.getType().toString()));
 				i++;
 			}
-			/* end get metadata */
-		    Date beginDate = null;
-		    Date endDate = null;
+
 			while ((line = br.readLine()) != null) {
 				line = lineCorrection(line);
 				test = line.split(cvsSplitBy);
 				test = coordinateCorrection(test);
+
 				pharmacies.add(new Pharmacy(test[0], test[1], test[2], test[3], test[4], test[5], test[6], test[7],
 						test[8], test[9], test[10], test[11], test[12], test[13], Double.parseDouble(test[14]),
 						Double.parseDouble(test[15]), Integer.parseInt(test[16])));
 			}
-		} catch (NumberFormatException ex) {
+		}
+
+		catch (NumberFormatException ex) {
 			// Thrown to indicate that the application has attempted to convert a string to
 			// one of the numeric types, but that the string does not have the appropriate
 			// format.
 			System.err.println("Illegal input");
 
-		} catch (FileNotFoundException e) {
+		}
+
+		catch (FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
+		}
+
+		catch (IOException e) {
 			e.printStackTrace();
-		} finally {
+		}
+
+		finally {
 			if (br != null) {
 				try {
 					br.close();

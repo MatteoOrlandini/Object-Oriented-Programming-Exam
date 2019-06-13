@@ -21,6 +21,7 @@ public class Application {
 		
 		PharmacyService.setPharmacies(pharmacies);
 		PharmacyService.setMetadata(metadata);
+		
 		SpringApplication.run(Application.class, args);
 	}
 
