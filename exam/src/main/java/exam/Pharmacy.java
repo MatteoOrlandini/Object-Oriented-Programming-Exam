@@ -1,7 +1,9 @@
 package exam;
 
-import java.util.Date;
-
+/**
+ * This class represent a generic pharmacy that can describe the rows of the dataset
+ *
+ */
 public class Pharmacy {
 	private String id;
 	private String name;
