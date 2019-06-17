@@ -1,20 +1,22 @@
 package exam;
+
 /**
- * This class is used by {@link CSVReader} to store the first line with the fields of the dataset.
+ * This class is used by {@link CSVReader} to store the first line with the
+ * fields of the dataset.
  *
  */
 public class Metadata {
 	private String alias;
 	private String sourceField;
 	private String type;
-	
+
 	public Metadata(String alias, String sourceField, String type) {
 		super();
 		this.alias = alias;
 		this.sourceField = sourceField;
 		this.type = type;
 	}
-	
+
 	public String getAlias() {
 		return alias;
 	}
@@ -44,6 +46,3 @@ public class Metadata {
 		return "Metadata [alias=" + alias + ", sourceField=" + sourceField + ", type=" + type + "]";
 	}
 }
-
-
-

@@ -8,8 +8,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 /**
- * This class contains the methods used by the controller or the service itself to manage the filters.
+ * This class contains the methods used by the controller or the service itself
+ * to manage the filters.
  * 
  *
  */
@@ -34,11 +36,13 @@ public class PharmacyService {
 	public static void setMetadata(Vector<Metadata> metadata) {
 		PharmacyService.metadata = metadata;
 	}
+
 	/**
-	 * Filters the pharmacies returning only the ones within a certain range from a specified point
-	 * described by x and y.
-	 * @param x longitude of the centre
-	 * @param y latitude of the centre
+	 * Filters the pharmacies returning only the ones within a certain range from a
+	 * specified point described by x and y.
+	 * 
+	 * @param x     longitude of the centre
+	 * @param y     latitude of the centre
 	 * @param range radius of the area searched
 	 * @return temp vector made of all the pharmacies in the specified area
 	 */
@@ -55,53 +59,57 @@ public class PharmacyService {
 		}
 		return temp;
 	}
+
 	/**
-	 * Method used by the main filter that checks whether the value in the dataset respects the conditions
-	 * imposed by the operator and the input value.
+	 * Method used by the main filter that checks whether the value in the dataset
+	 * respects the conditions imposed by the operator and the input value.
+	 * 
 	 * @param pharmacyValue value in the dataset
-	 * @param operator it can be (==,>,<)
-	 * @param inputValue value in the input JSON
+	 * @param operator      it can be (==,>,<)
+	 * @param inputValue    value in the input JSON
 	 * @return false or true depending of the result of the comparison
 	 */
 	public static boolean check(Object pharmacyValue, String operator, Object inputValue) {
-		if (inputValue instanceof Number && pharmacyValue instanceof Number) {		
+		if (inputValue instanceof Number && pharmacyValue instanceof Number) {
 			Double doubleInputValue = ((Number) inputValue).doubleValue();
 			Double doublePharmacyValue = ((Number) pharmacyValue).doubleValue();
-			
+
 			if (operator.equals("=="))
-				return pharmacyValue.equals(inputValue);		
+				return pharmacyValue.equals(inputValue);
 			else if (operator.equals(">"))
 				return doublePharmacyValue > doubleInputValue;
 			else if (operator.equals("<"))
 				return doublePharmacyValue < doubleInputValue;
-			
+
 		} else if (inputValue instanceof String && pharmacyValue instanceof String) {
 			String inputString = (String) inputValue;
 			String pharmacyString = (String) pharmacyValue;
-			
+
 			if (isValidDate(inputString) && isValidDate(pharmacyString)) {
 				Date inputDate = stringTodate(inputString);
 				Date pharmacyDate = stringTodate(pharmacyString);
-				 
-				if (operator.equals("==")) 
-					 return inputDate.equals(pharmacyDate);
-				 else if (operator.equals(">")) 
-					 return inputDate.before(pharmacyDate);			 
-				 else if (operator.equals("<"))
-					 return inputDate.after(pharmacyDate);
+
+				if (operator.equals("=="))
+					return inputDate.equals(pharmacyDate);
+				else if (operator.equals(">"))
+					return inputDate.before(pharmacyDate);
+				else if (operator.equals("<"))
+					return inputDate.after(pharmacyDate);
 			}
 
 			return pharmacyValue.equals(inputValue);
 		}
 		return false;
 	}
+
 	/**
-	 * Filters the pharmacies and returns only those that meet the conditions of the input value
-	 * and the operator. It uses the method check to verify the conditions
+	 * Filters the pharmacies and returns only those that meet the conditions of the
+	 * input value and the operator. It uses the method check to verify the
+	 * conditions
 	 * 
 	 * @param pharmacies the whole dataset
-	 * @param fieldName the field to compare
-	 * @param operator the arithmetical operator
+	 * @param fieldName  the field to compare
+	 * @param operator   the arithmetical operator
 	 * @param inputValue the value wrote by the user in the JSON body
 	 * @return temp vector made by the parmacies that met the conditions
 	 */
@@ -135,16 +143,20 @@ public class PharmacyService {
 		}
 		return out;
 	}
+
 	/**
 	 * Converts decimal degrees to radians
+	 * 
 	 * @param deg
 	 * @return Radiant equivalent
 	 */
 	public double degToRad(double deg) {
 		return deg * Math.PI / 180;
 	}
+
 	/**
 	 * Converts a String in a Date Object if it's not a dash
+	 * 
 	 * @param str
 	 * @return Date equivalent
 	 */
@@ -161,8 +173,10 @@ public class PharmacyService {
 		}
 		return date;
 	}
+
 	/**
 	 * Checks if the input String is a valid Date that respects the format
+	 * 
 	 * @param inDate
 	 * @return true or false
 	 */

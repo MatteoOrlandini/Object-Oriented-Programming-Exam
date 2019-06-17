@@ -14,9 +14,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+
 /**
- * This Class takes as attributes a file name and a url and is used 
- * to parse the initial url in order to find another url that downloads the CSV file 
+ * This Class takes as attributes a file name and a url and is used to parse the
+ * initial url in order to find another url that downloads the CSV file
  *
  */
 public class JSONparseranddownload {
@@ -44,9 +45,10 @@ public class JSONparseranddownload {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
 	/**
-	 * This method parse the url and search in the path result/resources/url to get the url that
-	 * downloads the dataset
+	 * This method parse the url and search in the path result/resources/url to get
+	 * the url that downloads the dataset
 	 */
 	public void parser() {
 
@@ -92,9 +94,12 @@ public class JSONparseranddownload {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * This method checks if the dataset already exists or it downloads it.
-	 * @param url not the attribute of the class but the one found by the parser
+	 * 
+	 * @param url      not the attribute of the class but the one found by the
+	 *                 parser
 	 * @param fileName destination of the dataset
 	 * @throws Exception checks the presence of the file name
 	 */

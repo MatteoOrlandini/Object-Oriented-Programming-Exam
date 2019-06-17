@@ -1,7 +1,8 @@
 package exam;
 
 /**
- * This class represent a generic pharmacy that can describe the rows of the dataset
+ * This class represent a generic pharmacy that can describe the rows of the
+ * dataset
  *
  */
 public class Pharmacy {
@@ -24,12 +25,13 @@ public class Pharmacy {
 	private int localize;
 
 	public Pharmacy() {
-	
+
 	}
-	
-	public Pharmacy(String id, String name, String address, String VATNumber, String postalCode, String cityCode, String city,
-			String provinceCode, String provinceAbbreviation, String provinceName, String regionCode, String regionName,
-			String beginValidity, String endValidity, double latitude, double longitude, int localize) {
+
+	public Pharmacy(String id, String name, String address, String VATNumber, String postalCode, String cityCode,
+			String city, String provinceCode, String provinceAbbreviation, String provinceName, String regionCode,
+			String regionName, String beginValidity, String endValidity, double latitude, double longitude,
+			int localize) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -188,11 +190,12 @@ public class Pharmacy {
 
 	@Override
 	public String toString() {
-		return "Pharmacy [id=" + id + ", name=" + name + ", address=" + address + ", VAT Number=" + VATNumber + ", postal code=" + postalCode
-				+ ", cityCode=" + cityCode + ", city=" + city + ", provinceCode=" + provinceCode
-				+ ", provinceAbbreviation=" + provinceAbbreviation + ", provinceName=" + provinceName + ", regionCode="
-				+ regionCode + ", regionName=" + regionName + ", beginValidity=" + beginValidity + ", endValidity="
-				+ endValidity + ", latitude=" + latitude + ", longitude=" + longitude + ", localize=" + localize + "]";
+		return "Pharmacy [id=" + id + ", name=" + name + ", address=" + address + ", VAT Number=" + VATNumber
+				+ ", postal code=" + postalCode + ", cityCode=" + cityCode + ", city=" + city + ", provinceCode="
+				+ provinceCode + ", provinceAbbreviation=" + provinceAbbreviation + ", provinceName=" + provinceName
+				+ ", regionCode=" + regionCode + ", regionName=" + regionName + ", beginValidity=" + beginValidity
+				+ ", endValidity=" + endValidity + ", latitude=" + latitude + ", longitude=" + longitude + ", localize="
+				+ localize + "]";
 	}
-	
+
 }
