@@ -2,7 +2,6 @@ package exam;
 
 import java.util.*;
 import java.lang.Math;
-import java.lang.reflect.*;
 import org.springframework.stereotype.Component;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -36,6 +35,44 @@ public class PharmacyService {
 	public static void setMetadata(Vector<Metadata> metadata) {
 		PharmacyService.metadata = metadata;
 	}
+	
+	/**
+	 * Search for the pharmacy attribute "fieldName"
+	 * equals to the given value 
+	 * @param fieldName     name of the field attribute to search
+	 * @param value     	value to find
+	 * @return count number of the unique strings
+	 */
+	public int getStats(String fieldName, String value) {
+		int count = 0;
+		for (Pharmacy item : pharmacies) {
+			try {
+				Method m = item.getClass()
+						.getMethod("get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
+				try {
+					Object pharmacyValue = m.invoke(item);
+					if (PharmacyService.check(pharmacyValue, "==", value))
+						count++;
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
 
 	/**
 	 * Filters the pharmacies returning only the ones within a certain range from a
@@ -49,9 +86,9 @@ public class PharmacyService {
 	public Vector<Pharmacy> localize(double x, double y, double range) {
 		Vector<Pharmacy> temp = new Vector<Pharmacy>();
 		for (Pharmacy item : pharmacies) {
-			double dist = Math.acos(Math.sin(degToRad(x)) * Math.sin(degToRad(item.getLatitude()))
-					+ Math.cos(degToRad(x)) * Math.cos(degToRad(item.getLatitude()))
-							* Math.cos(degToRad(item.getLongitude()) - degToRad(y)))
+			double dist = Math.acos(Math.sin(Math.toRadians(x)) * Math.sin(Math.toRadians(item.getLatitude()))
+					+ Math.cos(Math.toRadians(x)) * Math.cos(Math.toRadians(item.getLatitude()))
+							* Math.cos(Math.toRadians(item.getLongitude()) - Math.toRadians(y)))
 					* 6371;
 			if (dist <= range) {
 				temp.add(item);
@@ -144,15 +181,6 @@ public class PharmacyService {
 		return out;
 	}
 
-	/**
-	 * Converts decimal degrees to radians
-	 * 
-	 * @param deg
-	 * @return Radiant equivalent
-	 */
-	public double degToRad(double deg) {
-		return deg * Math.PI / 180;
-	}
 
 	/**
 	 * Converts a String in a Date Object if it's not a dash

@@ -354,7 +354,7 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_hgXzMIgyEem0FL6wmq89Wg" name="CSVReader" visibility="public">
+    <packagedElement xmi:type="uml:Class" xmi:id="_hgXzMIgyEem0FL6wmq89Wg" name="CSVParser" visibility="public">
       <ownedAttribute xmi:id="_n5MWcIgyEem0FL6wmq89Wg" name="fileName" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n5MWcYgyEem0FL6wmq89Wg" value="1"/>
@@ -420,7 +420,7 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_a-YlgIg1Eem0FL6wmq89Wg" name="JSONparseanddownload" visibility="public">
+    <packagedElement xmi:type="uml:Class" xmi:id="_a-YlgIg1Eem0FL6wmq89Wg" name="JSONparser" visibility="public">
       <ownedAttribute xmi:id="_5Q2MgIg3Eem0FL6wmq89Wg" name="fileName" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5Q2MgYg3Eem0FL6wmq89Wg" value="1"/>
@@ -545,11 +545,24 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_GaaPMJEJEemMWpJiVYIwUg" name="PharmacyController" visibility="public">
       <ownedAttribute xmi:id="_c5lCkJEXEemMWpJiVYIwUg" name="pharmacyService: PharmacyService" visibility="private"/>
-      <ownedOperation xmi:id="_fr5ZMJEXEemMWpJiVYIwUg" name="retrieveAllPharmacies" visibility="public">
-        <ownedParameter xmi:id="_GgqjAJEbEemMWpJiVYIwUg" type="_ml1GkIgxEem0FL6wmq89Wg" direction="return"/>
+      <ownedOperation xmi:id="_fr5ZMJEXEemMWpJiVYIwUg" name="retrievePharmacies" visibility="public">
+        <ownedParameter xmi:id="_GgqjAJEbEemMWpJiVYIwUg" type="_ml1GkIgxEem0FL6wmq89Wg" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XXbwMJE5EemSb7mX9k2vRQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XXbwMZE5EemSb7mX9k2vRQ" value="1"/>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="_f7cREJEXEemMWpJiVYIwUg" name="retrieveMetadata" visibility="public">
         <ownedParameter xmi:id="_OkdaUJEbEemMWpJiVYIwUg" type="_z953oJEIEemMWpJiVYIwUg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_YHfUIJE5EemSb7mX9k2vRQ" name="retrieveStats" visibility="public">
+        <ownedParameter xmi:id="_crH3YJE5EemSb7mX9k2vRQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8JnCEJE6EemSb7mX9k2vRQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8JnpIJE6EemSb7mX9k2vRQ" value="1"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8JshoJE6EemSb7mX9k2vRQ" name="param">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="_gKcWYJEXEemMWpJiVYIwUg" name="localize" visibility="public">
         <ownedParameter xmi:id="_SUxqQJEbEemMWpJiVYIwUg" name="param">
@@ -584,6 +597,19 @@
       </ownedOperation>
       <ownedOperation xmi:id="_kj1jEJEYEemMWpJiVYIwUg" name="setMetadata" visibility="public">
         <ownedParameter xmi:id="_NrF0QJEZEemMWpJiVYIwUg" name="metadata" type="_z953oJEIEemMWpJiVYIwUg"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_-HBJ8JE6EemSb7mX9k2vRQ" name="getStats" visibility="public">
+        <ownedParameter xmi:id="_Cq7aAJE7EemSb7mX9k2vRQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VwZPAJE7EemSb7mX9k2vRQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VwZPAZE7EemSb7mX9k2vRQ" value="1"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_Cqvz0JE7EemSb7mX9k2vRQ" name="fieldName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_MvfkUJE9EemSb7mX9k2vRQ" name="value">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="_ky89IJEYEemMWpJiVYIwUg" name="localize" visibility="public">
         <ownedParameter xmi:id="_S8I3IJEZEemMWpJiVYIwUg" name="x">
@@ -622,14 +648,6 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
         <ownedParameter xmi:id="_iLIUY5EaEemMWpJiVYIwUg" name="inputValue"/>
-      </ownedOperation>
-      <ownedOperation xmi:id="_laYwkJEYEemMWpJiVYIwUg" name="degToRad" visibility="public">
-        <ownedParameter xmi:id="_rSObwJEaEemMWpJiVYIwUg" name="deg">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-        </ownedParameter>
-        <ownedParameter xmi:id="_rSUiYJEaEemMWpJiVYIwUg" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
-        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="_uI2DkJEaEemMWpJiVYIwUg" name="stringToDate" visibility="public">
         <ownedParameter xmi:id="_0KKs0JEaEemMWpJiVYIwUg" name="str">

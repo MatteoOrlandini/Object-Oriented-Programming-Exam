@@ -39,7 +39,7 @@ public class PharmacyController {
 	 * @return all the dataset
 	 */
 	@GetMapping("/data")
-	public Vector<Pharmacy> retrieveAllPharmacies() {
+	public Vector<Pharmacy> retrievePharmacies() {
 		return pharmacyService.getPharmacies();
 	}
 
@@ -51,6 +51,25 @@ public class PharmacyController {
 	@GetMapping("/metadata")
 	public Vector<Metadata> retrieveMetadata() {
 		return pharmacyService.getMetadata();
+	}
+
+	/**
+	 * Returns string statistics using a POST
+	 * 
+	 * @return the number of unique items
+	 */
+	@PostMapping("/stats")
+	public String retrieveStats(@RequestBody String param) {
+		JSONObject obj = null;
+		try {
+			obj = (JSONObject) JSONValue.parseWithException(param);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String fieldName = (String) obj.get("fieldName");
+		String value = (String) obj.get("value");
+		return "count : " + pharmacyService.getStats(fieldName, value);
 	}
 
 	/**

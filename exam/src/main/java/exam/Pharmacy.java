@@ -32,7 +32,6 @@ public class Pharmacy {
 			String city, String provinceCode, String provinceAbbreviation, String provinceName, String regionCode,
 			String regionName, String beginValidity, String endValidity, double latitude, double longitude,
 			int localize) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -187,15 +186,4 @@ public class Pharmacy {
 	public void setLocalize(int localize) {
 		this.localize = localize;
 	}
-
-	@Override
-	public String toString() {
-		return "Pharmacy [id=" + id + ", name=" + name + ", address=" + address + ", VAT Number=" + VATNumber
-				+ ", postal code=" + postalCode + ", cityCode=" + cityCode + ", city=" + city + ", provinceCode="
-				+ provinceCode + ", provinceAbbreviation=" + provinceAbbreviation + ", provinceName=" + provinceName
-				+ ", regionCode=" + regionCode + ", regionName=" + regionName + ", beginValidity=" + beginValidity
-				+ ", endValidity=" + endValidity + ", latitude=" + latitude + ", longitude=" + longitude + ", localize="
-				+ localize + "]";
-	}
-
 }

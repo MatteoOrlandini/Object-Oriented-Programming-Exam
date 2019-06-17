@@ -11,12 +11,12 @@ import java.util.Vector;
  * used to read a CSV file and fill a {@link Pharmacy} and a {@link Metadata}
  * vectors
  */
-public class CSVReader {
+public class CSVParser {
 	private String fileName;
 	private Vector<Pharmacy> pharmacies;
 	private Vector<Metadata> metadata;
 
-	public CSVReader(String fileName, Vector<Pharmacy> pharmacies, Vector<Metadata> metadata) {
+	public CSVParser(String fileName, Vector<Pharmacy> pharmacies, Vector<Metadata> metadata) {
 		super();
 		this.fileName = fileName;
 		this.pharmacies = pharmacies;
@@ -61,15 +61,15 @@ public class CSVReader {
 	 */
 	public void reader() {
 
-		BufferedReader br = null;
+		BufferedReader bufferedReader = null;
 		String line = "";
-		String cvsSplitBy = ";";
+		String semicolon = ";";
 
 		try {
-			br = new BufferedReader(new FileReader(fileName));
+			bufferedReader = new BufferedReader(new FileReader(fileName));
 			/* get metadata */
-			line = br.readLine();
-			String[] test = line.split(cvsSplitBy);
+			line = bufferedReader.readLine();
+			String[] splittedLine = line.split(semicolon);
 
 			Pharmacy pharmacyobj = new Pharmacy();
 			Class<?> pharmacy = pharmacyobj.getClass();
@@ -77,24 +77,29 @@ public class CSVReader {
 			for (Field field : pharmacy.getDeclaredFields()) {
 				// you can also use .toGenericString() instead of .getName(). This will
 				// give you the type information as well.
-				metadata.add(new Metadata(field.getName(), test[i], field.getType().toString()));
-				i++;
+				try {
+					metadata.add(new Metadata(field.getName(), splittedLine[i], field.getType().toString()));
+					i++;
+				} catch (ArrayIndexOutOfBoundsException e) {
+					System.out.println("Index out of bound");
+				}
 			}
 
-			while ((line = br.readLine()) != null) {
+			while ((line = bufferedReader.readLine()) != null) {
 				line = lineCorrection(line);
-				test = line.split(cvsSplitBy);
-				test = coordinateCorrection(test);
+				splittedLine = line.split(semicolon);
+				splittedLine = coordinateCorrection(splittedLine);
+				try {
+					pharmacies.add(new Pharmacy(splittedLine[0], splittedLine[1], splittedLine[2], splittedLine[3],
+							splittedLine[4], splittedLine[5], splittedLine[6], splittedLine[7], splittedLine[8],
+							splittedLine[9], splittedLine[10], splittedLine[11], splittedLine[12], splittedLine[13],
+							Double.parseDouble(splittedLine[14]), Double.parseDouble(splittedLine[15]),
+							Integer.parseInt(splittedLine[16])));
+				} catch (NumberFormatException ex) {
+					System.err.println("Illegal input");
 
-				pharmacies.add(new Pharmacy(test[0], test[1], test[2], test[3], test[4], test[5], test[6], test[7],
-						test[8], test[9], test[10], test[11], test[12], test[13], Double.parseDouble(test[14]),
-						Double.parseDouble(test[15]), Integer.parseInt(test[16])));
+				}
 			}
-		}
-
-		catch (NumberFormatException ex) {
-			System.err.println("Illegal input");
-
 		}
 
 		catch (FileNotFoundException e) {
@@ -106,9 +111,9 @@ public class CSVReader {
 		}
 
 		finally {
-			if (br != null) {
+			if (bufferedReader != null) {
 				try {
-					br.close();
+					bufferedReader.close();
 					System.out.println("File closed!");
 				} catch (IOException e) {
 					e.printStackTrace();

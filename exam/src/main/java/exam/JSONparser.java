@@ -20,11 +20,11 @@ import org.json.simple.parser.ParseException;
  * initial url in order to find another url that downloads the CSV file
  *
  */
-public class JSONparseranddownload {
+public class JSONparser {
 	private String fileName;
 	private String url;
 
-	public JSONparseranddownload(String fileName, String url) {
+	public JSONparser(String fileName, String url) {
 		super();
 		this.fileName = fileName;
 		this.url = url;
