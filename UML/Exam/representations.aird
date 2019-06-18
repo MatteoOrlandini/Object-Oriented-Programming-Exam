@@ -1236,7 +1236,7 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_g2H08Ig1Eem0FL6wmq89Wg" name="JSONparser" tooltipText="NewModel::ExamPackage::JSONparser" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_g2H08Ig1Eem0FL6wmq89Wg" name="JSONParser" tooltipText="NewModel::ExamPackage::JSONParser" width="12" height="10">
       <target xmi:type="uml:Class" href="model.uml#_a-YlgIg1Eem0FL6wmq89Wg"/>
       <semanticElements xmi:type="uml:Class" href="model.uml#_a-YlgIg1Eem0FL6wmq89Wg"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>

@@ -420,7 +420,7 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_a-YlgIg1Eem0FL6wmq89Wg" name="JSONparser" visibility="public">
+    <packagedElement xmi:type="uml:Class" xmi:id="_a-YlgIg1Eem0FL6wmq89Wg" name="JSONParser" visibility="public">
       <ownedAttribute xmi:id="_5Q2MgIg3Eem0FL6wmq89Wg" name="fileName" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5Q2MgYg3Eem0FL6wmq89Wg" value="1"/>
