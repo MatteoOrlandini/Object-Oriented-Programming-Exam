@@ -11,8 +11,6 @@ import java.text.SimpleDateFormat;
 /**
  * This class contains the methods used by the controller or the service itself
  * to manage the filters.
- * 
- *
  */
 @Component
 public class PharmacyService {
@@ -37,8 +35,8 @@ public class PharmacyService {
 	}
 	
 	/**
-	 * Search for the pharmacy attribute "fieldName"
-	 * equals to the given value 
+	 * Search for the pharmacy attribute "fieldName" that is
+	 * equal to the given value and counts the times it occurred.
 	 * @param fieldName     name of the field attribute to search
 	 * @param value     	value to find
 	 * @return count number of the unique strings
@@ -76,7 +74,9 @@ public class PharmacyService {
 
 	/**
 	 * Filters the pharmacies returning only the ones within a certain range from a
-	 * specified point described by x and y.
+	 * specified point described by x and y.<br>
+	 * <strong>Note:</strong> latitude and longitude are GPS coordinates so it is needed
+	 * a specific formula to calculate the distance between them.
 	 * 
 	 * @param x     longitude of the centre
 	 * @param y     latitude of the centre
@@ -142,9 +142,10 @@ public class PharmacyService {
 	/**
 	 * Filters the pharmacies and returns only those that meet the conditions of the
 	 * input value and the operator. It uses the method check to verify the
-	 * conditions
+	 * conditions.
 	 * 
-	 * @param pharmacies the whole dataset
+	 * @param pharmacies the whole dataset. It is needed in order to have the possibility to
+	 * iterate the process giving another Vector already filtered as input.
 	 * @param fieldName  the field to compare
 	 * @param operator   the arithmetical operator
 	 * @param inputValue the value wrote by the user in the JSON body

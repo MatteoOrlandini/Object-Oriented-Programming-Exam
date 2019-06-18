@@ -25,8 +25,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * This class manages the Spring application and define the filters using GET or
- * POST
- *
+ * POST requests.
  */
 @RestController
 public class PharmacyController {
@@ -34,9 +33,9 @@ public class PharmacyController {
 	private PharmacyService pharmacyService;
 
 	/**
-	 * Returns all the pharmacies using a GET
+	 * Returns all the pharmacies using a GET request.
 	 * 
-	 * @return all the dataset
+	 * @return the entire dataset
 	 */
 	@GetMapping("/data")
 	public Vector<Pharmacy> retrievePharmacies() {
@@ -44,7 +43,7 @@ public class PharmacyController {
 	}
 
 	/**
-	 * Returns all the metadata using a GET
+	 * Returns all the metadata using a GET request.
 	 * 
 	 * @return the metadata
 	 */
@@ -54,7 +53,7 @@ public class PharmacyController {
 	}
 
 	/**
-	 * Returns string statistics using a POST
+	 * Returns string statistics using a POST request.
 	 * 
 	 * @return the number of unique items
 	 */
@@ -73,7 +72,7 @@ public class PharmacyController {
 	}
 
 	/**
-	 * Using a POST it search in the body for a latitude, a longitude and a range
+	 * Using a POST it looks in the body for a latitude, a longitude and a range
 	 * and through the {@link PharmacyService} returns those that are in the
 	 * specified area.
 	 * 

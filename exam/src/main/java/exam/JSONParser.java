@@ -16,8 +16,8 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
 /**
- * This Class takes as attributes a file name and a url and is used to parse the
- * initial url in order to find another url that downloads the CSV file
+ * This class takes as attributes a file name and a url and is used to parse the
+ * initial url in order to find another url that downloads the CSV file.
  *
  */
 public class JSONParser {

@@ -1,8 +1,8 @@
 package exam;
 
 /**
- * This class represent a generic pharmacy that can describe the rows of the
- * dataset
+ * This class represents a generic pharmacy that can describe the rows of the
+ * dataset.
  *
  */
 public class Pharmacy {
