@@ -67,6 +67,7 @@ public class CSVParser {
 
 		try {
 			bufferedReader = new BufferedReader(new FileReader(fileName));
+			System.out.println("File opened!");
 			/* get metadata */
 			line = bufferedReader.readLine();
 			String[] splittedLine = line.split(semicolon);
@@ -100,6 +101,7 @@ public class CSVParser {
 
 				}
 			}
+			System.out.println("Dataset loaded!");
 		}
 
 		catch (FileNotFoundException e) {

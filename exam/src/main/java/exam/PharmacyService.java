@@ -38,7 +38,7 @@ public class PharmacyService {
 	
 	/**
 	 * Search for the pharmacy attribute "fieldName"
-	 * equals to the given value 
+	 * equals to the given value
 	 * @param fieldName     name of the field attribute to search
 	 * @param value     	value to find
 	 * @return count number of the unique strings
