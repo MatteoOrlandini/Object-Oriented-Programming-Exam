@@ -35,8 +35,10 @@ public class PharmacyService {
 	}
 	
 	/**
+	 * 
 	 * Search for the pharmacy attribute "fieldName" that is
 	 * equal to the given value and counts the times it occurred.
+	 * 
 	 * @param fieldName     name of the field attribute to search
 	 * @param value     	value to find
 	 * @return count number of the unique strings

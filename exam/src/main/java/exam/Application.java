@@ -8,15 +8,14 @@ import java.util.Vector;
 public class Application {
 
 	public static void main(String[] args) {
-		String dataset = new String("dataset.csv");
-		String url = new String(
-				"https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969");
+		String dataset ="dataset.csv";
+		String url = "https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969";
 		JSONParser jsonParser = new JSONParser(dataset, url);
-		jsonParser.parser();
+		jsonParser.openConnection();
 
 		Vector<Pharmacy> pharmacies = new Vector<Pharmacy>();
 		Vector<Metadata> metadata = new Vector<Metadata>();
-		CSVParser csvParser = new CSVParser("dataset.csv", pharmacies, metadata);
+		CSVParser csvParser = new CSVParser(dataset, pharmacies, metadata);
 		csvParser.reader();
 
 		PharmacyService.setPharmacies(pharmacies);

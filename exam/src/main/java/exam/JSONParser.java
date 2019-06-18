@@ -50,45 +50,59 @@ public class JSONParser {
 	 * This method parse the url and search in the path result/resources/url to get
 	 * the url that downloads the dataset
 	 */
-	public void parser() {
-
-		try {
-
-			URLConnection openConnection = new URL(url).openConnection();
-			openConnection.addRequestProperty("User-Agent",
-					"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
-			InputStream in = openConnection.getInputStream();
-
-			String data = "";
-			String line = "";
+	public void openConnection() {
+		// check if the file doesn't exist
+		if (!Files.exists(Paths.get(fileName))) {
 			try {
-				InputStreamReader inR = new InputStreamReader(in);
-				BufferedReader buf = new BufferedReader(inR);
+				// if the file doesn't exist open a connection with "url"
+				URLConnection openConnection = new URL(url).openConnection();
+				openConnection.addRequestProperty("User-Agent",
+						"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+				InputStream inputStream = openConnection.getInputStream();
 
-				while ((line = buf.readLine()) != null) {
-					data += line;
-					// System.out.println( line );
+				String data = "";
+				String line = "";
+				try {
+					BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream));
+
+					while ((line = buffer.readLine()) != null) {
+						//create a data String where the JSON is stored 
+						data += line;
+					}
+					parser(data);
+				} finally {
+					inputStream.close();
 				}
-			} finally {
-				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			JSONObject obj = (JSONObject) JSONValue.parseWithException(data);
-			JSONObject objI = (JSONObject) (obj.get("result"));
-			JSONArray objA = (JSONArray) (objI.get("resources"));
 
-			for (Object o : objA) {
-				if (o instanceof JSONObject) {
-					JSONObject o1 = (JSONObject) o;
-					String format = (String) o1.get("format");
-					String urlDataset = (String) o1.get("url");
-					System.out.println(format + " url : " + urlDataset);
+		}
+		else {
+			System.out.println("File already exists!");
+		}
+	}
+
+	public void parser(String str) {
+		try {
+			//parse the str String
+			JSONObject JSONobj = (JSONObject) JSONValue.parseWithException(str);
+			JSONObject JSONobj1 = (JSONObject) (JSONobj.get("result"));
+			JSONArray JSONarray = (JSONArray) (JSONobj1.get("resources"));
+
+			for (Object obj : JSONarray) {
+				if (obj instanceof JSONObject) {
+					JSONObject obj1 = (JSONObject) obj;
+					String format = (String) obj1.get("format");
+					String urlDataset = (String) obj1.get("url");
 					if (format.equals("csv")) {
-						System.out.println("Dataset found!");
+						System.out.println("Dataset url found!");
+						System.out.println(format + " url : " + urlDataset);
 						download(urlDataset, fileName);
 					}
 				}
 			}
-		} catch (IOException | ParseException e) {
+		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,7 +110,7 @@ public class JSONParser {
 	}
 
 	/**
-	 * This method checks if the dataset already exists or it downloads it.
+	 * This method download the dataset if it doesn't exist.
 	 * 
 	 * @param url      not the attribute of the class but the one found by the
 	 *                 parser
@@ -104,9 +118,12 @@ public class JSONParser {
 	 * @throws Exception checks the presence of the file name
 	 */
 	public static void download(String url, String fileName) throws Exception {
-		try (InputStream in = URI.create(url).toURL().openStream()) {
-			Files.copy(in, Paths.get(fileName));
-			System.out.println("Dataset downloaded!");
+		try {
+			//create input stream of bytes from the url
+			InputStream inputStream = URI.create(url).toURL().openStream();
+			//copy bytes from inputStream to fileName
+			Files.copy(inputStream, Paths.get(fileName));
+			System.out.println("CSV file downloaded!");
 		} catch (FileAlreadyExistsException e) {
 			System.out.println("File already exists!");
 		}
