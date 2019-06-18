@@ -78,7 +78,7 @@ public class PharmacyController {
 	 * specified area.
 	 * 
 	 * @param param a body that contains the filter parameters
-	 * @return the pharmacies in a gived radius
+	 * @return the pharmacies in a given radius
 	 */
 	@PostMapping(value = "/localize")
 	public Vector<Pharmacy> localize(@RequestBody String param) {

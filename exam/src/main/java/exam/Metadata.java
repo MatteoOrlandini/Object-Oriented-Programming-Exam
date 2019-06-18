@@ -1,7 +1,7 @@
 package exam;
 
 /**
- * This class is used by {@link CSVReader} to store the first line with the
+ * This class is used by {@link CSVParser} to store the first line with the
  * fields of the dataset.
  *
  */
