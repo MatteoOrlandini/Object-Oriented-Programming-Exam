@@ -581,6 +581,7 @@
         </ownedParameter>
         <ownedParameter xmi:id="_Yc10sJEbEemMWpJiVYIwUg" type="_ml1GkIgxEem0FL6wmq89Wg" direction="return"/>
       </ownedOperation>
+      <ownedOperation xmi:id="_M84xsJKeEemPv8GRPgEuGw" name="readFields(obj:Object):void"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_H96pUJEJEemMWpJiVYIwUg" name="PharmacyService" visibility="public">
       <ownedAttribute xmi:id="_jUgCIJEYEemMWpJiVYIwUg" name="pharmacies" visibility="private" type="_ml1GkIgxEem0FL6wmq89Wg"/>

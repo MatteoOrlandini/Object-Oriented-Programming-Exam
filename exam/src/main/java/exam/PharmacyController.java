@@ -1,27 +1,17 @@
 package exam;
 
-import java.net.URI;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
-
+// spring libraries
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.BasicJsonParser;
-import org.springframework.boot.json.JsonParser;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * This class manages the Spring application and define the filters using GET or
@@ -31,6 +21,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class PharmacyController {
 	@Autowired
 	private PharmacyService pharmacyService;
+	private String fieldName;
+	private String operator;
+	private Object value;
 
 	/**
 	 * Returns all the pharmacies using a GET request.
@@ -99,10 +92,12 @@ public class PharmacyController {
 	}
 
 	/**
-	 * Generic filter using a POST that search in the body for a field, an operator
-	 * and an input value. It can get in the body multiple objects with the
-	 * information described above to recursively apply a filter at the remaining
-	 * pharmacies.
+	 * Generic filter using a POST. If the body of the JSON is a single object it
+	 * search for a field, an operator and an input value and returns the filtered
+	 * dataset. If it is found an attribute called "$or" or "$and" it applies
+	 * multiple filters to the following array of object based on the attribute. The
+	 * "$or" filter does a filter for each object and then unites them. The "$and"
+	 * filter just recursively filter the result of the previous decimation.
 	 * 
 	 * @param param JSON array with object composed by a field,an operator and an
 	 *              input value
@@ -118,43 +113,51 @@ public class PharmacyController {
 			e.printStackTrace();
 		}
 		Vector<Pharmacy> temp = pharmacyService.getPharmacies();
-		if (jsonObject instanceof JSONObject) {
-			String fieldName = (String) jsonObject.get("fieldName");
-			String operator = (String) jsonObject.get("operator");
-			Object value = jsonObject.get("value");
-			if (fieldName != null && operator != null && value != null)
-				temp = pharmacyService.filter(temp, fieldName, operator, value);
-		}
+
+		// single filter case
+		readFields(jsonObject);
+		if (fieldName != null && operator != null && value != null)
+			temp = pharmacyService.filter(temp, fieldName, operator, value);
+
+		// multiple filter cases: or - and
 		JSONArray jsonArray = (JSONArray) jsonObject.get("$or");
 		if (jsonArray instanceof JSONArray) {
-			Vector<Pharmacy> tempVector = pharmacyService.getPharmacies();
+			// tempOr is used to store the partial filters
+			Vector<Pharmacy> tempOr = new Vector<Pharmacy>();
+			// the temp vector is emptied
 			temp = new Vector<Pharmacy>();
+
 			for (Object obj : jsonArray) {
-
-				if (obj instanceof JSONObject) {
-					JSONObject obj1 = (JSONObject) obj;
-					String fieldName = (String) obj1.get("fieldName");
-					String operator = (String) obj1.get("operator");
-					Object value = obj1.get("value");
-
-					tempVector = pharmacyService.filter(pharmacyService.getPharmacies(), fieldName, operator, value);
+				readFields(obj);
+				tempOr = pharmacyService.filter(pharmacyService.getPharmacies(), fieldName, operator, value);
+				for (Pharmacy item : tempOr) {
+					if (!temp.contains(item))
+						temp.add(item);
 				}
-				temp.addAll(tempVector);
 			}
 		} else {
+
 			jsonArray = (JSONArray) jsonObject.get("$and");
 			if (jsonArray instanceof JSONArray) {
 				for (Object obj : jsonArray) {
-					if (obj instanceof JSONObject) {
-						JSONObject obj1 = (JSONObject) obj;
-						String fieldName = (String) obj1.get("fieldName");
-						String operator = (String) obj1.get("operator");
-						Object value = obj1.get("value");
-						temp = pharmacyService.filter(temp, fieldName, operator, value);
-					}
+					readFields(obj);
+					// iteration on .filter
+					temp = pharmacyService.filter(temp, fieldName, operator, value);
 				}
 			}
 		}
 		return temp;
+	}
+	/**
+	 * This method is used by filter to read the body of the JSON and update the attributes.
+	 * @param obj JSON body
+	 */
+	public void readFields(Object obj) {
+		if (obj instanceof JSONObject) {
+			JSONObject jsonObj = (JSONObject) obj;
+			fieldName = (String) jsonObj.get("fieldName");
+			operator = (String) jsonObj.get("operator");
+			value = jsonObj.get("value");
+		}
 	}
 }

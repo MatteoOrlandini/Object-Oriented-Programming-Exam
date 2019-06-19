@@ -2,9 +2,6 @@ package exam;
 
 import java.io.*;
 import java.lang.reflect.Field;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Vector;
 
 /**

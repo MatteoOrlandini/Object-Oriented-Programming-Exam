@@ -47,8 +47,7 @@ public class JSONParser {
 	}
 
 	/**
-	 * This method parse the url and search in the path result/resources/url to get
-	 * the url that downloads the dataset
+	 * This method creates a string (from the url connection) that contains the JSON.
 	 */
 	public void openConnection() {
 		// check if the file doesn't exist
@@ -82,7 +81,12 @@ public class JSONParser {
 			System.out.println("File already exists!");
 		}
 	}
-
+	/**
+	 * This method parse the input string and searches in the path result/resources/url to get
+	 * the url that downloads the dataset.
+	 * 
+	 * @param str
+	 */
 	public void parser(String str) {
 		try {
 			//parse the str String
