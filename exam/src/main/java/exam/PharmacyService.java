@@ -73,8 +73,7 @@ public class PharmacyService {
 		if (inputValue instanceof Number && pharmacyValue instanceof Number) {
 			Double doubleInputValue = ((Number) inputValue).doubleValue();
 			Double doublePharmacyValue = ((Number) pharmacyValue).doubleValue();
-			Double warningValue = null;
-			warningValue = -360.0;
+			Double warningValue = -360.0;
 			if (!doublePharmacyValue.equals(warningValue)) {
 				if (operator.equals("=="))
 					return doublePharmacyValue.equals(doubleInputValue);

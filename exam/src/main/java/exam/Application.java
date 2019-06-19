@@ -2,21 +2,49 @@ package exam;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Vector;
 
 @SpringBootApplication
 public class Application {
-	private static String filename = "dataset.csv";
-	private static String url = "https://www.dati.gov.it/api/3/action/package_show?id=3c68b286-09fd-447a-b8e3-1b8430f70969";
+	private static String CSVfilename;
+	private static String url;
+	private static final String configFilename = "config.txt";
 
 	public static void main(String[] args) {
-		JSONParser jsonParser = new JSONParser(filename, url);
-		//download the CSV file from the url 
+		BufferedReader bufferedReader = null;
+		try {
+			bufferedReader = new BufferedReader(new FileReader(configFilename));
+			url = bufferedReader.readLine();
+			CSVfilename = bufferedReader.readLine();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		finally {
+			if (bufferedReader != null) {
+				try {
+					bufferedReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		JSONParser jsonParser = new JSONParser(CSVfilename, url);
+		// download the CSV file from the url
 		jsonParser.openConnection();
 		Vector<Pharmacy> pharmacies = new Vector<Pharmacy>();
 		Vector<Metadata> metadata = new Vector<Metadata>();
-		CSVParser csvParser = new CSVParser(filename, pharmacies, metadata);
-		//read the CSV file and parse it to the metadata and a pharmacy vector
+		CSVParser csvParser = new CSVParser(CSVfilename, pharmacies, metadata);
+		// read the CSV file and parse it to the metadata and a pharmacy vector
 		csvParser.reader();
 
 		PharmacyService.setPharmacies(pharmacies);
