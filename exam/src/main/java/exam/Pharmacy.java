@@ -9,7 +9,7 @@ public class Pharmacy {
 	private String id;
 	private String name;
 	private String address;
-	private String VATNumber;
+	private String vatNumber;
 	private String postalCode;
 	private String cityCode;
 	private String city;
@@ -28,14 +28,14 @@ public class Pharmacy {
 
 	}
 
-	public Pharmacy(String id, String name, String address, String VATNumber, String postalCode, String cityCode,
+	public Pharmacy(String id, String name, String address, String vatNumber, String postalCode, String cityCode,
 			String city, String provinceCode, String provinceAbbreviation, String provinceName, String regionCode,
 			String regionName, String beginValidity, String endValidity, double latitude, double longitude,
 			int localize) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
-		this.VATNumber = VATNumber;
+		this.vatNumber = vatNumber;
 		this.postalCode = postalCode;
 		this.cityCode = cityCode;
 		this.city = city;
@@ -75,12 +75,12 @@ public class Pharmacy {
 		this.address = address;
 	}
 
-	public String getVATNumber() {
-		return VATNumber;
+	public String getVatNumber() {
+		return vatNumber;
 	}
 
-	public void setVATNumber(String VATNumber) {
-		this.VATNumber = VATNumber;
+	public void setVatNumber(String vatNumber) {
+		this.vatNumber = vatNumber;
 	}
 
 	public String getPostalCode() {
