@@ -147,18 +147,22 @@ public class CSVParser {
 
 	/**
 	 * This function corrects the latitude and longitude fiels by replacing the
-	 * comma with a point and the dash with a zero.
+	 * comma with a point and the dash with a value non allowed like -360.
 	 * 
 	 * @param str line read by the {@link reader}
 	 * @return str2 corrected line
 	 */
 	public String[] coordinateCorrection(String[] str) {
 		String[] str2 = str;
-		if (str[14].contains(",") || str[14].contains("-")) {
-			for (int i = 14; i <= 15; i++) {
+
+		for (int i = 14; i <= 15; i++) {
+			if (str[i].contains(",")) 
 				str2[i] = str[i].replace(',', '.');
-				str2[i] = str[i].replace('-', '0');
-			}
+			
+			if (str[i].equals("-")) 
+				str2[i] = str[i].replace("-", "-360");
+			if (str[i].equals("0"))
+				str2[i] = str[i].replace("0", "-360");
 		}
 		return str2;
 	}

@@ -37,8 +37,8 @@ public class PharmacyService {
 	/**
 	 * Filters the pharmacies returning only the ones within a certain range from a
 	 * specified point described by x and y.<br>
-	 * <strong>Note:</strong> latitude and longitude are GPS coordinates so it is needed
-	 * a specific formula to calculate the distance between them.
+	 * <strong>Note:</strong> latitude and longitude are GPS coordinates so it is
+	 * needed a specific formula to calculate the distance between them.
 	 * 
 	 * @param x     longitude of the centre
 	 * @param y     latitude of the centre
@@ -48,7 +48,7 @@ public class PharmacyService {
 	public Vector<Pharmacy> localize(double x, double y, double range) {
 		Vector<Pharmacy> temp = new Vector<Pharmacy>();
 		for (Pharmacy item : pharmacies) {
-			//formula to get distance from two latitude and longitude coordinates
+			// formula to get distance from two latitude and longitude coordinates
 			double dist = Math.acos(Math.sin(Math.toRadians(x)) * Math.sin(Math.toRadians(item.getLatitude()))
 					+ Math.cos(Math.toRadians(x)) * Math.cos(Math.toRadians(item.getLatitude()))
 							* Math.cos(Math.toRadians(item.getLongitude()) - Math.toRadians(y)))
@@ -65,7 +65,7 @@ public class PharmacyService {
 	 * respects the conditions imposed by the operator and the input value.
 	 * 
 	 * @param pharmacyValue value in the dataset
-	 * @param operator      it can be (==,>,<)
+	 * @param operator      it can be (==,>,<,<=,>=)
 	 * @param inputValue    value in the input JSON
 	 * @return false or true depending of the result of the comparison
 	 */
@@ -73,18 +73,20 @@ public class PharmacyService {
 		if (inputValue instanceof Number && pharmacyValue instanceof Number) {
 			Double doubleInputValue = ((Number) inputValue).doubleValue();
 			Double doublePharmacyValue = ((Number) pharmacyValue).doubleValue();
-
-			if (operator.equals("=="))
-				return pharmacyValue.equals(inputValue);
-			else if (operator.equals(">"))
-				return doublePharmacyValue > doubleInputValue;
-			else if (operator.equals(">="))
-				return doublePharmacyValue >= doubleInputValue;
-			else if (operator.equals("<"))
-				return doublePharmacyValue < doubleInputValue;
-			else if (operator.equals("<="))
-				return doublePharmacyValue <= doubleInputValue;
-
+			Double warningValue = null;
+			warningValue = -360.0;
+			if (!doublePharmacyValue.equals(warningValue)) {
+				if (operator.equals("=="))
+					return doublePharmacyValue.equals(doubleInputValue);
+				else if (operator.equals(">"))
+					return doublePharmacyValue > doubleInputValue;
+				else if (operator.equals(">="))
+					return doublePharmacyValue >= doubleInputValue;
+				else if (operator.equals("<"))
+					return doublePharmacyValue < doubleInputValue;
+				else if (operator.equals("<="))
+					return doublePharmacyValue <= doubleInputValue;
+			}
 		} else if (inputValue instanceof String && pharmacyValue instanceof String) {
 			String inputString = (String) inputValue;
 			String pharmacyString = (String) pharmacyValue;
@@ -110,8 +112,9 @@ public class PharmacyService {
 	 * input value and the operator. It uses the method check to verify the
 	 * conditions.
 	 * 
-	 * @param pharmacies the whole dataset. It is needed in order to have the possibility to
-	 * iterate the process giving another Vector already filtered as input.
+	 * @param pharmacies the whole dataset. It is needed in order to have the
+	 *                   possibility to iterate the process giving another Vector
+	 *                   already filtered as input.
 	 * @param fieldName  the field to compare
 	 * @param operator   the arithmetical operator
 	 * @param inputValue the value wrote by the user in the JSON body
@@ -148,7 +151,6 @@ public class PharmacyService {
 		return out;
 	}
 
-
 	/**
 	 * Converts a String in a Date Object if it's not a dash
 	 * 
@@ -174,14 +176,14 @@ public class PharmacyService {
 	 * 
 	 * @param str
 	 * @return true if the string is a valid date with "dd/MM/yyyy" format,
-	 * otherwise  it returns false
+	 *         otherwise it returns false
 	 */
 	public static boolean isValidDate(String str) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		//with a strict parsing, inputs must match the format "dd/MM/yyyy"
+		// with a strict parsing, inputs must match the format "dd/MM/yyyy"
 		dateFormat.setLenient(false);
 		try {
-			//parse the string inDate (with removed space) to a SimpleDateFormat object
+			// parse the string inDate (with removed space) to a SimpleDateFormat object
 			dateFormat.parse(str.trim());
 		} catch (ParseException e) {
 			return false;
