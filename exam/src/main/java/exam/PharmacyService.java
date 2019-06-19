@@ -33,46 +33,6 @@ public class PharmacyService {
 	public static void setMetadata(Vector<Metadata> metadata) {
 		PharmacyService.metadata = metadata;
 	}
-	
-	/**
-	 * 
-	 * Search for the pharmacy attribute "fieldName" that is
-	 * equal to the given value and counts the times it occurred.
-	 * 
-	 * @param fieldName     name of the field attribute to search
-	 * @param value     	value to find
-	 * @return count number of the unique strings
-	 */
-	public int getStats(String fieldName, String value) {
-		int count = 0;
-		for (Pharmacy item : pharmacies) {
-			try {
-				Method m = item.getClass()
-						.getMethod("get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
-				try {
-					Object pharmacyValue = m.invoke(item);
-					if (PharmacyService.check(pharmacyValue, "==", value))
-						count++;
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return count;
-	}
 
 	/**
 	 * Filters the pharmacies returning only the ones within a certain range from a
@@ -88,6 +48,7 @@ public class PharmacyService {
 	public Vector<Pharmacy> localize(double x, double y, double range) {
 		Vector<Pharmacy> temp = new Vector<Pharmacy>();
 		for (Pharmacy item : pharmacies) {
+			//formula to get distance from two latitude and longitude coordinates
 			double dist = Math.acos(Math.sin(Math.toRadians(x)) * Math.sin(Math.toRadians(item.getLatitude()))
 					+ Math.cos(Math.toRadians(x)) * Math.cos(Math.toRadians(item.getLatitude()))
 							* Math.cos(Math.toRadians(item.getLongitude()) - Math.toRadians(y)))
@@ -117,8 +78,12 @@ public class PharmacyService {
 				return pharmacyValue.equals(inputValue);
 			else if (operator.equals(">"))
 				return doublePharmacyValue > doubleInputValue;
+			else if (operator.equals(">="))
+				return doublePharmacyValue >= doubleInputValue;
 			else if (operator.equals("<"))
 				return doublePharmacyValue < doubleInputValue;
+			else if (operator.equals("<="))
+				return doublePharmacyValue <= doubleInputValue;
 
 		} else if (inputValue instanceof String && pharmacyValue instanceof String) {
 			String inputString = (String) inputValue;
@@ -127,7 +92,6 @@ public class PharmacyService {
 			if (isValidDate(inputString) && isValidDate(pharmacyString)) {
 				Date inputDate = stringTodate(inputString);
 				Date pharmacyDate = stringTodate(pharmacyString);
-
 				if (operator.equals("=="))
 					return inputDate.equals(pharmacyDate);
 				else if (operator.equals(">"))
@@ -198,7 +162,7 @@ public class PharmacyService {
 				date = new SimpleDateFormat("dd/MM/yyyy").parse(str);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
-				System.out.println("errore str->date");
+				System.out.println("Parse error from string " + str + " to date");
 				e.printStackTrace();
 			}
 		}
@@ -208,15 +172,18 @@ public class PharmacyService {
 	/**
 	 * Checks if the input String is a valid Date that respects the format
 	 * 
-	 * @param inDate
-	 * @return true or false
+	 * @param str
+	 * @return true if the string is a valid date with "dd/MM/yyyy" format,
+	 * otherwise  it returns false
 	 */
-	public static boolean isValidDate(String inDate) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	public static boolean isValidDate(String str) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		//with a strict parsing, inputs must match the format "dd/MM/yyyy"
 		dateFormat.setLenient(false);
 		try {
-			dateFormat.parse(inDate.trim());
-		} catch (ParseException pe) {
+			//parse the string inDate (with removed space) to a SimpleDateFormat object
+			dateFormat.parse(str.trim());
+		} catch (ParseException e) {
 			return false;
 		}
 		return true;

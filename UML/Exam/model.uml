@@ -603,19 +603,6 @@
       <ownedOperation xmi:id="_kj1jEJEYEemMWpJiVYIwUg" name="setMetadata" visibility="public">
         <ownedParameter xmi:id="_NrF0QJEZEemMWpJiVYIwUg" name="metadata" type="_z953oJEIEemMWpJiVYIwUg"/>
       </ownedOperation>
-      <ownedOperation xmi:id="_-HBJ8JE6EemSb7mX9k2vRQ" name="getStats" visibility="public">
-        <ownedParameter xmi:id="_Cq7aAJE7EemSb7mX9k2vRQ" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VwZPAJE7EemSb7mX9k2vRQ" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VwZPAZE7EemSb7mX9k2vRQ" value="1"/>
-        </ownedParameter>
-        <ownedParameter xmi:id="_Cqvz0JE7EemSb7mX9k2vRQ" name="fieldName">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedParameter>
-        <ownedParameter xmi:id="_MvfkUJE9EemSb7mX9k2vRQ" name="value">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedParameter>
-      </ownedOperation>
       <ownedOperation xmi:id="_ky89IJEYEemMWpJiVYIwUg" name="localize" visibility="public">
         <ownedParameter xmi:id="_S8I3IJEZEemMWpJiVYIwUg" name="x">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
