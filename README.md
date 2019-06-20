@@ -37,6 +37,8 @@ A pharmacy is described by the following fields:
  - longitude (LONGITUDINE)
  - localize (LOCALIZE)
 
+There are some misspelled fields that needs to be correcter manuall
+
 ##
 
 **On request**: return statistics and filtered dataset using API REST GET or POST.
@@ -175,5 +177,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTc3ODM0NjVdfQ==
+eyJoaXN0b3J5IjpbLTE5NTI3NDc5NDMsLTIwMTc3ODM0NjVdfQ
+==
 -->
