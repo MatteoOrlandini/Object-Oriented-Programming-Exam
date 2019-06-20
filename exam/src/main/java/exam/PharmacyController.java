@@ -21,9 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PharmacyController {
 	@Autowired
 	private PharmacyService pharmacyService;
-	private String fieldName;
-	private String operator;
-	private Object value;
 
 	/**
 	 * Returns all the pharmacies using a GET request.
@@ -56,15 +53,14 @@ public class PharmacyController {
 		try {
 			obj = (JSONObject) JSONValue.parseWithException(param);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Vector<Pharmacy> temp = pharmacyService.getPharmacies();
-		String fieldName = (String) obj.get("fieldName");
-		String value = (String) obj.get("value");
+		FilterParameters filterParam = new FilterParameters((String) obj.get("fieldName"), "==",
+				(String) obj.get("value"));
 		// filter for the pharmacies with a certain value in the field name and
 		// get the vector size that represent the number of unique elements
-		return "count : " + pharmacyService.filter(temp, fieldName, "==", value).size();
+		return "count : " + pharmacyService.filter(temp, filterParam).size();
 	}
 
 	/**
@@ -81,7 +77,6 @@ public class PharmacyController {
 		try {
 			obj = (JSONObject) JSONValue.parseWithException(param);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		double latitude = ((Number) obj.get("latitude")).doubleValue();
@@ -109,16 +104,15 @@ public class PharmacyController {
 		try {
 			jsonObject = (JSONObject) JSONValue.parseWithException(param);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Vector<Pharmacy> temp = pharmacyService.getPharmacies();
+		FilterParameters filterParam = new FilterParameters(null, null, null);
 
 		// single filter case
-		readFields(jsonObject);
-		if (fieldName != null && operator != null && value != null)
-			temp = pharmacyService.filter(temp, fieldName, operator, value);
-
+		filterParam.readFields(jsonObject);
+		if (filterParam.getFieldName() != null && filterParam.getOperator() != null && filterParam.getValue() != null)
+			temp = pharmacyService.filter(temp, filterParam);
 		// multiple filter cases: or - and
 		JSONArray jsonArray = (JSONArray) jsonObject.get("$or");
 		if (jsonArray instanceof JSONArray) {
@@ -128,8 +122,8 @@ public class PharmacyController {
 			temp = new Vector<Pharmacy>();
 
 			for (Object obj : jsonArray) {
-				readFields(obj);
-				tempOr = pharmacyService.filter(pharmacyService.getPharmacies(), fieldName, operator, value);
+				filterParam.readFields(obj);
+				tempOr = pharmacyService.filter(pharmacyService.getPharmacies(), filterParam);
 				for (Pharmacy item : tempOr) {
 					if (!temp.contains(item))
 						temp.add(item);
@@ -140,24 +134,13 @@ public class PharmacyController {
 			jsonArray = (JSONArray) jsonObject.get("$and");
 			if (jsonArray instanceof JSONArray) {
 				for (Object obj : jsonArray) {
-					readFields(obj);
+					filterParam.readFields(obj);
 					// iteration on .filter
-					temp = pharmacyService.filter(temp, fieldName, operator, value);
+					temp = pharmacyService.filter(temp, filterParam);
 				}
 			}
 		}
 		return temp;
 	}
-	/**
-	 * This method is used by filter to read the body of the JSON and update the attributes.
-	 * @param obj JSON body
-	 */
-	public void readFields(Object obj) {
-		if (obj instanceof JSONObject) {
-			JSONObject jsonObj = (JSONObject) obj;
-			fieldName = (String) jsonObj.get("fieldName");
-			operator = (String) jsonObj.get("operator");
-			value = jsonObj.get("value");
-		}
-	}
+
 }
