@@ -169,60 +169,10 @@ examples:
 
 [UML Use Case Diagram](https://drive.google.com/open?id=14CkKrcjyybDNvNPgcg8gnntwBIUatB8H)
 
+[UML Sequence Diagram](https://drive.google.com/open?id=1Q1Y26NUKOnGE4RGMDD6t9_eywuExcJLn)
 
 
-UML Sequence Diagram
 
-```mermaid
-sequenceDiagram   
-
-    Application->>+FileManager: readFromConfigFile
-    FileManager-->>-Application: 
-    Application->>+JSONParser: downloadCSVFile
-    JSONParser-->>-Application: 
-    Application->>+CSVParser: parseCSVFile
-    CSVParser->>+FileManager : readCSVFile
-    FileManager-->>-CSVParser: 
-    CSVParser-->>-Application :  
-    Application->>+PharmacyService: setPharmacies
-	PharmacyService-->>-Application :  
-	Application->>+PharmacyService: setMetadata
-	PharmacyService-->>-Application :  
-	Application->>+SpringApplication: run
-
-	alt /data get request
-	PharmacyController->>+PharmacyService:getPharmacies
-	PharmacyService-->>-PharmacyController: 
-	 
-	else /metadata get request
-	PharmacyController->>+PharmacyService:getMetadata
-	PharmacyService-->>-PharmacyController: 
-	
-	else /stats post request
-	PharmacyController->>+FilterParameters: createFilterParameters
-	FilterParameters-->>-PharmacyController: 
-	PharmacyController->>+PharmacyService: filter
-	PharmacyService-->>-PharmacyController: 
-	
-	else /localize post request
-	PharmacyController->>+PharmacyService: localize
-	PharmacyService-->>-PharmacyController: 
-	
-	else /filter post request
-		PharmacyController->>+FilterParameters: createFilterParameters
-	FilterParameters-->>-PharmacyController: 
-	PharmacyController->>+PharmacyService: filter
-	PharmacyService-->>-PharmacyController: 
-	
-	end
-	
-	SpringApplication-->>-Application: 
-	
-	
-    
-    
-
-    
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxMzQzOTc3MSw1ODkzMjMxMjddfQ==
+eyJoaXN0b3J5IjpbLTE0MDk3Mjg4MjMsNTg5MzIzMTI3XX0=
 -->
