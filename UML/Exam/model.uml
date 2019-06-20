@@ -581,7 +581,6 @@
         </ownedParameter>
         <ownedParameter xmi:id="_Yc10sJEbEemMWpJiVYIwUg" type="_ml1GkIgxEem0FL6wmq89Wg" direction="return"/>
       </ownedOperation>
-      <ownedOperation xmi:id="_M84xsJKeEemPv8GRPgEuGw" name="readFields(obj:Object):void"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_H96pUJEJEemMWpJiVYIwUg" name="PharmacyService" visibility="public">
       <ownedAttribute xmi:id="_jUgCIJEYEemMWpJiVYIwUg" name="pharmacies" visibility="private" type="_ml1GkIgxEem0FL6wmq89Wg"/>
@@ -622,11 +621,11 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G6AskJEaEemMWpJiVYIwUg" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G6AskZEaEemMWpJiVYIwUg" value="1"/>
         </ownedParameter>
-        <ownedParameter xmi:id="_Bbt34JEaEemMWpJiVYIwUg" name="pharmacyValue"/>
+        <ownedParameter xmi:id="_Bbt34JEaEemMWpJiVYIwUg" name="pharmacyValue" type="_1QWMMJNTEem086g93QDMQw"/>
         <ownedParameter xmi:id="_Bbue8JEaEemMWpJiVYIwUg" name="operator">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
-        <ownedParameter xmi:id="_Bbue8ZEaEemMWpJiVYIwUg" name="inputValue"/>
+        <ownedParameter xmi:id="_Bbue8ZEaEemMWpJiVYIwUg" name="inputValue" type="_1QWMMJNTEem086g93QDMQw"/>
       </ownedOperation>
       <ownedOperation xmi:id="_lNRhoJEYEemMWpJiVYIwUg" name="filter" visibility="public">
         <ownedParameter xmi:id="_a6tawJEaEemMWpJiVYIwUg" type="_ml1GkIgxEem0FL6wmq89Wg" direction="return">
@@ -634,13 +633,7 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iK0yYZEaEemMWpJiVYIwUg" value="1"/>
         </ownedParameter>
         <ownedParameter xmi:id="_iLIUYJEaEemMWpJiVYIwUg" name="pharmacies" type="_ml1GkIgxEem0FL6wmq89Wg"/>
-        <ownedParameter xmi:id="_iLIUYZEaEemMWpJiVYIwUg" name="fieldName">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedParameter>
-        <ownedParameter xmi:id="_iLIUYpEaEemMWpJiVYIwUg" name="operator">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedParameter>
-        <ownedParameter xmi:id="_iLIUY5EaEemMWpJiVYIwUg" name="inputValue"/>
+        <ownedParameter xmi:id="_iLIUYZEaEemMWpJiVYIwUg" name="param" type="_XbrCgJNTEem086g93QDMQw"/>
       </ownedOperation>
       <ownedOperation xmi:id="_uI2DkJEaEemMWpJiVYIwUg" name="stringToDate" visibility="public">
         <ownedParameter xmi:id="_0KKs0JEaEemMWpJiVYIwUg" name="str">
@@ -670,7 +663,6 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n2hPAJHMEemCF_LVG8a1nA" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n2hPAZHMEemCF_LVG8a1nA" value="1"/>
       </ownedAttribute>
-      <lifeline xmi:id="_li7bwZHMEemCF_LVG8a1nA" name="JSONParser: jsonParser [1]" represents="_li7bwpHMEemCF_LVG8a1nA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Actor" xmi:id="_9HQPQJGsEemVie3mrDDCag" name="User">
       <eAnnotations xmi:id="_9HQPQZGsEemVie3mrDDCag" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -702,21 +694,84 @@
       <ownedEnd xmi:id="_Vnr7UZGxEemVie3mrDDCag" type="_c7x7YJGuEemVie3mrDDCag" association="_Vnr7UJGxEemVie3mrDDCag"/>
       <ownedEnd xmi:id="_Vnr7UpGxEemVie3mrDDCag" type="_9HQPQJGsEemVie3mrDDCag" association="_Vnr7UJGxEemVie3mrDDCag"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Actor" xmi:id="_YvW24JGxEemVie3mrDDCag" name="Computer Service"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_bXWM0JGxEemVie3mrDDCag" name="Download CSV file">
-      <include xmi:id="_6rOfcJGxEemVie3mrDDCag" addition="_fZGLAJGxEemVie3mrDDCag"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_fZGLAJGxEemVie3mrDDCag" name="Parse CSV file">
-      <include xmi:id="_E9Z54JGyEemVie3mrDDCag" addition="_A0TWgJGyEemVie3mrDDCag"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_yYl64JGxEemVie3mrDDCag" memberEnd="_yYl64ZGxEemVie3mrDDCag _yYl64pGxEemVie3mrDDCag">
-      <ownedEnd xmi:id="_yYl64ZGxEemVie3mrDDCag" type="_bXWM0JGxEemVie3mrDDCag" association="_yYl64JGxEemVie3mrDDCag"/>
-      <ownedEnd xmi:id="_yYl64pGxEemVie3mrDDCag" type="_YvW24JGxEemVie3mrDDCag" association="_yYl64JGxEemVie3mrDDCag"/>
+      <ownedEnd xmi:id="_yYl64ZGxEemVie3mrDDCag" association="_yYl64JGxEemVie3mrDDCag"/>
+      <ownedEnd xmi:id="_yYl64pGxEemVie3mrDDCag" association="_yYl64JGxEemVie3mrDDCag"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_A0TWgJGyEemVie3mrDDCag" name="Manage CSV problems"/>
     <packagedElement xmi:type="uml:Actor" xmi:id="_F7bpkJHMEemCF_LVG8a1nA" name="jsonParser"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_Sot0gJHMEemCF_LVG8a1nA" name="jsoParser "/>
     <packagedElement xmi:type="uml:Class" xmi:id="_i3kBsJHMEemCF_LVG8a1nA" name="jsonarser "/>
     <packagedElement xmi:type="uml:Actor" xmi:id="_li7bwJHMEemCF_LVG8a1nA" name="jsonParser"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XbrCgJNTEem086g93QDMQw" name="FilterParameters" visibility="public">
+      <ownedAttribute xmi:id="_gyscQJNTEem086g93QDMQw" name="fieldName" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_g9uAgJNTEem086g93QDMQw" name="operator" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_hAjSEJNTEem086g93QDMQw" name="value" visibility="private" type="_1QWMMJNTEem086g93QDMQw"/>
+      <ownedOperation xmi:id="_i1OUsJNTEem086g93QDMQw" name="getFieldName" visibility="public">
+        <ownedParameter xmi:id="_59jiMJNTEem086g93QDMQw" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_jCetkJNTEem086g93QDMQw" name="setFieldName" visibility="public">
+        <ownedParameter xmi:id="_9E6UsJNTEem086g93QDMQw" name="fieldName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_jU3eEJNTEem086g93QDMQw" name="getOperator" visibility="public">
+        <ownedParameter xmi:id="_AfIY0JNUEem086g93QDMQw" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_jkqNkJNTEem086g93QDMQw" name="setOperator" visibility="public">
+        <ownedParameter xmi:id="_CWC3IJNUEem086g93QDMQw" name="operator">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_j2rxsJNTEem086g93QDMQw" name="getValue" visibility="public">
+        <ownedParameter xmi:id="_D0qxQJNUEem086g93QDMQw" type="_1QWMMJNTEem086g93QDMQw" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_kFvhYJNTEem086g93QDMQw" name="setValue" visibility="public">
+        <ownedParameter xmi:id="_F1QwAJNUEem086g93QDMQw" name="value" type="_1QWMMJNTEem086g93QDMQw"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_kW3toJNTEem086g93QDMQw" name="readFields" visibility="public">
+        <ownedParameter xmi:id="_Iyv00JNUEem086g93QDMQw" name="body" type="_1QWMMJNTEem086g93QDMQw"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1QWMMJNTEem086g93QDMQw" name="Object"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LBTXEJNUEem086g93QDMQw" name="FileManager" visibility="public">
+      <ownedAttribute xmi:id="_Ow-GwJNUEem086g93QDMQw" name="fileName" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_O4bZoJNUEem086g93QDMQw" name="bufferedReader" visibility="private" type="_cj8ucJNUEem086g93QDMQw"/>
+      <ownedOperation xmi:id="_Q1Su8JNUEem086g93QDMQw" name="getFileName" visibility="public">
+        <ownedParameter xmi:id="_fFUfAJNUEem086g93QDMQw" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_REfokJNUEem086g93QDMQw" name="setFileName" visibility="public">
+        <ownedParameter xmi:id="_gXvJIJNUEem086g93QDMQw" name="fileName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_RRTVgJNUEem086g93QDMQw" name="getBufferedReader" visibility="public">
+        <ownedParameter xmi:id="_jmQ6oJNUEem086g93QDMQw" type="_cj8ucJNUEem086g93QDMQw" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_RhZnAJNUEem086g93QDMQw" name="setBufferedReader" visibility="public">
+        <ownedParameter xmi:id="_z3XxoJNUEem086g93QDMQw" name="bufferedReader" type="_cj8ucJNUEem086g93QDMQw"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_RuCU0JNUEem086g93QDMQw" name="openBufferStream" visibility="public">
+        <ownedParameter xmi:id="_7XZNgJNUEem086g93QDMQw" type="_cj8ucJNUEem086g93QDMQw" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_R7JjwJNUEem086g93QDMQw" name="readOneLine" visibility="public">
+        <ownedParameter xmi:id="_9Oq4MJNUEem086g93QDMQw" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_SKDicJNUEem086g93QDMQw" name="fileClose" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_cj8ucJNUEem086g93QDMQw" name="BufferedReader"/>
   </packagedElement>
 </uml:Model>

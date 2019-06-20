@@ -37,6 +37,8 @@ A pharmacy is described by the following fields:
  - longitude (LONGITUDINE)
  - localize (LOCALIZE)
 
+There are three cases of misspelled fields that needs to be corrected manually.
+
 ##
 
 **On request**: return statistics and filtered dataset using API REST GET or POST.
@@ -167,9 +169,13 @@ examples:
 
 [UML CLass Diagram](https://drive.google.com/open?id=1mm4TOyTvOkuXTh9-gx_YGpTbR7DFwZFr)
 
-[UML USE Case Diagram](https://drive.google.com/open?id=14CkKrcjyybDNvNPgcg8gnntwBIUatB8H)
+[UML Use Case Diagram](https://drive.google.com/open?id=14CkKrcjyybDNvNPgcg8gnntwBIUatB8H)
+
+[UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221Q1Y26NUKOnGE4RGMDD6t9_eywuExcJLn%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
+
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3NTU4MDA4NF19
+eyJoaXN0b3J5IjpbNzY1Njk3ODc2XX0=
 -->
