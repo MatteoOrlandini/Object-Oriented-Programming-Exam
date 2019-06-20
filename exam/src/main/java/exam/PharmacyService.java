@@ -73,6 +73,7 @@ public class PharmacyService {
 		if (inputValue instanceof Number && pharmacyValue instanceof Number) {
 			Double doubleInputValue = ((Number) inputValue).doubleValue();
 			Double doublePharmacyValue = ((Number) pharmacyValue).doubleValue();
+			// only latitude and longitude can be double
 			Double warningValue = -360.0;
 			if (!doublePharmacyValue.equals(warningValue)) {
 				if (operator.equals("=="))
@@ -89,19 +90,18 @@ public class PharmacyService {
 		} else if (inputValue instanceof String && pharmacyValue instanceof String) {
 			String inputString = (String) inputValue;
 			String pharmacyString = (String) pharmacyValue;
+			if (operator.equals("=="))
+				return inputString.equals(pharmacyString);
 
-			if (isValidDate(inputString) && isValidDate(pharmacyString)) {
-				Date inputDate = stringTodate(inputString);
-				Date pharmacyDate = stringTodate(pharmacyString);
-				if (operator.equals("=="))
-					return inputDate.equals(pharmacyDate);
-				else if (operator.equals(">"))
-					return inputDate.before(pharmacyDate);
-				else if (operator.equals("<"))
-					return inputDate.after(pharmacyDate);
-			}
-
-			return pharmacyValue.equals(inputValue);
+		} else if (inputValue instanceof Date && pharmacyValue instanceof Date) {
+			Date inputDate = (Date) inputValue;
+			Date pharmacyDate = (Date) pharmacyValue;
+			if (operator.equals("=="))
+				return inputDate.equals(pharmacyDate);
+			else if (operator.equals(">"))
+				return inputDate.before(pharmacyDate);
+			else if (operator.equals("<"))
+				return inputDate.after(pharmacyDate);
 		}
 		return false;
 	}
@@ -119,15 +119,15 @@ public class PharmacyService {
 	 * @param inputValue the value wrote by the user in the JSON body
 	 * @return temp vector made by the parmacies that met the conditions
 	 */
-	public Vector<Pharmacy> filter(Vector<Pharmacy> pharmacies, String fieldName, String operator, Object inputValue) {
+	public Vector<Pharmacy> filter(Vector<Pharmacy> pharmacies, FilterParameters param) {
 		Vector<Pharmacy> out = new Vector<Pharmacy>();
 		for (Pharmacy item : pharmacies) {
 			try {
-				Method m = item.getClass()
-						.getMethod("get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
+				Method m = item.getClass().getMethod(
+						"get" + param.getFieldName().substring(0, 1).toUpperCase() + param.getFieldName().substring(1));
 				try {
 					Object pharmacyValue = m.invoke(item);
-					if (PharmacyService.check(pharmacyValue, operator, inputValue))
+					if (PharmacyService.check(pharmacyValue, param.getOperator(), param.getValue()))
 						out.add(item);
 				} catch (IllegalAccessException e) {
 					// TODO Auto-generated catch block
@@ -140,10 +140,8 @@ public class PharmacyService {
 					e.printStackTrace();
 				}
 			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -151,27 +149,7 @@ public class PharmacyService {
 	}
 
 	/**
-	 * Converts a String in a Date Object if it's not a dash
-	 * 
-	 * @param str
-	 * @return Date equivalent
-	 */
-	public static Date stringTodate(String str) {
-		Date date = null;
-		if (!str.equals("-")) {
-			try {
-				date = new SimpleDateFormat("dd/MM/yyyy").parse(str);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				System.out.println("Parse error from string " + str + " to date");
-				e.printStackTrace();
-			}
-		}
-		return date;
-	}
-
-	/**
-	 * Checks if the input String is a valid Date that respects the format
+	 * Checks if the input String is a valid Date that respects the format.
 	 * 
 	 * @param str
 	 * @return true if the string is a valid date with "dd/MM/yyyy" format,

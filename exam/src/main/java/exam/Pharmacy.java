@@ -1,5 +1,7 @@
 package exam;
 
+import java.util.Date;
+
 /**
  * This class represents a generic pharmacy that can describe the rows of the
  * dataset.
@@ -18,8 +20,8 @@ public class Pharmacy {
 	private String provinceName;
 	private String regionCode;
 	private String regionName;
-	private String beginValidity;
-	private String endValidity;
+	private Date beginValidity;
+	private Date endValidity;
 	private double latitude;
 	private double longitude;
 	private int localize;
@@ -30,7 +32,7 @@ public class Pharmacy {
 
 	public Pharmacy(String id, String name, String address, String vatNumber, String postalCode, String cityCode,
 			String city, String provinceCode, String provinceAbbreviation, String provinceName, String regionCode,
-			String regionName, String beginValidity, String endValidity, double latitude, double longitude,
+			String regionName, Date beginValidity, Date endValidity, double latitude, double longitude,
 			int localize) {
 		this.id = id;
 		this.name = name;
@@ -147,19 +149,19 @@ public class Pharmacy {
 		this.regionName = regionName;
 	}
 
-	public String getBeginValidity() {
+	public Date getBeginValidity() {
 		return beginValidity;
 	}
 
-	public void setBeginValidity(String beginValidity) {
+	public void setBeginValidity(Date beginValidity) {
 		this.beginValidity = beginValidity;
 	}
 
-	public String getEndValidity() {
+	public Date getEndValidity() {
 		return endValidity;
 	}
 
-	public void setEndValidity(String endValidity) {
+	public void setEndValidity(Date endValidity) {
 		this.endValidity = endValidity;
 	}
 

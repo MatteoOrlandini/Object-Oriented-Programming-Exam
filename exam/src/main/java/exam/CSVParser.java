@@ -2,6 +2,9 @@ package exam;
 
 import java.io.*;
 import java.lang.reflect.Field;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -81,26 +84,25 @@ public class CSVParser {
 			} catch (ArrayIndexOutOfBoundsException e) {
 				System.out.println("Index out of bound");
 			}
-		}
-		while ((line = fileManager.readOneLine()) != null) {
-			line = lineCorrection(line);
-			splittedLine = line.split(semicolon);
-			splittedLine = coordinateCorrection(splittedLine);
-			try {
-				pharmacies.add(new Pharmacy(splittedLine[0], splittedLine[1], splittedLine[2], splittedLine[3],
-						splittedLine[4], splittedLine[5], splittedLine[6], splittedLine[7], splittedLine[8],
-						splittedLine[9], splittedLine[10], splittedLine[11], splittedLine[12], splittedLine[13],
-						Double.parseDouble(splittedLine[14]), Double.parseDouble(splittedLine[15]),
-						Integer.parseInt(splittedLine[16])));
-			} catch (NumberFormatException ex) {
-				System.err.println("Illegal input");
+			while ((line = fileManager.readOneLine()) != null) {
+				line = lineCorrection(line);
+				splittedLine = line.split(semicolon);
+				splittedLine = coordinateCorrection(splittedLine);
+				try {
+					pharmacies.add(new Pharmacy(splittedLine[0], splittedLine[1], splittedLine[2], splittedLine[3],
+							splittedLine[4], splittedLine[5], splittedLine[6], splittedLine[7], splittedLine[8],
+							splittedLine[9], splittedLine[10], splittedLine[11],stringToDate(splittedLine[12]), stringToDate(splittedLine[13]),
+							Double.parseDouble(splittedLine[14]), Double.parseDouble(splittedLine[15]),
+							Integer.parseInt(splittedLine[16])));
+				} catch (NumberFormatException ex) {
+					System.err.println("Illegal input");
 
+				}
 			}
+			System.out.println("Dataset loaded!");
 		}
-		System.out.println("Dataset loaded!");
-		fileManager.fileClose();
-		System.out.println("File closed!");
 	}
+
 
 	/**
 	 * Function to corrects the misspelled fields in the CSV There are 2 cases in
@@ -145,5 +147,23 @@ public class CSVParser {
 				str2[i] = str[i].replace("0", "-360");
 		}
 		return str2;
+	}
+	/**
+	 * Converts a String in a Date Object if it's not a dash.
+	 * 
+	 * @param str
+	 * @return Date equivalent
+	 */
+	public Date stringToDate(String str) {
+		Date date = null;
+		if (!str.equals("-")) {
+			try {
+				date = new SimpleDateFormat("dd/MM/yyyy").parse(str);
+			} catch (ParseException e) {
+				System.out.println("Parse error from string " + str + " to date");
+				e.printStackTrace();
+			}
+		}
+		return date;
 	}
 }
