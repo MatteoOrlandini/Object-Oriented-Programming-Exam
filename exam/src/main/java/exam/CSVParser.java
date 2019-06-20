@@ -62,64 +62,44 @@ public class CSVParser {
 		String line = "";
 		String semicolon = ";";
 
-		try {
-			bufferedReader = new BufferedReader(new FileReader(fileName));
-			System.out.println("File opened!");
-			/* get metadata */
-			line = bufferedReader.readLine();
-			String[] splittedLine = line.split(semicolon);
+		FileManager fileManager = new FileManager(fileName, bufferedReader);
+		fileManager.openBufferStream();
+		System.out.println("File opened!");
+		line = fileManager.readOneLine();
+		String[] splittedLine = line.split(semicolon);
 
-			Pharmacy pharmacyobj = new Pharmacy();
-			Class<?> pharmacy = pharmacyobj.getClass();
-			int i = 0;
-			for (Field field : pharmacy.getDeclaredFields()) {
-				// you can also use .toGenericString() instead of .getName(). This will
-				// give you the type information as well.
-				try {
-					metadata.add(new Metadata(field.getName(), splittedLine[i], field.getType().toString()));
-					i++;
-				} catch (ArrayIndexOutOfBoundsException e) {
-					System.out.println("Index out of bound");
-				}
-			}
-
-			while ((line = bufferedReader.readLine()) != null) {
-				line = lineCorrection(line);
-				splittedLine = line.split(semicolon);
-				splittedLine = coordinateCorrection(splittedLine);
-				try {
-					pharmacies.add(new Pharmacy(splittedLine[0], splittedLine[1], splittedLine[2], splittedLine[3],
-							splittedLine[4], splittedLine[5], splittedLine[6], splittedLine[7], splittedLine[8],
-							splittedLine[9], splittedLine[10], splittedLine[11], splittedLine[12], splittedLine[13],
-							Double.parseDouble(splittedLine[14]), Double.parseDouble(splittedLine[15]),
-							Integer.parseInt(splittedLine[16])));
-				} catch (NumberFormatException ex) {
-					System.err.println("Illegal input");
-
-				}
-			}
-			System.out.println("Dataset loaded!");
-		}
-
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		finally {
-			if (bufferedReader != null) {
-				try {
-					bufferedReader.close();
-					System.out.println("File closed!");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+		Pharmacy pharmacyobj = new Pharmacy();
+		Class<?> pharmacy = pharmacyobj.getClass();
+		
+		int i = 0;
+		for (Field field : pharmacy.getDeclaredFields()) {
+			// you can also use .toGenericString() instead of .getName(). This will
+			// give you the type information as well.
+			try {
+				metadata.add(new Metadata(field.getName(), splittedLine[i], field.getType().toString()));
+				i++;
+			} catch (ArrayIndexOutOfBoundsException e) {
+				System.out.println("Index out of bound");
 			}
 		}
+		while ((line = fileManager.readOneLine()) != null) {
+			line = lineCorrection(line);
+			splittedLine = line.split(semicolon);
+			splittedLine = coordinateCorrection(splittedLine);
+			try {
+				pharmacies.add(new Pharmacy(splittedLine[0], splittedLine[1], splittedLine[2], splittedLine[3],
+						splittedLine[4], splittedLine[5], splittedLine[6], splittedLine[7], splittedLine[8],
+						splittedLine[9], splittedLine[10], splittedLine[11], splittedLine[12], splittedLine[13],
+						Double.parseDouble(splittedLine[14]), Double.parseDouble(splittedLine[15]),
+						Integer.parseInt(splittedLine[16])));
+			} catch (NumberFormatException ex) {
+				System.err.println("Illegal input");
 
+			}
+		}
+		System.out.println("Dataset loaded!");
+		fileManager.fileClose();
+		System.out.println("File closed!");
 	}
 
 	/**
@@ -156,10 +136,10 @@ public class CSVParser {
 		String[] str2 = str;
 
 		for (int i = 14; i <= 15; i++) {
-			if (str[i].contains(",")) 
+			if (str[i].contains(","))
 				str2[i] = str[i].replace(',', '.');
-			
-			if (str[i].equals("-")) 
+
+			if (str[i].equals("-"))
 				str2[i] = str[i].replace("-", "-360");
 			if (str[i].equals("0"))
 				str2[i] = str[i].replace("0", "-360");

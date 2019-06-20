@@ -4,40 +4,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Vector;
 
 @SpringBootApplication
 public class Application {
-	private static String CSVfilename;
-	private static String url;
-	private static final String configFilename = "config.txt";
 
 	public static void main(String[] args) {
 		BufferedReader bufferedReader = null;
-		try {
-			bufferedReader = new BufferedReader(new FileReader(configFilename));
-			url = bufferedReader.readLine();
-			CSVfilename = bufferedReader.readLine();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		finally {
-			if (bufferedReader != null) {
-				try {
-					bufferedReader.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		FileManager fileManager = new FileManager("config.txt", bufferedReader);
+		fileManager.openBufferStream();
+		String url = fileManager.readOneLine();
+		String CSVfilename = fileManager.readOneLine();
+		fileManager.fileClose();
+		
 		JSONParser jsonParser = new JSONParser(CSVfilename, url);
 		// download the CSV file from the url
 		jsonParser.openConnection();
