@@ -169,10 +169,11 @@ examples:
 
 [UML Use Case Diagram](https://drive.google.com/open?id=14CkKrcjyybDNvNPgcg8gnntwBIUatB8H)
 
-[UML Sequence Diagram](https://drive.google.com/open?id=1Q1Y26NUKOnGE4RGMDD6t9_eywuExcJLn)
+[UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221Q1Y26NUKOnGE4RGMDD6t9_eywuExcJLn%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDk3Mjg4MjMsNTg5MzIzMTI3XX0=
+eyJoaXN0b3J5IjpbLTIwMTc3ODM0NjUsNTg5MzIzMTI3XX0=
 -->
