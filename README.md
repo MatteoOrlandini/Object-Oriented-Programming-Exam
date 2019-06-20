@@ -52,7 +52,8 @@ There are three cases of misspelled fields that needs to be corrected manually.
     		}
     		return str2;
     	}
-We also co
+We also corrected the values of latitude and longitude, replacing the comma with the point and the not allowed values with "-360".
+
 ##
 
 **On request**: return statistics and filtered dataset using API REST GET or POST.
@@ -191,5 +192,5 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyMzQwMzE0MCw3NjU2OTc4NzZdfQ==
+eyJoaXN0b3J5IjpbLTE2NTM4ODAzMzgsNzY1Njk3ODc2XX0=
 -->
