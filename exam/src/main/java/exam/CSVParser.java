@@ -84,6 +84,7 @@ public class CSVParser {
 			} catch (ArrayIndexOutOfBoundsException e) {
 				System.out.println("Index out of bound");
 			}
+		}
 			while ((line = fileManager.readOneLine()) != null) {
 				line = lineCorrection(line);
 				splittedLine = line.split(semicolon);
@@ -98,9 +99,9 @@ public class CSVParser {
 					System.err.println("Illegal input");
 
 				}
-			}
-			System.out.println("Dataset loaded!");
-		}
+			}	System.out.println("Dataset loaded!");
+		fileManager.fileClose();
+		System.out.println("File closed!");
 	}
 
 
