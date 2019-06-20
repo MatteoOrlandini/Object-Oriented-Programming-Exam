@@ -54,6 +54,21 @@ There are three cases of misspelled fields that needs to be corrected manually.
     	}
 We also corrected the values of latitude and longitude, replacing the comma with the point and the not allowed values with "-360".
 
+    public String[] coordinateCorrection(String[] str) {
+    		String[] str2 = str;
+		for (int i = 14; i <= 15; i++) {
+			if (str[i].contains(","))
+				str2[i] = str[i].replace(',', '.');
+
+			if (str[i].equals("-"))
+				str2[i] = str[i].replace("-", "-360");
+			if (str[i].equals("0"))
+				str2[i] = str[i].replace("0", "-360");
+		}
+		return str2;
+	}
+
+
 ##
 
 **On request**: return statistics and filtered dataset using API REST GET or POST.
@@ -191,6 +206,7 @@ examples:
 
 
 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTM4ODAzMzgsNzY1Njk3ODc2XX0=
+eyJoaXN0b3J5IjpbLTEzNTQ2OTcyOTgsNzY1Njk3ODc2XX0=
 -->
