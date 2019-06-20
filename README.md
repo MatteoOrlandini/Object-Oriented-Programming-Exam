@@ -37,7 +37,7 @@ A pharmacy is described by the following fields:
  - longitude (LONGITUDINE)
  - localize (LOCALIZE)
 
-There are some misspelled fields that needs to be correcter manuall
+There are three cases of misspelled fields that needs to be corrected manually.
 
 ##
 
@@ -177,6 +177,5 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTI3NDc5NDMsLTIwMTc3ODM0NjVdfQ
-==
+eyJoaXN0b3J5IjpbNzY1Njk3ODc2XX0=
 -->
