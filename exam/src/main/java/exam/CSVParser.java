@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.Vector;
 
 /**
- * used to read a CSV file and fill a {@link Pharmacy} and a {@link Metadata}
- * vectors
+ * This class is used to read a CSV file and fill a {@link Pharmacy} and a
+ * {@link Metadata} vectors.
  */
 public class CSVParser {
 	private String fileName;
@@ -73,7 +73,7 @@ public class CSVParser {
 
 		Pharmacy pharmacyobj = new Pharmacy();
 		Class<?> pharmacy = pharmacyobj.getClass();
-		
+
 		int i = 0;
 		for (Field field : pharmacy.getDeclaredFields()) {
 			// you can also use .toGenericString() instead of .getName(). This will
@@ -85,25 +85,25 @@ public class CSVParser {
 				System.out.println("Index out of bound");
 			}
 		}
-			while ((line = fileManager.readOneLine()) != null) {
-				line = lineCorrection(line);
-				splittedLine = line.split(semicolon);
-				splittedLine = coordinateCorrection(splittedLine);
-				try {
-					pharmacies.add(new Pharmacy(splittedLine[0], splittedLine[1], splittedLine[2], splittedLine[3],
-							splittedLine[4], splittedLine[5], splittedLine[6], splittedLine[7], splittedLine[8],
-							splittedLine[9], splittedLine[10], splittedLine[11],stringToDate(splittedLine[12]), stringToDate(splittedLine[13]),
-							Double.parseDouble(splittedLine[14]), Double.parseDouble(splittedLine[15]),
-							Integer.parseInt(splittedLine[16])));
-				} catch (NumberFormatException ex) {
-					System.err.println("Illegal input");
+		while ((line = fileManager.readOneLine()) != null) {
+			line = lineCorrection(line);
+			splittedLine = line.split(semicolon);
+			splittedLine = coordinateCorrection(splittedLine);
+			try {
+				pharmacies.add(new Pharmacy(splittedLine[0], splittedLine[1], splittedLine[2], splittedLine[3],
+						splittedLine[4], splittedLine[5], splittedLine[6], splittedLine[7], splittedLine[8],
+						splittedLine[9], splittedLine[10], splittedLine[11], stringToDate(splittedLine[12]),
+						stringToDate(splittedLine[13]), Double.parseDouble(splittedLine[14]),
+						Double.parseDouble(splittedLine[15]), Integer.parseInt(splittedLine[16])));
+			} catch (NumberFormatException ex) {
+				System.err.println("Illegal input");
 
-				}
-			}	System.out.println("Dataset loaded!");
+			}
+		}
+		System.out.println("Dataset loaded!");
 		fileManager.fileClose();
 		System.out.println("File closed!");
 	}
-
 
 	/**
 	 * Function to corrects the misspelled fields in the CSV There are 2 cases in
@@ -149,6 +149,7 @@ public class CSVParser {
 		}
 		return str2;
 	}
+
 	/**
 	 * Converts a String in a Date Object if it's not a dash.
 	 * 

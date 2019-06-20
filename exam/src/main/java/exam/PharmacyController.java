@@ -88,7 +88,7 @@ public class PharmacyController {
 
 	/**
 	 * Generic filter using a POST. If the body of the JSON is a single object it
-	 * search for a field, an operator and an input value and returns the filtered
+	 * searches for a field, an operator and an input value and returns the filtered
 	 * dataset. If it is found an attribute called "$or" or "$and" it applies
 	 * multiple filters to the following array of object based on the attribute. The
 	 * "$or" filter does a filter for each object and then unites them. The "$and"

@@ -2,11 +2,16 @@ package exam;
 
 import org.json.simple.JSONObject;
 
+/**
+ * This class contains the parameters from the body of the POST requests used by
+ * the filters.
+ *
+ */
 public class FilterParameters {
 	private String fieldName;
 	private String operator;
 	private Object value;
-	
+
 	public FilterParameters(String fieldName, String operator, Object value) {
 		super();
 		this.fieldName = fieldName;
@@ -37,9 +42,11 @@ public class FilterParameters {
 	public void setValue(Object value) {
 		this.value = value;
 	}
-	
+
 	/**
-	 * This method is used by PharmacyService.filter to read the body of the JSON and update the parameters.
+	 * This method is used by PharmacyService.filter to read the body of the JSON
+	 * and update the parameters.
+	 * 
 	 * @param obj JSON body
 	 */
 	public void readFields(Object body) {
@@ -49,6 +56,6 @@ public class FilterParameters {
 			operator = (String) jsonObj.get("operator");
 			value = jsonObj.get("value");
 		}
-	}	
+	}
 
 }

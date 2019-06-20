@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat;
  */
 @Component
 public class PharmacyService {
-
 	private static Vector<Pharmacy> pharmacies;
 	private static Vector<Metadata> metadata;
 
@@ -93,15 +92,20 @@ public class PharmacyService {
 			if (operator.equals("=="))
 				return inputString.equals(pharmacyString);
 
-		} else if (inputValue instanceof Date && pharmacyValue instanceof Date) {
-			Date inputDate = (Date) inputValue;
+		} else if (inputValue instanceof String && pharmacyValue instanceof Date) {
+			
+			String inputString = (String) inputValue;
 			Date pharmacyDate = (Date) pharmacyValue;
+			
+			if (isValidDate(inputString)) {
+			Date inputDate = stringToDate(inputString);
 			if (operator.equals("=="))
 				return inputDate.equals(pharmacyDate);
 			else if (operator.equals(">"))
 				return inputDate.before(pharmacyDate);
 			else if (operator.equals("<"))
 				return inputDate.after(pharmacyDate);
+		}
 		}
 		return false;
 	}
@@ -167,4 +171,17 @@ public class PharmacyService {
 		}
 		return true;
 	}
+	public static Date stringToDate(String str) {
+		Date date = null;
+		if (!str.equals("-")) {
+			try {
+				date = new SimpleDateFormat("dd/MM/yyyy").parse(str);
+			} catch (ParseException e) {
+				System.out.println("Parse error from string " + str + " to date");
+				e.printStackTrace();
+			}
+		}
+		return date;
+	}
+	
 }

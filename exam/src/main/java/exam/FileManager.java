@@ -5,6 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * This class is used by both application and CSVParser. In the first case it
+ * opens config file to get the url and the data-set destination. In the other
+ * case it reads the CSV.
+ *
+ */
 public class FileManager {
 	private String fileName;
 	private BufferedReader bufferedReader;
@@ -33,7 +39,7 @@ public class FileManager {
 	/**
 	 * Method used to read text from a character-input stream, buffering characters.
 	 * 
-	 * @throws Exception checks the presence of the file name
+	 * @throws FileNotFoundException checks the presence of the file name
 	 * @return bufferedReader the input stream buffer
 	 */
 	public BufferedReader openBufferStream() {
@@ -46,7 +52,7 @@ public class FileManager {
 	}
 
 	/**
-	 * Method used to read text from a character-input stream, buffering characters. 
+	 * Method used to read text from a character-input stream, buffering characters.
 	 * 
 	 * @throws General exception produced by failed or interrupted I/O operations.
 	 * @return String str the read line
@@ -68,7 +74,7 @@ public class FileManager {
 	/**
 	 * Method used to close an input stream.
 	 * 
-	 * @throws  General exception produced by failed or interrupted I/O operations.  
+	 * @throws General exception produced by failed or interrupted I/O operations.
 	 */
 	public void fileClose() {
 		try {
