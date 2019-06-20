@@ -39,6 +39,20 @@ A pharmacy is described by the following fields:
 
 There are three cases of misspelled fields that needs to be corrected manually.
 
+    public String lineCorrection(String str) {
+    		String str2 = str;
+    		if (str.contains("\"Via Cappuccini ;163\"")) {
+    			str2 = str.replace("\"Via Cappuccini ;163\"", "\"Via Cappuccini ,163\"");
+    		}
+    		if (str.contains("\"via vespucci;26\"")) {
+    			str2 = str.replace("\"via vespucci;26\"", "\"via vespucci,26\"");
+    		}
+    		if (str.contains("\'9,258444")) {
+    			str2 = str.replace("\'9,258444", "9.258444");
+    		}
+    		return str2;
+    	}
+We also co
 ##
 
 **On request**: return statistics and filtered dataset using API REST GET or POST.
@@ -177,5 +191,5 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY1Njk3ODc2XX0=
+eyJoaXN0b3J5IjpbMTIyMzQwMzE0MCw3NjU2OTc4NzZdfQ==
 -->
