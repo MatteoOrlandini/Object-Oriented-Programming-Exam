@@ -71,13 +71,13 @@ Afterwards the various requests that can be carried out with relevant examples w
 The examples refer to the query or to the body of the POST (JSON).  
 The code quoted is not explanatory of the project but serves to give an idea of ​​the reasoning behind.
 
-## [](https://github.com/MatteoOrlandini/ProgrammazioneadOggetti/blob/2a1e7ee9a6c8554c0e448b6cc16a4591d3a040fe/README.md#get-requests)GET requests:
+## GET requests:
 
-### [](https://github.com/MatteoOrlandini/ProgrammazioneadOggetti/blob/2a1e7ee9a6c8554c0e448b6cc16a4591d3a040fe/README.md#data)**/data**
+### /data
 
 Returns all the data-set.
 
-### [](https://github.com/MatteoOrlandini/ProgrammazioneadOggetti/blob/2a1e7ee9a6c8554c0e448b6cc16a4591d3a040fe/README.md#metadata)**/metadata**
+### /metadata
 
 Returns all the fields.
 
@@ -137,7 +137,7 @@ _response:_
 
 ```
 
-### [](https://github.com/MatteoOrlandini/ProgrammazioneadOggetti/blob/2a1e7ee9a6c8554c0e448b6cc16a4591d3a040fe/README.md#countfieldname)**/count/{fieldName}**
+### count/{fieldName}
 
 Returns the number of times the string of the specified field occourred.  
 It needs a field name in the query path and a value to confront in the query params.
@@ -180,7 +180,7 @@ _example:_
 
 ```
 
-### [](https://github.com/MatteoOrlandini/ProgrammazioneadOggetti/blob/2a1e7ee9a6c8554c0e448b6cc16a4591d3a040fe/README.md#filter)**/filter**
+### /filter
 
 Generic filter using a POST. If the body of the JSON is a single object it searches for a field, an operator and an input value and returns the filtered dataset. If it is found an attribute called “\$or” or “\$and” it applies multiple filters to the following array of object based on the attribute. The “\$or” filter does a filter for each object and then unites them. The “$and” filter just recursively filter the result of the previous decimation.
 
@@ -278,7 +278,7 @@ _examples:_
 
 ```
 
-### [](https://github.com/MatteoOrlandini/ProgrammazioneadOggetti/blob/2a1e7ee9a6c8554c0e448b6cc16a4591d3a040fe/README.md#filterstatsfieldname)**/filter/stats/{fieldName}**
+### /filter/stats/{fieldName}
 
 Gives stats like the request “/stats/{fieldName}” but on a sample made of the filtrated pharmacies.  
 In the body we put the specifics of the filter like with “/filter” and in the query there must be latitude or longitude.
@@ -329,6 +329,6 @@ _response:_
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221Q1Y26NUKOnGE4RGMDD6t9_eywuExcJLn%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5NjE1NzI1NiwxMzkxMjg3NjEwLDEzMz
-Y4Mjk2NjZdfQ==
+eyJoaXN0b3J5IjpbNjk5NjkzOTI5LDEzOTEyODc2MTAsMTMzNj
+gyOTY2Nl19
 -->
