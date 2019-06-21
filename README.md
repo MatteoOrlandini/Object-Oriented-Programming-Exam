@@ -75,18 +75,14 @@ We also corrected the values of latitude and longitude, replacing the comma with
 Afterwards the various requests that can be carried out with relevant examples will be listed.
 The examples refer to the body of the POST (JSON).
 
-**GET requests:**
-
-##
+## GET requests:
 
  - **/data**
  returns all the data-set.
  - **/metadata**
  returns all the fields
 
-POST requests:
-
-##
+## POST requests:
 
  - **/stats**
  returns the counts of how many times a string occoured.
@@ -214,6 +210,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ4NzA2NjcwLC0xMzU0Njk3Mjk4LDc2NT
-Y5Nzg3Nl19
+eyJoaXN0b3J5IjpbMTQ2NDY5NDUwNCwtMTM1NDY5NzI5OCw3Nj
+U2OTc4NzZdfQ==
 -->
