@@ -275,6 +275,13 @@ In the body we put the specifics of the filter like with "/filter" and in the qu
     ]
 }
 
+*response:*
+> {
+>     "avg": 41.09908327509544,
+>     "min": 41.0453375512566,
+>     "max": 41.1256631,
+>     "std": 0.02907812314007932,
+>     "sum": 287.69358292566807 }
 
 ##
 
@@ -290,7 +297,7 @@ In the body we put the specifics of the filter like with "/filter" and in the qu
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyODM1NTM1OSwtMjA5OTc3NzM4NCw0Mz
-ExMjYzODgsLTE3NTgwODI2NTUsMTc1NjAwMTczMiwtMTM1NDY5
-NzI5OCw3NjU2OTc4NzZdfQ==
+eyJoaXN0b3J5IjpbODczNTIzMTE3LC0yMDk5Nzc3Mzg0LDQzMT
+EyNjM4OCwtMTc1ODA4MjY1NSwxNzU2MDAxNzMyLC0xMzU0Njk3
+Mjk4LDc2NTY5Nzg3Nl19
 -->
