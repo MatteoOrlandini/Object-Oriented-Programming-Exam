@@ -117,7 +117,7 @@ The fields on which it makes sense to carry out statistics are only latitude and
 
 Standard deviation is calulated with:
 $$
-\sigma_x=1/N\sqrt{N\sum_{i=0}^N x_i^3}
+\sigma_x=1\overN\sqrt{N\sum_{i=0}^N x_i^2-(\sum_{i=0}^N x_i)^2}
 $$
 
 *example:*
@@ -256,6 +256,6 @@ and:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0MzMxNjg1MiwtMTc1ODA4MjY1NSwxNz
-U2MDAxNzMyLC0xMzU0Njk3Mjk4LDc2NTY5Nzg3Nl19
+eyJoaXN0b3J5IjpbLTIxMDA1MzcyMjIsLTE3NTgwODI2NTUsMT
+c1NjAwMTczMiwtMTM1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
 -->
