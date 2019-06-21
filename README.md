@@ -84,7 +84,7 @@ The examples refer to the body of the POST (JSON).
  returns all the fields
  
  ### **/stats/{fieldName}**
- gives statistics on numbers based on the class NumberStats: 
+ gives statistics on numbers based on the class *NumberStats*: 
  - Average
  - Minimum
  - Maximum
@@ -93,17 +93,17 @@ The examples refer to the body of the POST (JSON).
 
 The fields on which it makes sense to carry out statistics are only latitude and longitude.
 
-example:
+*example:*
 
 > localhost:8080/stats/longitude
 
->   {
->         "avg": 16.678234294874,
->         "min": 16.678234294874,
->         "max": 16.678234294874,
->         "std": 0,
->         "sum": 16.678234294874
->     }
+*response:*
+> {
+>     "avg": 10.536053514294705,
+>     "min": 6.731547284806,
+>     "max": 18.492467,
+>     "std": 27.527718697084676,
+>     "sum": 110533.73741846575 }
 
  
 
@@ -238,6 +238,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxMzY2OTE5LDE3NTYwMDE3MzIsLTEzNT
+eyJoaXN0b3J5IjpbMjE2NjYwNjcwLDE3NTYwMDE3MzIsLTEzNT
 Q2OTcyOTgsNzY1Njk3ODc2XX0=
 -->
