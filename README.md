@@ -249,7 +249,11 @@ and:
 
 ### **/filter/stats/{fieldName}**
 Gives stats like the request "/stats/{fieldName}" but on a sample made of the filtrated pharmacies.
-In the body we put the specifics of the filter and in the query there must be latitude or longitude.
+In the body we put the specifics of the filter like with "/filter" and in the query there must be latitude or longitude.
+
+*example:*
+
+> localhost:8080/filter/stats/latitude
 
 
 
@@ -267,6 +271,7 @@ In the body we put the specifics of the filter and in the query there must be la
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMxMTI2Mzg4LC0xNzU4MDgyNjU1LDE3NT
-YwMDE3MzIsLTEzNTQ2OTcyOTgsNzY1Njk3ODc2XX0=
+eyJoaXN0b3J5IjpbMTU5ODM5NTQ5Nyw0MzExMjYzODgsLTE3NT
+gwODI2NTUsMTc1NjAwMTczMiwtMTM1NDY5NzI5OCw3NjU2OTc4
+NzZdfQ==
 -->
