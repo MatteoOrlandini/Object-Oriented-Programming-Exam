@@ -94,27 +94,26 @@ The examples refer to the body of the POST (JSON).
 The fields on which it makes sense to carry out statistics are only latitude and longitude.
  All the stats are calculated in a single for cycle:
 
- 
 
-int count = store.size();
-   double avg = 0;    		
-    double min = store.get(0);
-   		double max = store.get(0);
-   		double std = 0;
-   		double sum = 0;
-    	for (Double item : store) {
-    			avg += item;
-    			if (item < min && item!=(-360))
-    				min = item;
-    			if (item > max && item!=(-360))
-    				max = item;
-    			sum += item;
-    			std += item * item;
-    		}
-    		avg = avg / count;
-    		std = Math.sqrt((count * std - sum * sum) / (count * count));
-    		NumberStats stats = new NumberStats(avg, min, max, std, sum);
-    		return stats;
+	    int count = store.size();
+		double avg = 0;
+		double min = store.get(0);
+		double max = store.get(0);
+		double std = 0;
+		double sum = 0;
+		for (Double item : store) {
+			avg += item;
+			if (item < min && item!=(-360))
+				min = item;
+			if (item > max && item!=(-360))
+				max = item;
+			sum += item;
+			std += item * item;
+		}
+		avg = avg / count;
+		std = Math.sqrt((count * std - sum * sum) / (count * count));
+		NumberStats stats = new NumberStats(avg, min, max, std, sum);
+		return stats;
 
 *example:*
 
@@ -128,10 +127,6 @@ int count = store.size();
 >     "std": 27.527718697084676,
 >     "sum": 110533.73741846575 }
 
- 
-
- 
- 
 
 ## POST requests:
 
@@ -263,6 +258,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTgzNDYwMTYwLDE3NTYwMDE3MzIsLTEzNT
-Q2OTcyOTgsNzY1Njk3ODc2XX0=
+eyJoaXN0b3J5IjpbMTM4MzcxNzkyMiwxNzU2MDAxNzMyLC0xMz
+U0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
