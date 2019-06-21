@@ -129,7 +129,7 @@ public class CSVParser {
 	}
 
 	/**
-	 * This function corrects the latitude and longitude fiels by replacing the
+	 * This method corrects the latitude and longitude fiels by replacing the
 	 * comma with a point and the dash with a value non allowed like -360.
 	 * 
 	 * @param str line read by the {@link reader}
@@ -153,9 +153,10 @@ public class CSVParser {
 	/**
 	 * Converts a String in a Date Object if it's not a dash.
 	 * 
-	 * @param str
-	 * @return Date equivalent
-	 */
+	 * @param str represent the date with a string
+	 * @throws ParseException signals an error while parsing
+	 * @return Date equivalent of str
+	 */	
 	public Date stringToDate(String str) {
 		Date date = null;
 		if (!str.equals("-")) {

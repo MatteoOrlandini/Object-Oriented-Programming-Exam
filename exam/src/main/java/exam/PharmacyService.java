@@ -39,8 +39,8 @@ public class PharmacyService {
 	 * <strong>Note:</strong> latitude and longitude are GPS coordinates so it is
 	 * needed a specific formula to calculate the distance between them.
 	 * 
-	 * @param x     longitude of the centre
-	 * @param y     latitude of the centre
+	 * @param x     longitude of the center
+	 * @param y     latitude of the center
 	 * @param range radius of the area searched
 	 * @return temp vector made of all the pharmacies in the specified area
 	 */
@@ -93,19 +93,19 @@ public class PharmacyService {
 				return inputString.equals(pharmacyString);
 
 		} else if (inputValue instanceof String && pharmacyValue instanceof Date) {
-			
+
 			String inputString = (String) inputValue;
 			Date pharmacyDate = (Date) pharmacyValue;
-			
+	
 			if (isValidDate(inputString)) {
-			Date inputDate = stringToDate(inputString);
-			if (operator.equals("=="))
-				return inputDate.equals(pharmacyDate);
-			else if (operator.equals(">"))
-				return inputDate.before(pharmacyDate);
-			else if (operator.equals("<"))
-				return inputDate.after(pharmacyDate);
-		}
+				Date inputDate = stringToDate(inputString);
+				if (operator.equals("=="))
+					return inputDate.equals(pharmacyDate);
+				else if (operator.equals(">"))
+					return inputDate.before(pharmacyDate);
+				else if (operator.equals("<"))
+					return inputDate.after(pharmacyDate);
+			}
 		}
 		return false;
 	}
@@ -118,36 +118,43 @@ public class PharmacyService {
 	 * @param pharmacies the whole dataset. It is needed in order to have the
 	 *                   possibility to iterate the process giving another Vector
 	 *                   already filtered as input.
-	 * @param fieldName  the field to compare
-	 * @param operator   the arithmetical operator
-	 * @param inputValue the value wrote by the user in the JSON body
+	 * @param param an object that contains operator, value and field name
+	 * @throws IllegalAccessException when the currently executing method does not have access to the definition 
+	 * 			of the specified field
+	 * @throws IllegalArgumentException when an illegal or inappropriate argument has been passed to a method
+	 * @throws InvocationTargetException wraps an exception thrown by an invoked method or constructor. 
+	 * @throws NoSuchMethodException when a particular method cannot be found
+	 * @throws SecurityException indicate a security violation
 	 * @return temp vector made by the parmacies that met the conditions
 	 */
 	public Vector<Pharmacy> filter(Vector<Pharmacy> pharmacies, FilterParameters param) {
 		Vector<Pharmacy> out = new Vector<Pharmacy>();
-		for (Pharmacy item : pharmacies) {
-			try {
-				Method m = item.getClass().getMethod(
+		Method m = null;
+		try {
+			for (Pharmacy item : pharmacies) {
+
+				m = item.getClass().getMethod(
 						"get" + param.getFieldName().substring(0, 1).toUpperCase() + param.getFieldName().substring(1));
 				try {
 					Object pharmacyValue = m.invoke(item);
 					if (PharmacyService.check(pharmacyValue, param.getOperator(), param.getValue()))
 						out.add(item);
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println(
+							"The method " + m + " does not have access to the definition of the specified field");
 				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("An illegal or inappropriate argument " + param.getValue()
+							+ " has been passed to a method");
 				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println();
 				}
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
-			} catch (SecurityException e) {
-				e.printStackTrace();
+			
 			}
+		} catch (NoSuchMethodException e) {
+			System.out.println("The method get" + param.getFieldName().substring(0, 1).toUpperCase()
+					+ param.getFieldName().substring(1) + " cannot be found");
+		} catch (SecurityException e) {
+			System.out.println("Security violation");
 		}
 		return out;
 	}
@@ -156,6 +163,7 @@ public class PharmacyService {
 	 * Checks if the input String is a valid Date that respects the format.
 	 * 
 	 * @param str
+	 * @throws ParseException signals an error while parsing
 	 * @return true if the string is a valid date with "dd/MM/yyyy" format,
 	 *         otherwise it returns false
 	 */
@@ -171,6 +179,14 @@ public class PharmacyService {
 		}
 		return true;
 	}
+
+	/**
+	 * Converts a String in a Date Object if it's not a dash.
+	 * 
+	 * @param str represent the date with a string
+	 * @throws ParseException signals an error while parsing
+	 * @return Date equivalent of str
+	 */
 	public static Date stringToDate(String str) {
 		Date date = null;
 		if (!str.equals("-")) {
@@ -183,5 +199,5 @@ public class PharmacyService {
 		}
 		return date;
 	}
-	
+
 }
