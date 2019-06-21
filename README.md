@@ -87,12 +87,18 @@ The examples refer to the body of the POST (JSON).
  gives statistics on numbers based on the class NumberStats: 
  
 
+ - Average
+ - Minimum
+ - 
+
+ 
+
  
  
 
 ## POST requests:
 
- - **/stats**
+ ### **/stats**
  returns the counts of how many times a string occoured.
  It is not necessary to give any other stats for the specific dataset because only latitude and longitude and numbers.
 
@@ -218,6 +224,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5OTgyMTkwNCwxNzU2MDAxNzMyLC0xMz
+eyJoaXN0b3J5IjpbMTY1ODI0MjA5NiwxNzU2MDAxNzMyLC0xMz
 U0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
