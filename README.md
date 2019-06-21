@@ -77,11 +77,13 @@ The examples refer to the body of the POST (JSON).
 
 ## GET requests:
 
- - **/data**
+### **/data**
  returns all the data-set.
- - **/metadata**
+ 
+### **/metadata**
  returns all the fields
- - **/stats/{fieldName}**
+ 
+ ### **/stats/{fieldName}**
  gives statistics on numbers based on the class NumberStats: 
  
 
@@ -216,6 +218,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyNjYyNTY0LDE3NTYwMDE3MzIsLTEzNT
-Q2OTcyOTgsNzY1Njk3ODc2XX0=
+eyJoaXN0b3J5IjpbMTA5OTgyMTkwNCwxNzU2MDAxNzMyLC0xMz
+U0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
