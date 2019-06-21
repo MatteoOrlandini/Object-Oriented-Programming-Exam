@@ -249,7 +249,7 @@ and:
 
 ### **/filter/stats/{fieldName}**
 Gives stats like the request "/stats/{fieldName}" but on a sample made of the filtrated pharmacies.
-In the body we put the spe
+In the body we put the specifics of the filter and in the query there must be latitude or longitude.
 
 
 
@@ -267,6 +267,6 @@ In the body we put the spe
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4OTE3MjY0MCwtMTc1ODA4MjY1NSwxNz
-U2MDAxNzMyLC0xMzU0Njk3Mjk4LDc2NTY5Nzg3Nl19
+eyJoaXN0b3J5IjpbNDMxMTI2Mzg4LC0xNzU4MDgyNjU1LDE3NT
+YwMDE3MzIsLTEzNTQ2OTcyOTgsNzY1Njk3ODc2XX0=
 -->
