@@ -40,50 +40,53 @@ public class PharmacyService {
 	/**
 	 * 
 	 */
-	public NumberStats stats(String fieldName,Vector<Pharmacy> sample) {
+	public NumberStats stats(String fieldName, Vector<Pharmacy> sample) {
 		Method m = null;
-
-		Vector<Double> store = new Vector<Double>();
+		Vector<Double> store =  new Vector<Double>();
+		int count;
+		double avg = 0, min = 0, max = 0, std = 0, sum = 0;
 		try {
 			for (Pharmacy item : sample) {
-				m = item.getClass().getMethod("get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
-				try {
-					Object pharmacyValue = m.invoke(item);
-					store.add((Double) pharmacyValue);
-				} catch (IllegalAccessException e) {
-					System.out.println(
-							"The method " + m + " does not have access to the definition of the specified field");
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal access method:" + m);
-				} catch (InvocationTargetException e) {
-					System.out.println();
-				}
 
+				m = item.getClass().getMethod("get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
+				Object pharmacyValue = m.invoke(item);
+				double pharmacyValuedouble = (double) pharmacyValue;
+				if (pharmacyValuedouble!=-360) 
+					store.add((Double) pharmacyValue);
 			}
-		} catch (NoSuchMethodException e) {
+			count = store.size();
+			min = store.get(0);
+			max = store.get(0);
+			for (Double item : store) {
+				avg += item;
+				if (item < min)
+					min = item;
+				if (item > max)
+					max = item;
+				sum += item;
+				std += item * item;
+			}
+			avg = avg / count;
+			std = Math.sqrt((count * std - sum * sum) / (count * count));
+		} catch (IllegalAccessException e) {
+			System.out.println("The method " + m + " does not have access to the definition of the specified field");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal access method:" + m);
+		} catch (InvocationTargetException e) {
+			System.out.println("InvocationTargetException");
+		} catch (ClassCastException e) {
+			System.out.println("String cannot be cast to class Double");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "String cannot be cast to class Double");
+		}
+
+		catch (NoSuchMethodException e) {
 			System.out.println("The method get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1)
 					+ " cannot be found");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The method get"
+					+ fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1) + " cannot be found");
 		} catch (SecurityException e) {
 			System.out.println("Security violation");
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Security violation");
 		}
-
-		int count = store.size();
-		double avg = 0;
-		double min = store.get(0);
-		double max = store.get(0);
-		double std = 0;
-		double sum = 0;
-		for (Double item : store) {
-			avg += item;
-			if (item < min && item!=(-360))
-				min = item;
-			if (item > max && item!=(-360))
-				max = item;
-			sum += item;
-			std += item * item;
-		}
-		avg = avg / count;
-		std = Math.sqrt((count * std - sum * sum) / (count * count));
 		NumberStats stats = new NumberStats(avg, min, max, std, sum);
 		return stats;
 	}
@@ -140,12 +143,14 @@ public class PharmacyService {
 					return doublePharmacyValue < doubleInputValue;
 				else if (operator.equals("<="))
 					return doublePharmacyValue <= doubleInputValue;
+				else throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator");
 			}
 		} else if (inputValue instanceof String && pharmacyValue instanceof String) {
 			String inputString = (String) inputValue;
 			String pharmacyString = (String) pharmacyValue;
 			if (operator.equals("=="))
 				return inputString.equals(pharmacyString);
+			else throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator");
 
 		} else if (inputValue instanceof String && pharmacyValue instanceof Date) {
 
@@ -161,8 +166,9 @@ public class PharmacyService {
 					return inputDate.before(pharmacyDate);
 				else if (operator.equals("<"))
 					return inputDate.after(pharmacyDate);
+				else throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator");
 			}
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal date format");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal request");
 		}
 		return false;
 	}
@@ -195,25 +201,27 @@ public class PharmacyService {
 
 				m = item.getClass().getMethod(
 						"get" + param.getFieldName().substring(0, 1).toUpperCase() + param.getFieldName().substring(1));
-				try {
-					Object pharmacyValue = m.invoke(item);
-					if (PharmacyService.check(pharmacyValue, param.getOperator(), param.getValue()))
-						out.add(item);
-				} catch (IllegalAccessException e) {
-					System.out.println(
-							"The method " + m + " does not have access to the definition of the specified field");
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal access method:" + m);
-				} catch (IllegalArgumentException e) {
-					System.out.println("An illegal or inappropriate argument " + param.getValue()
-							+ " has been passed to a method");
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal argument");
-				} catch (InvocationTargetException e) {
-					System.out.println();
-				}
 
+				Object pharmacyValue = m.invoke(item);
+				if (PharmacyService.check(pharmacyValue, param.getOperator(), param.getValue()))
+					out.add(item);
 			}
+		} catch (IllegalAccessException e) {
+			System.out.println("The method " + m + " does not have access to the definition of the specified field");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal access method:" + m);
+		} catch (IllegalArgumentException e) {
+			System.out.println(
+					"An illegal or inappropriate argument " + param.getValue() + " has been passed to a method");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal argument");
+		} catch (InvocationTargetException e) {
+			System.out.println();
+		} catch (NullPointerException e) {
+			System.out.println("Incorrect JSON body");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect JSON body");
 		} catch (NoSuchMethodException e) {
 			System.out.println("The method get" + param.getFieldName().substring(0, 1).toUpperCase()
+					+ param.getFieldName().substring(1) + " cannot be found");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The method get" + param.getFieldName().substring(0, 1).toUpperCase()
 					+ param.getFieldName().substring(1) + " cannot be found");
 		} catch (SecurityException e) {
 			System.out.println("Security violation");

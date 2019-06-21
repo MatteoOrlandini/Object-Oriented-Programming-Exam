@@ -8,12 +8,14 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 // spring libraries
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  * Manages the Spring application and define the filters using GET or POST
@@ -43,13 +45,15 @@ public class PharmacyController {
 	public Vector<Metadata> retrieveMetadata() {
 		return pharmacyService.getMetadata();
 	}
+
 	/**
 	 * 
 	 */
 	@GetMapping("/stats/{fieldName}")
 	public NumberStats stats(@PathVariable String fieldName) {
-		return pharmacyService.stats(fieldName,pharmacyService.getPharmacies());
+		return pharmacyService.stats(fieldName, pharmacyService.getPharmacies());
 	}
+
 	/**
 	 * Returns the number of times the string of the specified field repeats itself.
 	 * 
@@ -73,15 +77,19 @@ public class PharmacyController {
 	@PostMapping(value = "/localize")
 	public Vector<Pharmacy> localize(@RequestBody String param) {
 		JSONObject obj = null;
+		double latitude = 0, longitude = 0, range = 0;
 		try {
 			obj = (JSONObject) JSONValue.parseWithException(param);
+
+			latitude = ((Number) obj.get("latitude")).doubleValue();
+			longitude = ((Number) obj.get("longitude")).doubleValue();
+			range = ((Number) obj.get("range")).doubleValue();
 		} catch (ParseException e) {
 			e.printStackTrace();
+		} catch (NullPointerException e) {
+			System.out.println("Incorrect JSON body");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect JSON body");
 		}
-		double latitude = ((Number) obj.get("latitude")).doubleValue();
-		double longitude = ((Number) obj.get("longitude")).doubleValue();
-		double range = ((Number) obj.get("range")).doubleValue();
-
 		return pharmacyService.localize(latitude, longitude, range);
 	}
 
@@ -107,12 +115,12 @@ public class PharmacyController {
 		}
 		Vector<Pharmacy> temp = pharmacyService.getPharmacies();
 		FilterParameters filterParam = new FilterParameters(null, null, null);
-
 		// single filter case
 		filterParam.readFields(jsonObject);
 		if (filterParam.getFieldName() != null && filterParam.getOperator() != null && filterParam.getValue() != null)
 			temp = pharmacyService.filter(temp, filterParam);
 		// multiple filter cases: or - and
+		else {
 		JSONArray jsonArray = (JSONArray) jsonObject.get("$or");
 		if (jsonArray instanceof JSONArray) {
 			// tempOr is used to store the partial filters
@@ -129,7 +137,6 @@ public class PharmacyController {
 				}
 			}
 		} else {
-
 			jsonArray = (JSONArray) jsonObject.get("$and");
 			if (jsonArray instanceof JSONArray) {
 				for (Object obj : jsonArray) {
@@ -137,21 +144,25 @@ public class PharmacyController {
 					// iteration on .filter
 					temp = pharmacyService.filter(temp, filterParam);
 				}
-			}
+			} else
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+						"Incorrect filter request, valid operators: $and , $or");
+		}
 		}
 		return temp;
 	}
+
 	/**
 	 * 
 	 * @param param
 	 * @param fieldName
 	 * @return
 	 */
-	@PostMapping(value = "/filter/stats/{fieldName}") 
-	public NumberStats filterStats (@RequestBody String param,@PathVariable String fieldName) {
-		Vector <Pharmacy> sample=new Vector<Pharmacy>();
-		sample=filter(param);
+	@PostMapping(value = "/filter/stats/{fieldName}")
+	public NumberStats filterStats(@RequestBody String param, @PathVariable String fieldName) {
+		Vector<Pharmacy> sample = new Vector<Pharmacy>();
+		sample = filter(param);
 		return pharmacyService.stats(fieldName, sample);
-	}
+		}
 	
 }
