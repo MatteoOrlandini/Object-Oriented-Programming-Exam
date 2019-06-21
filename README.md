@@ -104,9 +104,9 @@ The fields on which it makes sense to carry out statistics are only latitude and
 		double sum = 0;
 		for (Double item : store) {
 			avg += item;
-			if (item < min && item!=(-360))
+			if (item < min)
 				min = item;
-			if (item > max && item!=(-360))
+			if (item > max)
 				max = item;
 			sum += item;
 			std += item * item;
@@ -294,7 +294,7 @@ In the body we put the specifics of the filter like with "/filter" and in the qu
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI0MzY2MDUxLC0yMDk5Nzc3Mzg0LDQzMT
-EyNjM4OCwtMTc1ODA4MjY1NSwxNzU2MDAxNzMyLC0xMzU0Njk3
-Mjk4LDc2NTY5Nzg3Nl19
+eyJoaXN0b3J5IjpbLTI0MjA0MTcyNSwyMjQzNjYwNTEsLTIwOT
+k3NzczODQsNDMxMTI2Mzg4LC0xNzU4MDgyNjU1LDE3NTYwMDE3
+MzIsLTEzNTQ2OTcyOTgsNzY1Njk3ODc2XX0=
 -->
