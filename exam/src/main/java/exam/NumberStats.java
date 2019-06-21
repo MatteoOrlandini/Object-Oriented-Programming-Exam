@@ -1,14 +1,15 @@
 package exam;
 
-public class NumberStats extends StringStats{
+public class NumberStats {
+	private String field;
 	private double avg;
 	private double min;
 	private double max;
 	private double std;
 	private double sum;
 	
-	public NumberStats(String field, double avg, double min, double max, double std, double sum, double count) {
-		super(field, count);
+	public NumberStats(String field, double avg, double min, double max, double std, double sum) {
+		this.field = field;
 		this.avg = avg;
 		this.min = min;
 		this.max = max;
@@ -62,14 +63,6 @@ public class NumberStats extends StringStats{
 
 	public void setSum(double sum) {
 		this.sum = sum;
-	}
-
-	public double getCount() {
-		return count;
-	}
-
-	public void setCount(double count) {
-		this.count = count;
 	}
 	
 	

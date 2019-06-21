@@ -36,6 +36,17 @@ public class PharmacyService {
 	public static void setMetadata(Vector<Metadata> metadata) {
 		PharmacyService.metadata = metadata;
 	}
+	
+	/**
+	 * 
+	 */
+	public Object stats (FilterParameters param) {
+			if (param.getValue() instanceof String)
+				StringStats pharmaStat = null;
+			if (param.getValue() instanceof Number)
+				NumberStats pharmaStat = null;
+		return pharmaStat
+	}
 
 	/**
 	 * Filters the pharmacies returning only the ones within a certain range from a
