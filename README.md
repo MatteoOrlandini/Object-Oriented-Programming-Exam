@@ -255,6 +255,25 @@ In the body we put the specifics of the filter like with "/filter" and in the qu
 
 > localhost:8080/filter/stats/latitude
 
+>{
+    "$and": [
+        {
+            "fieldName": "city",
+            "operator": "==",
+            "value": "Bari"
+        },
+        {
+            "fieldName": "beginValidity",
+            "operator": ">",
+            "value": "01/01/2012"
+        },
+        {
+            "fieldName": "beginValidity",
+            "operator": "<",
+            "value": "31/12/2012"
+        }
+    ]
+}
 
 
 ##
@@ -271,7 +290,7 @@ In the body we put the specifics of the filter like with "/filter" and in the qu
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTk3NzczODQsNDMxMTI2Mzg4LC0xNz
-U4MDgyNjU1LDE3NTYwMDE3MzIsLTEzNTQ2OTcyOTgsNzY1Njk3
-ODc2XX0=
+eyJoaXN0b3J5IjpbLTkyODM1NTM1OSwtMjA5OTc3NzM4NCw0Mz
+ExMjYzODgsLTE3NTgwODI2NTUsMTc1NjAwMTczMiwtMTM1NDY5
+NzI5OCw3NjU2OTc4NzZdfQ==
 -->
