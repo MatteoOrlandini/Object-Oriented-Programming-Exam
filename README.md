@@ -115,9 +115,9 @@ The fields on which it makes sense to carry out statistics are only latitude and
 		NumberStats stats = new NumberStats(avg, min, max, std, sum);
 		return stats;
 
-Standard deviation is calulated with:
+To do it standard deviation is calulated with:
 $$
-\sigma_x=1\overN\sqrt{N\sum_{i=0}^N x_i^2-(\sum_{i=0}^N x_i)^2}
+\sigma_x={1\over N}\sqrt{N\sum_{i=0}^N x_i^2-\bigg (\sum_{i=0}^N x_i\bigg) ^2}
 $$
 
 *example:*
@@ -149,6 +149,7 @@ Using a POST request it looks in the body for a latitude, a longitude and a rang
 The formula used to calculate the distance is:
 $p1 = (lon1, lat1)$ longitude and latitude in radians.
 $p2 = (lon2, lat2)$ longitude and latitude in radians.
+
 $dist = arccos( sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lon2-lon1) ) * 6371$
 (6371 in the Earth radius in Km; dist is expressed in Km).
 
@@ -256,6 +257,6 @@ and:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDA1MzcyMjIsLTE3NTgwODI2NTUsMT
+eyJoaXN0b3J5IjpbLTEzNDg3MDgyMzksLTE3NTgwODI2NTUsMT
 c1NjAwMTczMiwtMTM1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
 -->
