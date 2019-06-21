@@ -147,6 +147,7 @@ Returns the number of times the string of the specified field occourred.
 Using a POST request it looks in the body for a latitude, a longitude and a range (in Km) and returns those that are in the specified area. 
 
 The formula used to calculate the distance is:
+
 $p1 = (lon1, lat1)$ longitude and latitude in radians.
 $p2 = (lon2, lat2)$ longitude and latitude in radians.
 
@@ -257,6 +258,6 @@ and:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDg3MDgyMzksLTE3NTgwODI2NTUsMT
-c1NjAwMTczMiwtMTM1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
+eyJoaXN0b3J5IjpbMTYxOTI1NTI5OSwtMTc1ODA4MjY1NSwxNz
+U2MDAxNzMyLC0xMzU0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
