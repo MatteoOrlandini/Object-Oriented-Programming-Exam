@@ -47,7 +47,10 @@ public class PharmacyController {
 	}
 
 	/**
+	 * Gives stats based on the class {@link NumberStats}.
 	 * 
+	 * @param fieldName allowed latitude or longitude
+	 * @return
 	 */
 	@GetMapping("/stats/{fieldName}")
 	public NumberStats stats(@PathVariable String fieldName) {
@@ -56,7 +59,8 @@ public class PharmacyController {
 
 	/**
 	 * Returns the number of times the string of the specified field repeats itself.
-	 * 
+	 * @param field name
+	 * @param value
 	 * @return the number of unique items
 	 */
 	@GetMapping("/count/{fieldName}")
@@ -153,10 +157,11 @@ public class PharmacyController {
 	}
 
 	/**
+	 * Gives stats based on {@link NumberStats} on the sample made of the filtrated pharmacies.
 	 * 
 	 * @param param
 	 * @param fieldName
-	 * @return
+	 * @return 
 	 */
 	@PostMapping(value = "/filter/stats/{fieldName}")
 	public NumberStats filterStats(@RequestBody String param, @PathVariable String fieldName) {

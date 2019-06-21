@@ -38,7 +38,11 @@ public class PharmacyService {
 	}
 
 	/**
+	 * Gives statistics on numbers based on {@link NumberStats}.
 	 * 
+	 * @param fieldName fields accepted for this data-set are latitude and longitude
+	 * @param sample the pharmacy vector to study
+	 * @return various stats: average, minimum, maximum, standard deviation and sum
 	 */
 	public NumberStats stats(String fieldName, Vector<Pharmacy> sample) {
 		Method m = null;
