@@ -115,6 +115,11 @@ The fields on which it makes sense to carry out statistics are only latitude and
 		NumberStats stats = new NumberStats(avg, min, max, std, sum);
 		return stats;
 
+Standard deviation is calulated with:
+$$
+\
+$$
+
 *example:*
 > localhost:8080/stats/longitude
 
@@ -251,6 +256,6 @@ and:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTgwODI2NTUsMTc1NjAwMTczMiwtMT
-M1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
+eyJoaXN0b3J5IjpbLTg5ODg5MzIxMCwtMTc1ODA4MjY1NSwxNz
+U2MDAxNzMyLC0xMzU0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
