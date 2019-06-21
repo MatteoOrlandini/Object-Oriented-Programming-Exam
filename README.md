@@ -127,6 +127,8 @@ The fields on which it makes sense to carry out statistics are only latitude and
 >     "std": 27.527718697084676,
 >     "sum": 110533.73741846575 }
 
+### **/count/{fieldName}**
+Returns the number of times the string of the specified field occourred.
 
 ## POST requests:
 
@@ -258,6 +260,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MzcxNzkyMiwxNzU2MDAxNzMyLC0xMz
-U0Njk3Mjk4LDc2NTY5Nzg3Nl19
+eyJoaXN0b3J5IjpbLTExNTIyOTgyNjUsMTc1NjAwMTczMiwtMT
+M1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
 -->
