@@ -179,8 +179,7 @@ and:
 
 
 
-examples:
-
+*examples:*
  1. >{
     "fieldName": "city",
     "operator": "==",
@@ -237,6 +236,7 @@ examples:
     ]
 }
 
+### **/filter/stats/{fieldName}**
 #
 
 [UML CLass Diagram](https://drive.google.com/open?id=1mm4TOyTvOkuXTh9-gx_YGpTbR7DFwZFr)
@@ -251,6 +251,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3ODA4MDAzMSwxNzU2MDAxNzMyLC0xMz
-U0Njk3Mjk4LDc2NTY5Nzg3Nl19
+eyJoaXN0b3J5IjpbLTE3NTgwODI2NTUsMTc1NjAwMTczMiwtMT
+M1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
 -->
