@@ -81,7 +81,8 @@ The examples refer to the body of the POST (JSON).
  returns all the data-set.
  - **/metadata**
  returns all the fields
- - **/
+ - **/stats/{fieldName}**
+ gives statistics on numbers base
 
 ## POST requests:
 
@@ -211,6 +212,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNzUwNzI0MiwtMTM1NDY5NzI5OCw3Nj
+eyJoaXN0b3J5IjpbMTYwNjk0NTcwNiwtMTM1NDY5NzI5OCw3Nj
 U2OTc4NzZdfQ==
 -->
