@@ -116,7 +116,6 @@ The fields on which it makes sense to carry out statistics are only latitude and
 		return stats;
 
 *example:*
-
 > localhost:8080/stats/longitude
 
 *response:*
@@ -131,18 +130,15 @@ The fields on which it makes sense to carry out statistics are only latitude and
 Returns the number of times the string of the specified field occourred.
 
 *example:*
+> localhost:8080/count/beginValidity?value=01/10/2006
 
-> {
-    "fieldName": "beginValidity",
-    "value": "01/10/2006"
-}
-
+*response*
 >count : 9
 
 
 ## POST requests:
 
-- **/localize**
+### **/localize**
 Using a POST request it looks in the body for a latitude, a longitude and a range (in Km) and returns those that are in the specified area. 
 
 The formula used to calculate the distance is:
@@ -151,15 +147,14 @@ $p2 = (lon2, lat2)$ longitude and latitude in radians.
 $dist = arccos( sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lon2-lon1) ) * 6371$
 (6371 in the Earth radius in Km; dist is expressed in Km).
 
-example:
-
+*example:*
 > {
     "latitude": 41.55,
     "longitude": 15.22,
     "range": 10
 }
 
-- **/filter**
+### **/filter**
  Generic filter using a POST. If the body of the JSON is a single object it searches for a field, an operator and an input value and returns the filtered dataset. If it is found an attribute called "\$or" or "\$and" it applies multiple filters to the following array of object based on the attribute. The "\$or" filter does a filter for each object and then unites them. The "\$and" filter just recursively filter the result of the previous decimation.
 
 or:
@@ -256,6 +251,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTU3NTg0MjcsMTc1NjAwMTczMiwtMT
-M1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
+eyJoaXN0b3J5IjpbMTM3ODA4MDAzMSwxNzU2MDAxNzMyLC0xMz
+U0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
