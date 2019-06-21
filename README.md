@@ -133,6 +133,9 @@ $$
 
 ### **/count/{fieldName}**
 Returns the number of times the string of the specified field occourred.
+It needs a field name in the query path and a value to confront in the query params.
+
+    (@PathVariable String fieldName, @RequestParam(value = "value") String value)
 
 *example:*
 > localhost:8080/count/beginValidity?value=01/10/2006
@@ -258,6 +261,6 @@ and:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxOTI1NTI5OSwtMTc1ODA4MjY1NSwxNz
-U2MDAxNzMyLC0xMzU0Njk3Mjk4LDc2NTY5Nzg3Nl19
+eyJoaXN0b3J5IjpbLTEwMTA3MTI2NjksLTE3NTgwODI2NTUsMT
+c1NjAwMTczMiwtMTM1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
 -->
