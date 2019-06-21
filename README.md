@@ -1,7 +1,5 @@
 
 
----
-
 <h1 id="exam">Exam</h1>
 <p>The purpose of the code is to visualize the assigned data-set and create a set of classes that represent it.<br>
 (The UML representations are in the bottom of this file).<br>
@@ -289,5 +287,6 @@ In the body we put the specifics of the filter like with “/filter” and in th
 <p><a href="http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221Q1Y26NUKOnGE4RGMDD6t9_eywuExcJLn%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D">UML Sequence Diagram</a></p>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2MjI0MjExLDE3MDYyNDg5MTJdfQ==
+eyJoaXN0b3J5IjpbNDkyODk3MzE4LDE5NjIyNDIxMSwxNzA2Mj
+Q4OTEyXX0=
 -->
