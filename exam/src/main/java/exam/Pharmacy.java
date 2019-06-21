@@ -2,8 +2,10 @@ package exam;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
- * This class represents a generic pharmacy that can describe the rows of the
+ * Represents a generic pharmacy that can describe the rows of the
  * dataset.
  *
  */
@@ -20,9 +22,11 @@ public class Pharmacy {
 	private String provinceName;
 	private String regionCode;
 	private String regionName;
+	@JsonFormat(pattern="dd/MM/yyyy",timezone="Europe/Rome")
 	private Date beginValidity;
+	@JsonFormat(pattern="dd/MM/yyyy",timezone="Europe/Rome")
 	private Date endValidity;
-	private double latitude;
+	private double latitude; 
 	private double longitude;
 	private int localize;
 

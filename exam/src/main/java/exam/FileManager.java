@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * This class is used by both application and CSVParser. In the first case it
+ * Used by both application and CSVParser. In the first case it
  * opens config file to get the url and the data-set destination. In the other
  * case it reads the CSV.
  *
@@ -37,7 +37,7 @@ public class FileManager {
 	}
 
 	/**
-	 * Method used to read text from a character-input stream, buffering characters.
+	 * Open an input stream.
 	 * 
 	 * @throws FileNotFoundException checks the presence of the file name
 	 * @return bufferedReader the input stream buffer
@@ -52,7 +52,7 @@ public class FileManager {
 	}
 
 	/**
-	 * Method used to read text from a character-input stream, buffering characters.
+	 * Read text from a character-input stream, buffering characters.
 	 * 
 	 * @throws General exception produced by failed or interrupted I/O operations.
 	 * @return String str the read line
@@ -72,7 +72,7 @@ public class FileManager {
 	}
 
 	/**
-	 * Method used to close an input stream.
+	 * Close an input stream.
 	 * 
 	 * @throws General exception produced by failed or interrupted I/O operations.
 	 */

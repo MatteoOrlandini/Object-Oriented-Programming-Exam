@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * This class manages the Spring application and define the filters using GET or
+ * Manages the Spring application and define the filters using GET or
  * POST requests.
  */
 @RestController

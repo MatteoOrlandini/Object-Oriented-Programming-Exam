@@ -106,7 +106,7 @@ public class CSVParser {
 	}
 
 	/**
-	 * Function to corrects the misspelled fields in the CSV There are 2 cases in
+	 * Corrects the misspelled fields in the CSV There are 2 cases in
 	 * which there are semicolons instead of commas that the function reader can't
 	 * read properly. The other case is an apex in front of a number that makes
 	 * impossible the parsing from String to double.
@@ -129,7 +129,7 @@ public class CSVParser {
 	}
 
 	/**
-	 * This function corrects the latitude and longitude fiels by replacing the
+	 * Corrects the latitude and longitude fiels by replacing the
 	 * comma with a point and the dash with a value non allowed like -360.
 	 * 
 	 * @param str line read by the {@link reader}
@@ -156,7 +156,7 @@ public class CSVParser {
 	 * @param str
 	 * @return Date equivalent
 	 */
-	public Date stringToDate(String str) {
+	public static Date stringToDate(String str) {
 		Date date = null;
 		if (!str.equals("-")) {
 			try {

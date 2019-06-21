@@ -4,17 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.BufferedReader;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Vector;
 
 @SpringBootApplication
 public class Application {
 
 	public static void main(String[] args) {
-		//MyDate oggi=new MyDate();
-		//oggi=oggi.stringToDate("20/06/2019");
-		//System.out.println(oggi);
 		BufferedReader bufferedReader = null;
 		FileManager fileManager = new FileManager("config.txt", bufferedReader);
 		fileManager.openBufferStream();

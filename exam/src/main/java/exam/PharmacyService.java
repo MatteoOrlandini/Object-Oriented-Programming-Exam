@@ -2,14 +2,18 @@ package exam;
 
 import java.util.*;
 import java.lang.Math;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
- * This class contains the methods used by the controller or the service itself
+ * Contains the methods used by the controller or the service itself
  * to manage the filters.
  */
 @Component
@@ -106,6 +110,7 @@ public class PharmacyService {
 			else if (operator.equals("<"))
 				return inputDate.after(pharmacyDate);
 		}
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "formato data illegale");
 		}
 		return false;
 	}
