@@ -85,11 +85,13 @@ The examples refer to the body of the POST (JSON).
  
  ### **/stats/{fieldName}**
  gives statistics on numbers based on the class NumberStats: 
- 
-
  - Average
  - Minimum
- - 
+ - Maximum
+ - Standard Deviation
+ - Sum
+
+The fields on which it makes sense to carry out statistics 
 
  
 
@@ -224,6 +226,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1ODI0MjA5NiwxNzU2MDAxNzMyLC0xMz
+eyJoaXN0b3J5IjpbLTMwNTgzMDc2MiwxNzU2MDAxNzMyLC0xMz
 U0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
