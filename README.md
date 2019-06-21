@@ -75,7 +75,8 @@ We also corrected the values of latitude and longitude, replacing the comma with
 **On request**: return statistics and filtered dataset using API REST GET or POST.
 Afterwards the various requests that can be carried out with relevant examples will be listed.
 The examples refer to the query or to the body of the POST (JSON).
-The code cit
+T  
+the code quoted is not explanatory of the project but serves to give an idea of ​​the reasoning
 
 ## GET requests:
 
@@ -295,7 +296,7 @@ In the body we put the specifics of the filter like with "/filter" and in the qu
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwMjg4MzEwNSwyMjQzNjYwNTEsLTIwOT
-k3NzczODQsNDMxMTI2Mzg4LC0xNzU4MDgyNjU1LDE3NTYwMDE3
-MzIsLTEzNTQ2OTcyOTgsNzY1Njk3ODc2XX0=
+eyJoaXN0b3J5IjpbLTE2NTQyNjI4ODUsMjI0MzY2MDUxLC0yMD
+k5Nzc3Mzg0LDQzMTEyNjM4OCwtMTc1ODA4MjY1NSwxNzU2MDAx
+NzMyLC0xMzU0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
