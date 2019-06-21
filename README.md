@@ -95,17 +95,15 @@ The fields on which it makes sense to carry out statistics are only latitude and
 
 example:
 
-    localhost:8080/filter/stats/longitude
+> localhost:8080/stats/longitude
 
-
-
-      {
-            "avg": 16.678234294874,
-            "min": 16.678234294874,
-            "max": 16.678234294874,
-            "std": 0,
-            "sum": 16.678234294874
-        }
+>   {
+>         "avg": 16.678234294874,
+>         "min": 16.678234294874,
+>         "max": 16.678234294874,
+>         "std": 0,
+>         "sum": 16.678234294874
+>     }
 
  
 
@@ -240,6 +238,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwMjk0NzE3MCwxNzU2MDAxNzMyLC0xMz
-U0Njk3Mjk4LDc2NTY5Nzg3Nl19
+eyJoaXN0b3J5IjpbLTcxMzY2OTE5LDE3NTYwMDE3MzIsLTEzNT
+Q2OTcyOTgsNzY1Njk3ODc2XX0=
 -->
