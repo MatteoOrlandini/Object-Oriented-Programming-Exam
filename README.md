@@ -293,11 +293,8 @@ In the body we put the specifics of the filter like with "/filter" and in the qu
 
 
 
-
-
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODczNTIzMTE3LC0yMDk5Nzc3Mzg0LDQzMT
+eyJoaXN0b3J5IjpbMjI0MzY2MDUxLC0yMDk5Nzc3Mzg0LDQzMT
 EyNjM4OCwtMTc1ODA4MjY1NSwxNzU2MDAxNzMyLC0xMzU0Njk3
 Mjk4LDc2NTY5Nzg3Nl19
 -->
