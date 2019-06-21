@@ -16,8 +16,8 @@ There is a file presence check that can prevent to download an existing file.
 
 **When the download is completed**: parse the data by creating appropriate data structures based on the above classes (each data-set record corresponds to an object of a class).
 
-The class  _CSVParser_  is used to read and parse the CSV file and to fill a vector of  _Pharmacy_  and one of  _Metadata_.  
-Each row represents a  _Pharmacy_  and each field of columns represents a  _Metadata_.  
+The class  _CSVParser_  is used to read and parse the CSV file and to fill a vector of  _Pharmacy and one of  _Metadata
+Each row represents a  _Pharmacy * and each field of columns represents a  _Metadata  *.
 A pharmacy is described by the following fields:
 
 -   id (CODICEIDENTIFICATIVOSITO)
@@ -41,30 +41,42 @@ A pharmacy is described by the following fields:
 There are three cases of misspelled fields that needs to be corrected manually.
 
 ```
-public String lineCorrection(String str) {
-		String str2 = str;
-		if (str.contains("\"Via Cappuccini ;163\"")) {
-			str2 = str.replace("\"Via Cappuccini ;163\"", "\"Via Cappuccini ,163\"");
+    public String lineCorrection(String str) {
+    		String str2 = str;
+    		if (str.contains("\"Via Cappuccini ;163\"")) {
+    			str2 = str.replace("\"Via Cappuccini ;163\"", "\"Via Cappuccini ,163\"");
 		}
-		if (str.contains("\"via vespucci;26\"")) {
-			str2 = str.replace("\"via vespucci;26\"", "\"via vespucci,26\"");
+    		}
+    		if (str.contains("\"via vespucci;26\"")) {
+    			str2 = str.replace("\"via vespucci;26\"", "\"via vespucci,26\"");
 		}
-		if (str.contains("\'9,258444")) {
-			str2 = str.replace("\'9,258444", "9.258444");
+    		}
+    		if (str.contains("\'9,258444")) {
+    			str2 = str.replace("\'9,258444", "9.258444");
+		}
+    		}
+    		return str2;
+	}
+```
+    	}
+We also corrected the values of latitude and longitude, replacing the comma with the point and the not allowed values with “"-360”".
+
+```
+    public String[] coordinateCorrection(String[] str) {
+    		String[] str2 = str;
+		for (int i = 14; i <= 15; i++) {
+			if (str[i].contains(","))
+				str2[i] = str[i].replace(',', '.');
+```
+			if (str[i].equals("-"))
+				str2[i] = str[i].replace("-", "-360");
+			if (str[i].equals("0"))
+				str2[i] = str[i].replace("0", "-360");
 		}
 		return str2;
 	}
-```
 
-We also corrected the values of latitude and longitude, replacing the comma with the point and the not allowed values with “-360”.
 
-```
-public String[] coordinateCorrection(String[] str) {
-		String[] str2 = str;
-	for (int i = 14; i <= 15; i++) {
-		if (str[i].contains(","))
-			str2[i] = str[i].replace(',', '.');
-```
 ##
 
 **On request**: return statistics and filtered dataset using API REST GET or POST.  
@@ -72,7 +84,9 @@ Afterwards the various requests that can be carried out with relevant examples w
 The examples refer to the query or to the body of the POST (JSON).  
 The code quoted is not explanatory of the project but serves to give an idea of ​​the reasoning behind.
 
-## GET requests:
+## 
+
+GET requests:
 
 ### **/data**
 
@@ -95,7 +109,6 @@ Gives statistics on numbers based on the class  _NumberStats_:
 The fields on which it makes sense to carry out statistics are only latitude and longitude.  
 All the stats are calculated in a single for cycle:
 
-```
     int count = store.size();
 	double avg = 0;
 	double min = store.get(0);
@@ -123,11 +136,12 @@ $$
 $$
 
 _example:_
+
 > localhost:8080/stats/longitude
 
 _response:_
 
-    {
+ {
         "avg": 12.560258521992118,
         "min": 6.731547284806,
         "max": 18.492467,
@@ -147,12 +161,12 @@ It needs a field name in the query path and a value to confront in the query par
 _example:_
 > localhost:8080/count/beginValidity?value=01/10/2006
 
-_response_
+_responseb
 > count : 9
 
 ## POST requests:
 
-### **/localize**
+###- **/localize**
 
 Using a POST request it looks in the body for a latitude, a longitude and a range (in Km) and returns those that are in the specified area.
 
@@ -161,25 +175,30 @@ The formula used to calculate the distance is:
 $p1=(lon1,lat1)$  longitude and latitude in radians.  
 $p2=(lon2,lat2)$  longitude and latitude in radians.
 
-$dist=arccos(sin(lat1)∗sin(lat2)+cos(lat1)∗cos(lat2)∗cos(lon2−lon1))∗6371$
+$dist=arccos(sin(lat1)∗sin(lat2)+cos(lat1)∗cos(lat2)∗cos(lon2-lon1)6371$
 (6371 in the Earth radius in Km; dist is expressed in Km).
 
 _example:_
 
     {
-        "latitude": 41.55,
+    > {
+    "latitude": 41.55,
         "longitude": 15.22,
         "range": 10
     }
 
-### **/filter**
+###}
 
-Generic filter using a POST. If the body of the JSON is a single object it searches for a field, an operator and an input value and returns the filtered dataset. If it is found an attribute called “\$or” or “\$and” it applies multiple filters to the following array of object based on the attribute. The “\$or” filter does a filter for each object and then unites them. The “\$and” filter just recursively filter the result of the previous decimation.
+- **/filter**
+
+Generic filter using a POST. If the body of the JSON is a single object it searches for a field, an operator and an input value and returns the filtered dataset. If it is found an attribute called “\$or or “\$and” it applies multiple filters to the following array of object based on the attribute. The “\$or filter does a filter for each object and then unites them. The “\$and filter just recursively filter the result of the previous decimation.
 
 or code:
 
 ```
-for (Object obj : jsonArray) {
+:
+
+    for (Object obj : jsonArray) {
 				filterParam.readFields(obj);
 				tempOr = pharmacyService.filter(pharmacyService.getPharmacies(), filterParam);
 				for (Pharmacy item : tempOr) {
@@ -200,21 +219,18 @@ for (Object obj : jsonArray) {
 
 *examples:*
 
-1.
-
-
-    {
-        "fieldName": "city",
+1.    {
+    >{
+     "fieldName": "city",
         "operator": "==",
         "value": "Ancona"
     }
 
 2.
 
-    {
+    >{
         "$or": [
-            {
-                "fieldName": "latitude",
+                            "fieldName": "latitude",
                 "operator": "<=",
                 "value": 43.1
             },
@@ -223,33 +239,33 @@ for (Object obj : jsonArray) {
                 "operator": "==",
                 "value": "Ancona"
             }
-        ]
-    }
-
-3.
+        3.
 
     {
         "$and": [
             {
-                "fieldName": "postalCode",
+    {
+            "fieldName": "postalCode",
                 "operator": "==",
                 "value": "28021"
             },
             {
-                "fieldName": "beginValidity",
+    {
+            "fieldName": "beginValidity",
                 "operator": "<",
                 "value": "02/05/2015"
             }
         ]
     }
 
- 4.
- 
+4. 
 
     {
-        "$and": [
+     >{
+    "$and": [
             {
-                "fieldName": "regionName",
+    {
+            "fieldName": "regionName",
                 "operator": "==",
                 "value": "Puglia"
             },
@@ -306,7 +322,11 @@ _response:_
         "sum": 287.69358292566807
     }
 
-##
+#}
+    ]
+}
+
+#
 
 [UML CLass Diagram](https://drive.google.com/open?id=1mm4TOyTvOkuXTh9-gx_YGpTbR7DFwZFr)
 
@@ -314,5 +334,5 @@ _response:_
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221Q1Y26NUKOnGE4RGMDD6t9_eywuExcJLn%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNjgyOTY2Nl19
+eyJoaXN0b3J5IjpbMTM5MTI4NzYxMCwxMzM2ODI5NjY2XX0=
 -->
