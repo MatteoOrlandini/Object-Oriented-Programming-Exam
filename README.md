@@ -1,7 +1,7 @@
 # Exam
 
 The purpose of the code is to visualize the assigned data-set and create a set of classes that represent it.
-(The UML reprensentations are in the bottom o
+(The UML representations are in the bottom of this file).
 Our data-set describes a list of pharmacies.
 The JAVA application has the following features:
 
@@ -248,7 +248,7 @@ and:
 }
 
 ### **/filter/stats/{fieldName}**
-
+Gives st on the sample made of the filtrated pharmacies.
 
 
 
@@ -266,6 +266,6 @@ and:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDI3MjQ1MzMsLTE3NTgwODI2NTUsMT
-c1NjAwMTczMiwtMTM1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
+eyJoaXN0b3J5IjpbLTY5ODgwNzU3NCwtMTc1ODA4MjY1NSwxNz
+U2MDAxNzMyLC0xMzU0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
