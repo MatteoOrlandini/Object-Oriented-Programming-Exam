@@ -16,7 +16,7 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
 /**
- * This class takes as attributes a file name and a url and is used to parse the
+ * Takes as attributes a file name and a url and is used to parse the
  * initial url in order to find another url that downloads the CSV file.
  *
  */
@@ -47,7 +47,7 @@ public class JSONParser {
 	}
 
 	/**
-	 * This method creates a string (from the url connection) that contains the JSON.
+	 * Creates a string (from the url connection) that contains the JSON.
 	 */
 	public void openConnection() {
 		// check if the file doesn't exist
@@ -82,7 +82,7 @@ public class JSONParser {
 		}
 	}
 	/**
-	 * This method parse the input string and searches in the path result/resources/url to get
+	 * Parse the input string and searches in the path result/resources/url to get
 	 * the url that downloads the dataset.
 	 * 
 	 * @param str
@@ -114,7 +114,7 @@ public class JSONParser {
 	}
 
 	/**
-	 * This method download the dataset if it doesn't exist.
+	 * Downloads the dataset if it doesn't exist.
 	 * 
 	 * @param url      not the attribute of the class but the one found by the
 	 *                 parser

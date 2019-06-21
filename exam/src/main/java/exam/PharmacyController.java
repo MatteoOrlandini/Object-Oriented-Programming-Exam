@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * This class manages the Spring application and define the filters using GET or
+ * Manages the Spring application and define the filters using GET or
  * POST requests.
  */
 @RestController
@@ -48,7 +48,7 @@ public class PharmacyController {
 	 * @return the number of unique items
 	 */
 	@PostMapping("/stats")
-	public String retrieveStats(@RequestBody String param) {
+	public Object retrieveStats(@RequestBody String param) {
 		JSONObject obj = null;
 		try {
 			obj = (JSONObject) JSONValue.parseWithException(param);
@@ -57,10 +57,10 @@ public class PharmacyController {
 		}
 		Vector<Pharmacy> temp = pharmacyService.getPharmacies();
 		FilterParameters filterParam = new FilterParameters((String) obj.get("fieldName"), "==",
-				(String) obj.get("value"));
-		// filter for the pharmacies with a certain value in the field name and
-		// get the vector size that represent the number of unique elements
-		return "count : " + pharmacyService.filter(temp, filterParam).size();
+				(Object) obj.get("value"));
+		StringStats pharma = new StringStats("prova", 1);
+		//NumberStats pharma = new NumberStats ("prova",0,0,0,0,0,0);
+		return pharma;
 	}
 
 	/**

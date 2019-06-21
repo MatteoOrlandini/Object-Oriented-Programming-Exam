@@ -3,7 +3,7 @@ package exam;
 import org.json.simple.JSONObject;
 
 /**
- * This class contains the parameters from the body of the POST requests used by
+ * Contains the parameters from the body of the POST requests used by
  * the filters.
  *
  */
@@ -44,7 +44,7 @@ public class FilterParameters {
 	}
 
 	/**
-	 * This method is used by PharmacyService.filter to read the body of the JSON
+	 * Used by PharmacyService.filter to read the body of the JSON
 	 * and update the parameters.
 	 * 
 	 * @param obj JSON body
