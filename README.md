@@ -78,13 +78,13 @@ The examples refer to the body of the POST (JSON).
 ## GET requests:
 
 ### **/data**
- returns all the data-set.
+ Returns all the data-set.
  
 ### **/metadata**
- returns all the fields
+ Returns all the fields
  
  ### **/stats/{fieldName}**
- gives statistics on numbers based on the class *NumberStats*: 
+ Gives statistics on numbers based on the class *NumberStats*: 
  - Average
  - Minimum
  - Maximum
@@ -92,6 +92,8 @@ The examples refer to the body of the POST (JSON).
  - Sum
 
 The fields on which it makes sense to carry out statistics are only latitude and longitude.
+ All the stats are calculated in a single for cycle:
+ 
 
 *example:*
 
@@ -113,8 +115,9 @@ The fields on which it makes sense to carry out statistics are only latitude and
 ## POST requests:
 
  ### **/stats**
- returns the counts of how many times a string occoured.
+ Returns the counts of how many times a string occoured.
  It is not necessary to give any other stats for the specific dataset because only latitude and longitude and numbers.
+
 
 example:
 
@@ -238,6 +241,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE2NjYwNjcwLDE3NTYwMDE3MzIsLTEzNT
-Q2OTcyOTgsNzY1Njk3ODc2XX0=
+eyJoaXN0b3J5IjpbLTU2ODU0MTk0NiwxNzU2MDAxNzMyLC0xMz
+U0Njk3Mjk4LDc2NTY5Nzg3Nl19
 -->
