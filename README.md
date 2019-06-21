@@ -96,8 +96,8 @@ The fields on which it makes sense to carry out statistics are only latitude and
 
  
 
-		  int count = store.size();
-    double avg = 0;    		
+int count = store.size();
+   double avg = 0;    		
     double min = store.get(0);
    		double max = store.get(0);
    		double std = 0;
@@ -263,6 +263,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0OTY3MzgzMiwxNzU2MDAxNzMyLC0xMz
-U0Njk3Mjk4LDc2NTY5Nzg3Nl19
+eyJoaXN0b3J5IjpbNTgzNDYwMTYwLDE3NTYwMDE3MzIsLTEzNT
+Q2OTcyOTgsNzY1Njk3ODc2XX0=
 -->
