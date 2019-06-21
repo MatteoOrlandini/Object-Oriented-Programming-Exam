@@ -153,10 +153,11 @@ public class CSVParser {
 	/**
 	 * Converts a String in a Date Object if it's not a dash.
 	 * 
-	 * @param str
-	 * @return Date equivalent
-	 */
-	public static Date stringToDate(String str) {
+	 * @param str represent the date with a string
+	 * @throws ParseException signals an error while parsing
+	 * @return Date equivalent of str
+	 */	
+	public Date stringToDate(String str) {
 		Date date = null;
 		if (!str.equals("-")) {
 			try {
