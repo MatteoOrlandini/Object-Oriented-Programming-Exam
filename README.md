@@ -130,14 +130,7 @@ The fields on which it makes sense to carry out statistics are only latitude and
 ### **/count/{fieldName}**
 Returns the number of times the string of the specified field occourred.
 
-## POST requests:
-
- ### **/stats**
- Returns the counts of how many times a string occoured.
- It is not necessary to give any other stats for the specific dataset because only latitude and longitude and numbers.
-
-
-example:
+*example:*
 
 > {
     "fieldName": "beginValidity",
@@ -145,6 +138,9 @@ example:
 }
 
 >count : 9
+
+
+## POST requests:
 
 - **/localize**
 Using a POST request it looks in the body for a latitude, a longitude and a range (in Km) and returns those that are in the specified area. 
@@ -260,6 +256,6 @@ examples:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTIyOTgyNjUsMTc1NjAwMTczMiwtMT
+eyJoaXN0b3J5IjpbLTEzOTU3NTg0MjcsMTc1NjAwMTczMiwtMT
 M1NDY5NzI5OCw3NjU2OTc4NzZdfQ==
 -->
