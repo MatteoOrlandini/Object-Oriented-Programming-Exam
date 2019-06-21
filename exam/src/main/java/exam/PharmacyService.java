@@ -36,7 +36,7 @@ public class PharmacyService {
 	public static void setMetadata(Vector<Metadata> metadata) {
 		PharmacyService.metadata = metadata;
 	}
-
+	
 	/**
 	 * Filters the pharmacies returning only the ones within a certain range from a
 	 * specified point described by x and y.<br>
@@ -111,7 +111,7 @@ public class PharmacyService {
 			else if (operator.equals("<"))
 				return inputDate.after(pharmacyDate);
 		}
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "formato data illegale");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal date format");
 		}
 		return false;
 	}
@@ -148,9 +148,11 @@ public class PharmacyService {
 				} catch (IllegalAccessException e) {
 					System.out.println(
 							"The method " + m + " does not have access to the definition of the specified field");
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal access method:" + m);
 				} catch (IllegalArgumentException e) {
 					System.out.println("An illegal or inappropriate argument " + param.getValue()
 							+ " has been passed to a method");
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal argument");
 				} catch (InvocationTargetException e) {
 					System.out.println();
 				}
@@ -161,6 +163,7 @@ public class PharmacyService {
 					+ param.getFieldName().substring(1) + " cannot be found");
 		} catch (SecurityException e) {
 			System.out.println("Security violation");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Security violation");
 		}
 		return out;
 	}

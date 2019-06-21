@@ -43,24 +43,22 @@ public class PharmacyController {
 	}
 
 	/**
-	 * Returns string statistics using a POST request.
+	 * Returns string statistics using a GET request.
 	 * 
 	 * @return the number of unique items
 	 */
-	@PostMapping("/stats")
-	public Object retrieveStats(@RequestBody String param) {
+	@GetMapping("/stats?{fieldname}")
+	public String retrieveStats(@RequestBody String param) {
 		JSONObject obj = null;
 		try {
 			obj = (JSONObject) JSONValue.parseWithException(param);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		Vector<Pharmacy> temp = pharmacyService.getPharmacies();
+		Vector <Pharmacy> pharmacies = pharmacyService.getPharmacies();
 		FilterParameters filterParam = new FilterParameters((String) obj.get("fieldName"), "==",
 				(Object) obj.get("value"));
-		StringStats pharma = new StringStats("prova", 1);
-		//NumberStats pharma = new NumberStats ("prova",0,0,0,0,0,0);
-		return pharma;
+		return "count : " + pharmacyService.filter(pharmacies, filterParam).size();
 	}
 
 	/**
