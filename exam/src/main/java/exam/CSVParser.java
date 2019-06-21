@@ -2,9 +2,6 @@ package exam;
 
 import java.io.*;
 import java.lang.reflect.Field;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -92,8 +89,8 @@ public class CSVParser {
 			try {
 				pharmacies.add(new Pharmacy(splittedLine[0], splittedLine[1], splittedLine[2], splittedLine[3],
 						splittedLine[4], splittedLine[5], splittedLine[6], splittedLine[7], splittedLine[8],
-						splittedLine[9], splittedLine[10], splittedLine[11], stringToDate(splittedLine[12]),
-						stringToDate(splittedLine[13]), Double.parseDouble(splittedLine[14]),
+						splittedLine[9], splittedLine[10], splittedLine[11], PharmacyService.stringToDate(splittedLine[12]),
+						PharmacyService.stringToDate(splittedLine[13]), Double.parseDouble(splittedLine[14]),
 						Double.parseDouble(splittedLine[15]), Integer.parseInt(splittedLine[16])));
 			} catch (NumberFormatException ex) {
 				System.err.println("Illegal input");
@@ -148,25 +145,5 @@ public class CSVParser {
 				str2[i] = str[i].replace("0", "-360");
 		}
 		return str2;
-	}
-
-	/**
-	 * Converts a String in a Date Object if it's not a dash.
-	 * 
-	 * @param str represent the date with a string
-	 * @throws ParseException signals an error while parsing
-	 * @return Date equivalent of str
-	 */	
-	public Date stringToDate(String str) {
-		Date date = null;
-		if (!str.equals("-")) {
-			try {
-				date = new SimpleDateFormat("dd/MM/yyyy").parse(str);
-			} catch (ParseException e) {
-				System.out.println("Parse error from string " + str + " to date");
-				e.printStackTrace();
-			}
-		}
-		return date;
 	}
 }

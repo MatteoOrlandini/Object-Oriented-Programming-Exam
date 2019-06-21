@@ -13,8 +13,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
- * Contains the methods used by the controller or the service itself
- * to manage the filters.
+ * Contains the methods used by the controller or the service itself to manage
+ * the filters.
  */
 @Component
 public class PharmacyService {
@@ -36,7 +36,58 @@ public class PharmacyService {
 	public static void setMetadata(Vector<Metadata> metadata) {
 		PharmacyService.metadata = metadata;
 	}
-	
+
+	/**
+	 * 
+	 */
+	public NumberStats stats(String fieldName,Vector<Pharmacy> sample) {
+		Method m = null;
+
+		Vector<Double> store = new Vector<Double>();
+		try {
+			for (Pharmacy item : sample) {
+				m = item.getClass().getMethod("get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
+				try {
+					Object pharmacyValue = m.invoke(item);
+					store.add((Double) pharmacyValue);
+				} catch (IllegalAccessException e) {
+					System.out.println(
+							"The method " + m + " does not have access to the definition of the specified field");
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal access method:" + m);
+				} catch (InvocationTargetException e) {
+					System.out.println();
+				}
+
+			}
+		} catch (NoSuchMethodException e) {
+			System.out.println("The method get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1)
+					+ " cannot be found");
+		} catch (SecurityException e) {
+			System.out.println("Security violation");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Security violation");
+		}
+
+		int count = store.size();
+		double avg = 0;
+		double min = store.get(0);
+		double max = store.get(0);
+		double std = 0;
+		double sum = 0;
+		for (Double item : store) {
+			avg += item;
+			if (item < min && item!=(-360))
+				min = item;
+			if (item > max && item!=(-360))
+				max = item;
+			sum += item;
+			std += item * item;
+		}
+		avg = avg / count;
+		std = Math.sqrt((count * std - sum * sum) / (count * count));
+		NumberStats stats = new NumberStats(avg, min, max, std, sum);
+		return stats;
+	}
+
 	/**
 	 * Filters the pharmacies returning only the ones within a certain range from a
 	 * specified point described by x and y.<br>
@@ -100,17 +151,17 @@ public class PharmacyService {
 
 			String inputString = (String) inputValue;
 			Date pharmacyDate = (Date) pharmacyValue;
-	
+
 			if (isValidDate(inputString)) {
 
-			Date inputDate = stringToDate(inputString);
-			if (operator.equals("=="))
-				return inputDate.equals(pharmacyDate);
-			else if (operator.equals(">"))
-				return inputDate.before(pharmacyDate);
-			else if (operator.equals("<"))
-				return inputDate.after(pharmacyDate);
-		}
+				Date inputDate = stringToDate(inputString);
+				if (operator.equals("=="))
+					return inputDate.equals(pharmacyDate);
+				else if (operator.equals(">"))
+					return inputDate.before(pharmacyDate);
+				else if (operator.equals("<"))
+					return inputDate.after(pharmacyDate);
+			}
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal date format");
 		}
 		return false;
@@ -124,13 +175,16 @@ public class PharmacyService {
 	 * @param pharmacies the whole dataset. It is needed in order to have the
 	 *                   possibility to iterate the process giving another Vector
 	 *                   already filtered as input.
-	 * @param param an object that contains operator, value and field name
-	 * @throws IllegalAccessException when the currently executing method does not have access to the definition 
-	 * 			of the specified field
-	 * @throws IllegalArgumentException when an illegal or inappropriate argument has been passed to a method
-	 * @throws InvocationTargetException wraps an exception thrown by an invoked method or constructor. 
-	 * @throws NoSuchMethodException when a particular method cannot be found
-	 * @throws SecurityException indicate a security violation
+	 * @param param      an object that contains operator, value and field name
+	 * @throws IllegalAccessException    when the currently executing method does
+	 *                                   not have access to the definition of the
+	 *                                   specified field
+	 * @throws IllegalArgumentException  when an illegal or inappropriate argument
+	 *                                   has been passed to a method
+	 * @throws InvocationTargetException wraps an exception thrown by an invoked
+	 *                                   method or constructor.
+	 * @throws NoSuchMethodException     when a particular method cannot be found
+	 * @throws SecurityException         indicate a security violation
 	 * @return temp vector made by the parmacies that met the conditions
 	 */
 	public Vector<Pharmacy> filter(Vector<Pharmacy> pharmacies, FilterParameters param) {
@@ -156,7 +210,7 @@ public class PharmacyService {
 				} catch (InvocationTargetException e) {
 					System.out.println();
 				}
-			
+
 			}
 		} catch (NoSuchMethodException e) {
 			System.out.println("The method get" + param.getFieldName().substring(0, 1).toUpperCase()

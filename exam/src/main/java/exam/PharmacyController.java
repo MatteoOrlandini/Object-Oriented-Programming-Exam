@@ -9,13 +9,15 @@ import org.json.simple.parser.ParseException;
 // spring libraries
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Manages the Spring application and define the filters using GET or
- * POST requests.
+ * Manages the Spring application and define the filters using GET or POST
+ * requests.
  */
 @RestController
 public class PharmacyController {
@@ -41,23 +43,22 @@ public class PharmacyController {
 	public Vector<Metadata> retrieveMetadata() {
 		return pharmacyService.getMetadata();
 	}
-
 	/**
-	 * Returns string statistics using a GET request.
+	 * 
+	 */
+	@GetMapping("/stats/{fieldName}")
+	public NumberStats stats(@PathVariable String fieldName) {
+		return pharmacyService.stats(fieldName,pharmacyService.getPharmacies());
+	}
+	/**
+	 * Returns the number of times the string of the specified field repeats itself.
 	 * 
 	 * @return the number of unique items
 	 */
-	@GetMapping("/stats?{fieldname}")
-	public String retrieveStats(@RequestBody String param) {
-		JSONObject obj = null;
-		try {
-			obj = (JSONObject) JSONValue.parseWithException(param);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		Vector <Pharmacy> pharmacies = pharmacyService.getPharmacies();
-		FilterParameters filterParam = new FilterParameters((String) obj.get("fieldName"), "==",
-				(Object) obj.get("value"));
+	@GetMapping("/count/{fieldName}")
+	public String count(@PathVariable String fieldName, @RequestParam(value = "value") String value) {
+		Vector<Pharmacy> pharmacies = pharmacyService.getPharmacies();
+		FilterParameters filterParam = new FilterParameters(fieldName, "==", value);
 		return "count : " + pharmacyService.filter(pharmacies, filterParam).size();
 	}
 
@@ -140,5 +141,17 @@ public class PharmacyController {
 		}
 		return temp;
 	}
-
+	/**
+	 * 
+	 * @param param
+	 * @param fieldName
+	 * @return
+	 */
+	@PostMapping(value = "/filter/stats/{fieldName}") 
+	public NumberStats filterStats (@RequestBody String param,@PathVariable String fieldName) {
+		Vector <Pharmacy> sample=new Vector<Pharmacy>();
+		sample=filter(param);
+		return pharmacyService.stats(fieldName, sample);
+	}
+	
 }

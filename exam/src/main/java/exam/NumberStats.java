@@ -1,28 +1,18 @@
 package exam;
 
 public class NumberStats {
-	private String field;
 	private double avg;
 	private double min;
 	private double max;
 	private double std;
 	private double sum;
 	
-	public NumberStats(String field, double avg, double min, double max, double std, double sum) {
-		this.field = field;
+	public NumberStats(double avg, double min, double max, double std, double sum) {
 		this.avg = avg;
 		this.min = min;
 		this.max = max;
 		this.std = std;
 		this.sum = sum;
-	}
-
-	public String getField() {
-		return field;
-	}
-
-	public void setField(String field) {
-		this.field = field;
 	}
 
 	public double getAvg() {
