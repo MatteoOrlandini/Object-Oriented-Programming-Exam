@@ -357,7 +357,9 @@ The application returns this message because there is an incorrect operator "===
 
 >  "String cannot be cast to class Double"
 
-because the GET/stats could only be used with nu
+because the GET/stats could only be used with numeric fields like "latitude" and "longitude". It must not be used with string fields like "id".
+
+
 
  
 
@@ -370,6 +372,6 @@ because the GET/stats could only be used with nu
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0NTg0MTI0MiwtODU0MTk2NDQzLC0yNz
+eyJoaXN0b3J5IjpbLTU5NTA5OTY0MywtODU0MTk2NDQzLC0yNz
 Y1MDk0OTddfQ==
 -->
