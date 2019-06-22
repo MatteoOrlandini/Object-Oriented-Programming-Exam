@@ -58,11 +58,20 @@ public String lineCorrection(String str) {
 We also corrected the values of latitude and longitude, replacing the comma with the point and the not allowed values with “-360”.
 
 ```
-public String[] coordinateCorrection(String[] str) {
+	public String[] coordinateCorrection(String[] str) {
 		String[] str2 = str;
-	for (int i = 14; i <= 15; i++) {
-		if (str[i].contains(","))
-			str2[i] = str[i].replace(',', '.');
+
+		for (int i = 14; i <= 15; i++) {
+			if (str[i].contains(","))
+				str2[i] = str[i].replace(',', '.');
+
+			if (str[i].equals("-"))
+				str2[i] = str[i].replace("-", "-360");
+			if (str[i].equals("0"))
+				str2[i] = str[i].replace("0", "-360");
+		}
+		return str2;
+	}
 
 ```
 
@@ -408,5 +417,5 @@ because the GET/stats should only be used with numeric fields like "latitude" an
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3MjU4NjUwM119
+eyJoaXN0b3J5IjpbMTk3Nzc4NDczNSwtNTcyNTg2NTAzXX0=
 -->
