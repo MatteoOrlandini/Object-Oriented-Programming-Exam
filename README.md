@@ -163,10 +163,11 @@ Using a POST request it looks in the body for a latitude, a longitude and a rang
 
 The formula used to calculate the distance is:
 
-$$p1=(lon1,lat1)$$ longitude and latitude in radians.  
-$$p2=(lon2,lat2)$$ longitude and latitude in radians.
+$p1=(lon1,lat1)$ longitude and latitude in radians.  
+$p2=(lon2,lat2)$ longitude and latitude in radians.
 
-$$dist=arccos(sin(lat1)∗sin(lat2)+cos(lat1)∗cos(lat2)∗cos(lon2−lon1))∗6371$$
+$dist=arccos(sin(lat1)∗sin(lat2)+cos(lat1)∗cos(lat2)∗cos(lon2−lon1))∗6371$
+
 (6371 in the Earth radius in Km; dist is expressed in Km).
 
 _example:_
@@ -408,6 +409,6 @@ because the GET/stats could only be used with numeric fields like "latitude" and
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2NTUwMTQ0NiwxMzc1MDgxMTQ5LC0xNT
-IxNzM1NjI4LC04NTQxOTY0NDMsLTI3NjUwOTQ5N119
+eyJoaXN0b3J5IjpbOTI4ODQ0Mjk4LDEzNzUwODExNDksLTE1Mj
+E3MzU2MjgsLTg1NDE5NjQ0MywtMjc2NTA5NDk3XX0=
 -->
