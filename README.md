@@ -145,6 +145,7 @@ _response:_
 }
 
 ```
+Note that in this request the code does not use fields with incorrect latitude or longitude (equals to -360).
 
 ### count/{fieldName}
 
@@ -417,5 +418,5 @@ because the GET/stats should only be used with numeric fields like "latitude" an
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODI1NzM5NDEsLTU3MjU4NjUwM119
+eyJoaXN0b3J5IjpbMTY3NTA4OTAzNiwtNTcyNTg2NTAzXX0=
 -->
