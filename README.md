@@ -379,9 +379,9 @@ In a multiple filter with the following  incorrect body:
     }
 The application returns this message because there is an incorrect logical operator "and" instead of "$and":
 
-> "message": "Incorrect filter request, valid operators: $and , $or"
+>"message": "Incorrect JSON body"
 
-
+This  message is also printed if the user writes a wrong key li
 
 
  - Stats features
@@ -410,7 +410,7 @@ because the GET/stats should only be used with numeric fields like "latitude" an
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDgxNzA4NjYsOTI4ODQ0Mjk4LDEzNz
-UwODExNDksLTE1MjE3MzU2MjgsLTg1NDE5NjQ0MywtMjc2NTA5
-NDk3XX0=
+eyJoaXN0b3J5IjpbMTgzOTE5MjAxNywtMTk0ODE3MDg2Niw5Mj
+g4NDQyOTgsMTM3NTA4MTE0OSwtMTUyMTczNTYyOCwtODU0MTk2
+NDQzLC0yNzY1MDk0OTddfQ==
 -->
