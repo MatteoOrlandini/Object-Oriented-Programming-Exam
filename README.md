@@ -355,13 +355,36 @@ The application returns this message because there is an incorrect operator "===
 
 >     "message": "Illegal operator, it must be only == "
 
+In a multiple filter with the following request 
+
+    {
+        "and": [
+            {
+                "fieldName": "city",
+                "operator": "==",
+                "value": "Bari"
+            },
+            {
+                "fieldName": "beginValidity",
+                "operator": ">",
+                "value": "01/01/2012"
+            },
+            {
+                "fieldName": "beginValidity",
+                "operator": "<",
+                "value": "31/12/2012"
+            }
+        ]
+    }
+
+
  - Stats features
  
  If the is a wrong request like  
 
 > GET/stats/id?value=002112
 
- ,   the application returns a message like:
+ the application returns a message like:
 
 >  "String cannot be cast to class Double"
 
@@ -380,6 +403,6 @@ because the GET/stats could only be used with numeric fields like "latitude" and
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4NTkyNjY0OSwtODU0MTk2NDQzLC0yNz
-Y1MDk0OTddfQ==
+eyJoaXN0b3J5IjpbLTE2NTI4OTU5NTEsLTg1NDE5NjQ0MywtMj
+c2NTA5NDk3XX0=
 -->
