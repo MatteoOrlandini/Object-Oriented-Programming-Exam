@@ -131,7 +131,7 @@ $$ σ_x={1\over N}\sqrt{N\sum_{i=1}^N x_i^2−\bigg(\sum_{i=1}^N x_i\bigg)^2​}
 
 _example:_
 
-> localhost:8080/stats/longitude
+> GET localhost:8080/stats/longitude
 
 _response:_
 
@@ -417,5 +417,5 @@ because the GET/stats should only be used with numeric fields like "latitude" an
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3Nzc4NDczNSwtNTcyNTg2NTAzXX0=
+eyJoaXN0b3J5IjpbLTk3NzMzNzA3LC01NzI1ODY1MDNdfQ==
 -->
