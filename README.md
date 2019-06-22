@@ -387,7 +387,7 @@ The application returns this message because there is an incorrect logical opera
  
  If the is a wrong request like  
 
-> GET/stats/id?value=002112
+> GET/stats/id
 
  the application returns a message like:
 
@@ -408,6 +408,6 @@ because the GET/stats could only be used with numeric fields like "latitude" and
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjE3MzU2MjgsLTg1NDE5NjQ0MywtMj
-c2NTA5NDk3XX0=
+eyJoaXN0b3J5IjpbMTM3NTA4MTE0OSwtMTUyMTczNTYyOCwtOD
+U0MTk2NDQzLC0yNzY1MDk0OTddfQ==
 -->
