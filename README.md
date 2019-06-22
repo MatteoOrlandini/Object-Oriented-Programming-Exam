@@ -325,6 +325,9 @@ _response:_
 
 ## Features
 This application notifies the user if there are some errors in the various requests. 
+
+ - Filter features
+
 For example it the is a wrong field name in a POST body filter request like:
 
     {
@@ -349,6 +352,7 @@ The application returns this message because there is an incorrect operator "===
 >     "message": "Illegal operator, it must be only == "
 
 
+ - Stats features
 
 ## UML
 
@@ -358,6 +362,6 @@ The application returns this message because there is an incorrect operator "===
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3MTAyNTAyNywtODU0MTk2NDQzLC0yNz
+eyJoaXN0b3J5IjpbMTM4MDU0ODUxMiwtODU0MTk2NDQzLC0yNz
 Y1MDk0OTddfQ==
 -->
