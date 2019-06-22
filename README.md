@@ -325,17 +325,18 @@ _response:_
 
 ## Features
 This application notifies the user if there are some errors in the various requests. 
-For example it the is a wrong field name in a POST body request like "cty":
+For example it the is a wrong field name in a POST body filter request like:
 
     {
         "fieldName": "cty",
         "operator": "==",
         "value": "Bari" 
     }
-The application returns this message:
+The application returns this message because there is not a "cty" field:
 
 >  "message": "The method getCty cannot be found"
 
+If there is an error in the operator field like:
 
 
 ## UML
@@ -346,5 +347,5 @@ The application returns this message:
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTgzNzc0MzAsLTI3NjUwOTQ5N119
+eyJoaXN0b3J5IjpbLTg1NDE5NjQ0MywtMjc2NTA5NDk3XX0=
 -->
