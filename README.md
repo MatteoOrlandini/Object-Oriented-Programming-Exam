@@ -163,8 +163,8 @@ Using a POST request it looks in the body for a latitude, a longitude and a rang
 
 The formula used to calculate the distance is:
 
-$p1=(lon1,lat1)$ longitude and latitude in radians.  
-$p2=(lon2,lat2)$ longitude and latitude in radians.
+$$p1=(lon1,lat1)$$ longitude and latitude in radians.  
+$$p2=(lon2,lat2)$$ longitude and latitude in radians.
 
 $$dist=arccos(sin(lat1)∗sin(lat2)+cos(lat1)∗cos(lat2)∗cos(lon2−lon1))∗6371$$
 (6371 in the Earth radius in Km; dist is expressed in Km).
@@ -323,11 +323,16 @@ _response:_
 
 ```
 
+## Features
+
+
+## UML
+
 [UML CLass Diagram](https://drive.google.com/open?id=14v7iiiCaLJaf-8uphyFZHZKdVjjXm3HD)
 
 [UML Use Case Diagram](https://drive.google.com/open?id=167rJtDSa9ACGYDunNvl6yv_7pjPrMlOI)
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTQ0MzU4ODUsLTI3NjUwOTQ5N119
+eyJoaXN0b3J5IjpbLTE4MDYwMTMyNTgsLTI3NjUwOTQ5N119
 -->
