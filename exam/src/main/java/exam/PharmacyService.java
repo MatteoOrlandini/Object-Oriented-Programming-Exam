@@ -151,15 +151,16 @@ public class PharmacyService {
 					return doublePharmacyValue < doubleInputValue;
 				else if (operator.equals("<="))
 					return doublePharmacyValue <= doubleInputValue;
-				else 
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator it must be ==, >, >=, <, <=");
+				else
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+							"Illegal operator it must be ==, >, >=, <, <=");
 			}
 		} else if (inputValue instanceof String && pharmacyValue instanceof String) {
 			String inputString = (String) inputValue;
 			String pharmacyString = (String) pharmacyValue;
 			if (operator.equals("=="))
 				return inputString.equals(pharmacyString);
-			else 
+			else
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator, it must be only == ");
 
 		} else if (inputValue instanceof String && pharmacyValue instanceof Date) {
@@ -177,10 +178,11 @@ public class PharmacyService {
 				else if (operator.equals("<"))
 					return inputDate.after(pharmacyDate);
 				else
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator, it must be only ==, >, <");
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+							"Illegal operator, it must be only ==, >, <");
 			}
+		} else
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal request");
-		}
 		return false;
 	}
 
@@ -202,8 +204,8 @@ public class PharmacyService {
 	 *                                   method or constructor
 	 * @throws NoSuchMethodException     when a particular method cannot be found
 	 * @throws SecurityException         indicate a security violation
-	 * @throws ResponseStatusException to the Spring application if the request is
-	 *                                 not correct
+	 * @throws ResponseStatusException   to the Spring application if the request is
+	 *                                   not correct
 	 * @return temp vector made by the parmacies that met the conditions
 	 */
 	public Vector<Pharmacy> filter(Vector<Pharmacy> pharmacies, FilterParameters param) {

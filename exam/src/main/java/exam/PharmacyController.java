@@ -63,8 +63,13 @@ public class PharmacyController {
 	 * 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * @param field name
 	 * @param value
+=======
+	 * @param fieldName the {@link Pharmacy} attribute
+	 * @param value     the string to count
+>>>>>>> 840a4829f04ee97f7f5e5848c1934a8a100da2ec
 =======
 	 * @param fieldName the {@link Pharmacy} attribute
 	 * @param value     the string to count
@@ -184,10 +189,13 @@ public class PharmacyController {
 	 * 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * @param param
 	 * @param fieldName
 	 * @return
 =======
+=======
+>>>>>>> 840a4829f04ee97f7f5e5848c1934a8a100da2ec
 =======
 >>>>>>> 840a4829f04ee97f7f5e5848c1934a8a100da2ec
 	 * @param param     JSON array with objects composed by a field, an operator and
@@ -195,6 +203,9 @@ public class PharmacyController {
 	 * @param fieldName allowed: latitude or longitude
 	 * @return statistics on the filtered list
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 840a4829f04ee97f7f5e5848c1934a8a100da2ec
+=======
 >>>>>>> 840a4829f04ee97f7f5e5848c1934a8a100da2ec
 =======
 >>>>>>> 840a4829f04ee97f7f5e5848c1934a8a100da2ec
