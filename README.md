@@ -345,13 +345,12 @@ If there is a wrong field name in a filter request like
 
 >  localhost:8080/filter/
 
-
-
     {
         "fieldName": "cty",
         "operator": "==",
         "value": "Bari" 
     }
+    
 The application returns this message because there is not a "cty" field:
 
 >  "message": "The method getCty cannot be found"
@@ -393,20 +392,20 @@ The application returns this message because there is an incorrect logical opera
 
 >"message": "Incorrect JSON body"
 
-This  message is also printed if the user writes a wrong key like "fieldNam" instead of "fieldName" in single filter.
+This  message is also printed if the user writes a wrong key, for example "fieldNam" instead of "fieldName" in single or multiple filter.
 
 
  - Stats features
  
- If the is a wrong request like  
+ If there is a wrong request like  
 
-> GET/stats/id
+>  localhost:8080/stats/id
 
  the application returns a message like:
 
 >  "String cannot be cast to class Double"
 
-because the GET/stats should only be used with numeric fields like "latitude" and "longitude". It must not be used with string fields like "id".
+because the GET /stats/{fieldName} should only be used with numeric fields like "latitude" and "longitude". It must not be used with string fields like "id".
  
 
 
