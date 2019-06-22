@@ -324,7 +324,13 @@ _response:_
 ```
 
 ## Features
-This application notifies the user if there are errors in the various requests
+This application notifies the user if there are some errors in the various requests. 
+For example it the is a wrong field name in a POST body request like:
+
+> {
+>     "fieldName": "cty",
+>     "operator": "==",
+>     "value": "Bari" }
 
 ## UML
 
@@ -334,5 +340,5 @@ This application notifies the user if there are errors in the various requests
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTM3NzYyNzgwLC0yNzY1MDk0OTddfQ==
+eyJoaXN0b3J5IjpbLTEwNjg2NTMyODIsLTI3NjUwOTQ5N119
 -->
