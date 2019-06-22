@@ -381,7 +381,7 @@ The application returns this message because there is an incorrect logical opera
 
 >"message": "Incorrect JSON body"
 
-This  message is also printed if the user writes a wrong key like "fieldNam" instead of "fieldName".
+This  message is also printed if the user writes a wrong key like "fieldNam" instead of "fieldName" in single filter.
 
 
  - Stats features
@@ -396,11 +396,6 @@ This  message is also printed if the user writes a wrong key like "fieldNam" ins
 
 because the GET/stats should only be used with numeric fields like "latitude" and "longitude". It must not be used with string fields like "id".
 
-
-
-
-
-
  
 
 
@@ -412,7 +407,7 @@ because the GET/stats should only be used with numeric fields like "latitude" an
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTA0Nzg0ODksLTE5NDgxNzA4NjYsOT
-I4ODQ0Mjk4LDEzNzUwODExNDksLTE1MjE3MzU2MjgsLTg1NDE5
-NjQ0MywtMjc2NTA5NDk3XX0=
+eyJoaXN0b3J5IjpbLTE4MzA1NzIwMDYsLTExOTA0Nzg0ODksLT
+E5NDgxNzA4NjYsOTI4ODQ0Mjk4LDEzNzUwODExNDksLTE1MjE3
+MzU2MjgsLTg1NDE5NjQ0MywtMjc2NTA5NDk3XX0=
 -->
