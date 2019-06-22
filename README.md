@@ -323,7 +323,7 @@ _response:_
 
 ```
 
-## Features
+## Error managing
 This application notifies the user if there are some errors in the various requests. 
 
  - Filter features
@@ -408,6 +408,6 @@ because the GET/stats could only be used with numeric fields like "latitude" and
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3NTA4MTE0OSwtMTUyMTczNTYyOCwtOD
-U0MTk2NDQzLC0yNzY1MDk0OTddfQ==
+eyJoaXN0b3J5IjpbLTk2NTUwMTQ0NiwxMzc1MDgxMTQ5LC0xNT
+IxNzM1NjI4LC04NTQxOTY0NDMsLTI3NjUwOTQ5N119
 -->
