@@ -328,7 +328,7 @@ This application notifies the user if there are some errors in the various reque
 
  - Filter features
 
-For example it the is a wrong field name in a filter request like
+If there is a wrong field name in a filter request like
 
 >  localhost:8080/filter/
 
@@ -353,7 +353,7 @@ If there is an error in the operator field like:
 
 The application returns this message because there is an incorrect operator "===":
 
->     "message": "Illegal operator, it must be only == "
+> "message": "Illegal operator, it must be only == "
 
 In a multiple filter with the following  incorrect body:
 
@@ -378,7 +378,9 @@ In a multiple filter with the following  incorrect body:
     }
 The application returns this message because there is an incorrect logical operator "and" instead of "$and":
 
-    "message": "Incorrect filter request, valid operators: $and , $or"
+> "message": "Incorrect filter request, valid operators: $and , $or"
+
+
 
 
  - Stats features
@@ -406,6 +408,6 @@ because the GET/stats could only be used with numeric fields like "latitude" and
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyNTk5MzYwMiwtODU0MTk2NDQzLC0yNz
-Y1MDk0OTddfQ==
+eyJoaXN0b3J5IjpbLTE1MjE3MzU2MjgsLTg1NDE5NjQ0MywtMj
+c2NTA5NDk3XX0=
 -->
