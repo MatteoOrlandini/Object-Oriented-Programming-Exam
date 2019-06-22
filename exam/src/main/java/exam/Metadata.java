@@ -2,7 +2,7 @@ package exam;
 
 /**
  * Used by {@link CSVParser} to store the first line with the
- * fields of the dataset.
+ * fields of the data-set.
  * It represents the attributes of a pharmacy.
  *
  */

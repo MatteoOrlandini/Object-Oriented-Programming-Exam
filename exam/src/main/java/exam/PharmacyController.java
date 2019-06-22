@@ -47,10 +47,11 @@ public class PharmacyController {
 	}
 
 	/**
-	 * Gives stats based on the class {@link NumberStats}.
+	 * Gives stats based on the class {@link NumberStats}. <strong>Note:</strong>
+	 * the allowed fields are latitude and longitude.
 	 * 
-	 * @param fieldName allowed latitude or longitude
-	 * @return
+	 * @param fieldName allowed: latitude or longitude
+	 * @return average, minimum, maximum, standard deviation and sum
 	 */
 	@GetMapping("/stats/{fieldName}")
 	public NumberStats stats(@PathVariable String fieldName) {
@@ -59,8 +60,9 @@ public class PharmacyController {
 
 	/**
 	 * Returns the number of times the string of the specified field repeats itself.
-	 * @param field name
-	 * @param value
+	 * 
+	 * @param fieldName the {@link Pharmacy} attribute
+	 * @param value     the string to count
 	 * @return the number of unique items
 	 */
 	@GetMapping("/count/{fieldName}")
@@ -101,11 +103,12 @@ public class PharmacyController {
 	 * Generic filter using a POST. If the body of the JSON is a single object it
 	 * searches for a field, an operator and an input value and returns the filtered
 	 * dataset. If it is found an attribute called "$or" or "$and" it applies
-	 * multiple filters to the following array of object based on the attribute. The
-	 * "$or" filter does a filter for each object and then unites them. The "$and"
-	 * filter just recursively filter the result of the previous decimation.
+	 * multiple filters, using the following array of objects, based on the
+	 * attribute. The "$or" filter does a filter for each object and then unites
+	 * them without considering multiple elements. The "$and" filter just
+	 * recursively filter the result of the previous decimation.
 	 * 
-	 * @param param JSON array with object composed by a field,an operator and an
+	 * @param param JSON array with objects composed by a field, an operator and an
 	 *              input value
 	 * @return filtered pharmacies
 	 */
@@ -125,49 +128,51 @@ public class PharmacyController {
 			temp = pharmacyService.filter(temp, filterParam);
 		// multiple filter cases: or - and
 		else {
-		JSONArray jsonArray = (JSONArray) jsonObject.get("$or");
-		if (jsonArray instanceof JSONArray) {
-			// tempOr is used to store the partial filters
-			Vector<Pharmacy> tempOr = new Vector<Pharmacy>();
-			// the temp vector is emptied
-			temp = new Vector<Pharmacy>();
-
-			for (Object obj : jsonArray) {
-				filterParam.readFields(obj);
-				tempOr = pharmacyService.filter(pharmacyService.getPharmacies(), filterParam);
-				for (Pharmacy item : tempOr) {
-					if (!temp.contains(item))
-						temp.add(item);
-				}
-			}
-		} else {
-			jsonArray = (JSONArray) jsonObject.get("$and");
+			JSONArray jsonArray = (JSONArray) jsonObject.get("$or");
 			if (jsonArray instanceof JSONArray) {
+				// tempOr is used to store the partial filters
+				Vector<Pharmacy> tempOr = new Vector<Pharmacy>();
+				// the temp vector is emptied
+				temp = new Vector<Pharmacy>();
+
 				for (Object obj : jsonArray) {
 					filterParam.readFields(obj);
-					// iteration on .filter
-					temp = pharmacyService.filter(temp, filterParam);
+					tempOr = pharmacyService.filter(pharmacyService.getPharmacies(), filterParam);
+					for (Pharmacy item : tempOr) {
+						if (!temp.contains(item))
+							temp.add(item);
+					}
 				}
-			} else
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-						"Incorrect filter request, valid operators: $and , $or");
-		}
+			} else {
+				jsonArray = (JSONArray) jsonObject.get("$and");
+				if (jsonArray instanceof JSONArray) {
+					for (Object obj : jsonArray) {
+						filterParam.readFields(obj);
+						// iteration on .filter
+						temp = pharmacyService.filter(temp, filterParam);
+					}
+				} else
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+							"Incorrect filter request, valid operators: $and , $or");
+			}
 		}
 		return temp;
 	}
 
 	/**
-	 * Gives stats based on {@link NumberStats} on the sample made of the filtrated pharmacies.
+	 * Gives stats based on {@link NumberStats} on the sample made of the filtered
+	 * pharmacies.
 	 * 
-	 * @param param
-	 * @param fieldName
-	 * @return 
+	 * @param param     JSON array with objects composed by a field, an operator and
+	 *                  an input value
+	 * @param fieldName allowed: latitude or longitude
+	 * @return statistics on the filtered list
 	 */
 	@PostMapping(value = "/filter/stats/{fieldName}")
 	public NumberStats filterStats(@RequestBody String param, @PathVariable String fieldName) {
 		Vector<Pharmacy> sample = new Vector<Pharmacy>();
 		sample = filter(param);
 		return pharmacyService.stats(fieldName, sample);
-		}
-	
+	}
+
 }

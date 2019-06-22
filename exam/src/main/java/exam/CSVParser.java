@@ -46,15 +46,13 @@ public class CSVParser {
 
 	/**
 	 * This method read the file through the field fileName and parse it in order to
-	 * fill the vectors pharmacies and metadata
+	 * fill the vectors pharmacies and metadata.
 	 * 
 	 * @throws NumberFormatException thrown to indicate that the application has
 	 *                               attempted to convert a string to one of the
 	 *                               numeric types, but that the string does not
 	 *                               have the appropriate format.
-	 * @throws FileNotFoundException if the file is not found
-	 * @throws IOException           exception produced by failed or interrupted I/O
-	 *                               operations
+	 * @throws ArrayIndexOutOfBoundsException
 	 */
 	public void reader() {
 
@@ -109,7 +107,7 @@ public class CSVParser {
 	 * impossible the parsing from String to double.
 	 * 
 	 * @param str line read by the {@link reader}
-	 * @return str2 corrected line
+	 * @return corrected line
 	 */
 	public String lineCorrection(String str) {
 		String str2 = str;
@@ -126,11 +124,11 @@ public class CSVParser {
 	}
 
 	/**
-	 * Corrects the latitude and longitude fiels by replacing the
+	 * Corrects the latitude and longitude fields by replacing the
 	 * comma with a point and the dash with a value non allowed like -360.
 	 * 
 	 * @param str line read by the {@link reader}
-	 * @return str2 corrected line
+	 * @return corrected line
 	 */
 	public String[] coordinateCorrection(String[] str) {
 		String[] str2 = str;

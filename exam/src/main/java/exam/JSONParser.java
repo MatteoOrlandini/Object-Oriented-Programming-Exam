@@ -16,8 +16,8 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
 /**
- * Takes as attributes a file name and a url and is used to parse the
- * initial url in order to find another url that downloads the CSV file.
+ * Has as attributes a file name and a url and it is used to parse the initial
+ * url in order to find another url that downloads the CSV file.
  *
  */
 public class JSONParser {
@@ -48,6 +48,8 @@ public class JSONParser {
 
 	/**
 	 * Creates a string (from the url connection) that contains the JSON.
+	 * 
+	 * @throws IOException
 	 */
 	public void openConnection() {
 		// check if the file doesn't exist
@@ -65,7 +67,7 @@ public class JSONParser {
 					BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream));
 
 					while ((line = buffer.readLine()) != null) {
-						//create a data String where the JSON is stored 
+						// create a data String where the JSON is stored
 						data += line;
 					}
 					parser(data);
@@ -76,20 +78,21 @@ public class JSONParser {
 				e.printStackTrace();
 			}
 
-		}
-		else {
+		} else {
 			System.out.println("File already exists!");
 		}
 	}
+
 	/**
 	 * Parse the input string and searches in the path result/resources/url to get
 	 * the url that downloads the dataset.
 	 * 
-	 * @param str
+	 * @param str input to parse
+	 * @throws ParseException
 	 */
 	public void parser(String str) {
 		try {
-			//parse the str String
+			// parse the str String
 			JSONObject JSONobj = (JSONObject) JSONValue.parseWithException(str);
 			JSONObject JSONobj1 = (JSONObject) (JSONobj.get("result"));
 			JSONArray JSONarray = (JSONArray) (JSONobj1.get("resources"));
@@ -114,18 +117,18 @@ public class JSONParser {
 	}
 
 	/**
-	 * Downloads the dataset if it doesn't exist.
+	 * Downloads the data-set if it doesn't exist.
 	 * 
 	 * @param url      not the attribute of the class but the one found by the
 	 *                 parser
-	 * @param fileName destination of the dataset
-	 * @throws Exception checks the presence of the file name
+	 * @param fileName destination of the data-set
+	 * @throws FileAlreadyExistsException checks the presence of the file name
 	 */
 	public static void download(String url, String fileName) throws Exception {
 		try {
-			//create input stream of bytes from the url
+			// create input stream of bytes from the url
 			InputStream inputStream = URI.create(url).toURL().openStream();
-			//copy bytes from inputStream to fileName
+			// copy bytes from inputStream to fileName
 			Files.copy(inputStream, Paths.get(fileName));
 			System.out.println("CSV file downloaded!");
 		} catch (FileAlreadyExistsException e) {
