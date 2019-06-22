@@ -5,8 +5,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
- * Represents a generic pharmacy that can describe the rows of the
- * dataset.
+ * Represents a generic pharmacy that can describe the rows of the dataset.
  *
  */
 public class Pharmacy {
@@ -22,11 +21,11 @@ public class Pharmacy {
 	private String provinceName;
 	private String regionCode;
 	private String regionName;
-	@JsonFormat(pattern="dd/MM/yyyy",timezone="Europe/Rome")
+	@JsonFormat(pattern = "dd/MM/yyyy", timezone = "Europe/Rome")
 	private Date beginValidity;
-	@JsonFormat(pattern="dd/MM/yyyy",timezone="Europe/Rome")
+	@JsonFormat(pattern = "dd/MM/yyyy", timezone = "Europe/Rome")
 	private Date endValidity;
-	private double latitude; 
+	private double latitude;
 	private double longitude;
 	private int localize;
 
@@ -36,8 +35,7 @@ public class Pharmacy {
 
 	public Pharmacy(String id, String name, String address, String vatNumber, String postalCode, String cityCode,
 			String city, String provinceCode, String provinceAbbreviation, String provinceName, String regionCode,
-			String regionName, Date beginValidity, Date endValidity, double latitude, double longitude,
-			int localize) {
+			String regionName, Date beginValidity, Date endValidity, double latitude, double longitude, int localize) {
 		this.id = id;
 		this.name = name;
 		this.address = address;

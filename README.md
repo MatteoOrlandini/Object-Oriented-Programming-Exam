@@ -166,7 +166,8 @@ The formula used to calculate the distance is:
 $p1=(lon1,lat1)$ longitude and latitude in radians.  
 $p2=(lon2,lat2)$ longitude and latitude in radians.
 
-$dist=arccos(sin(lat1)∗sin(lat2)+cos(lat1)∗cos(lat2)∗cos(lon2−lon1))∗6371$ 
+$dist=arccos(sin(lat1)∗sin(lat2)+cos(lat1)∗cos(lat2)∗cos(lon2−lon1))∗6371$
+
 (6371 in the Earth radius in Km; dist is expressed in Km).
 
 _example:_
@@ -179,6 +180,8 @@ _example:_
 }
 
 ```
+Note that in the POST /localize   
+the code does not use fields with incorrect latitude or longitude (equals to -360).
 
 ### /filter
 
@@ -323,11 +326,87 @@ _response:_
 
 ```
 
+## Error managing
+This application notifies the user if there are some errors in the various requests. 
+
+ - Filter features
+
+If there is a wrong field name in a filter request like
+
+>  localhost:8080/filter/
+
+
+
+    {
+        "fieldName": "cty",
+        "operator": "==",
+        "value": "Bari" 
+    }
+The application returns this message because there is not a "cty" field:
+
+>  "message": "The method getCty cannot be found"
+
+If there is an error in the operator field like:
+
+    {
+        "fieldName": "city",
+        "operator": "===",
+        "value": "Bari"
+    }
+
+The application returns this message because there is an incorrect operator "===":
+
+> "message": "Illegal operator, it must be only == "
+
+In a multiple filter with the following  incorrect body:
+
+    {
+        "and": [
+            {
+                "fieldName": "city",
+                "operator": "==",
+                "value": "Bari"
+            },
+            {
+                "fieldName": "beginValidity",
+                "operator": ">",
+                "value": "01/01/2012"
+            },
+            {
+                "fieldName": "beginValidity",
+                "operator": "<",
+                "value": "31/12/2012"
+            }
+        ]
+    }
+The application returns this message because there is an incorrect logical operator "and" instead of "$and":
+
+>"message": "Incorrect JSON body"
+
+This  message is also printed if the user writes a wrong key like "fieldNam" instead of "fieldName" in single filter.
+
+
+ - Stats features
+ 
+ If the is a wrong request like  
+
+> GET/stats/id
+
+ the application returns a message like:
+
+>  "String cannot be cast to class Double"
+
+because the GET/stats should only be used with numeric fields like "latitude" and "longitude". It must not be used with string fields like "id".
+ 
+
+
+## UML
+
 [UML CLass Diagram](https://drive.google.com/open?id=14v7iiiCaLJaf-8uphyFZHZKdVjjXm3HD)
 
 [UML Use Case Diagram](https://drive.google.com/open?id=167rJtDSa9ACGYDunNvl6yv_7pjPrMlOI)
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NjUwOTQ5N119
+eyJoaXN0b3J5IjpbLTU3MjU4NjUwM119
 -->

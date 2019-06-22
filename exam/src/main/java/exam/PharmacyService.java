@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 /**
  * Contains the methods used by the controller or the service itself to manage
  * the filters.
+ * 
  */
 @Component
 public class PharmacyService {
@@ -41,12 +42,13 @@ public class PharmacyService {
 	 * Gives statistics on numbers based on {@link NumberStats}.
 	 * 
 	 * @param fieldName fields accepted for this data-set are latitude and longitude
-	 * @param sample the pharmacy vector to study
-	 * @return various stats: average, minimum, maximum, standard deviation and sum
+	 * @param sample    the pharmacy vector to study
+	 * @return various statistics: average, minimum, maximum, standard deviation and
+	 *         sum
 	 */
 	public NumberStats stats(String fieldName, Vector<Pharmacy> sample) {
 		Method m = null;
-		Vector<Double> store =  new Vector<Double>();
+		Vector<Double> store = new Vector<Double>();
 		int count;
 		double avg = 0, min = 0, max = 0, std = 0, sum = 0;
 		try {
@@ -55,7 +57,7 @@ public class PharmacyService {
 				m = item.getClass().getMethod("get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
 				Object pharmacyValue = m.invoke(item);
 				double pharmacyValuedouble = (double) pharmacyValue;
-				if (pharmacyValuedouble!=-360) 
+				if (pharmacyValuedouble != -360)
 					store.add((Double) pharmacyValue);
 			}
 			count = store.size();
@@ -122,12 +124,14 @@ public class PharmacyService {
 	}
 
 	/**
-	 * Method used by the main filter that checks whether the value in the dataset
+	 * Method used by the main filter that checks whether the value in the data-set
 	 * respects the conditions imposed by the operator and the input value.
 	 * 
-	 * @param pharmacyValue value in the dataset
+	 * @param pharmacyValue value in the data-set
 	 * @param operator      it can be (==,>,<,<=,>=)
 	 * @param inputValue    value in the input JSON
+	 * @throws ResponseStatusException to the Spring application if the request is
+	 *                                 not correct
 	 * @return false or true depending of the result of the comparison
 	 */
 	public static boolean check(Object pharmacyValue, String operator, Object inputValue) {
@@ -147,14 +151,16 @@ public class PharmacyService {
 					return doublePharmacyValue < doubleInputValue;
 				else if (operator.equals("<="))
 					return doublePharmacyValue <= doubleInputValue;
-				else throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator");
+				else 
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator it must be ==, >, >=, <, <=");
 			}
 		} else if (inputValue instanceof String && pharmacyValue instanceof String) {
 			String inputString = (String) inputValue;
 			String pharmacyString = (String) pharmacyValue;
 			if (operator.equals("=="))
 				return inputString.equals(pharmacyString);
-			else throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator");
+			else 
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator, it must be only == ");
 
 		} else if (inputValue instanceof String && pharmacyValue instanceof Date) {
 
@@ -170,7 +176,8 @@ public class PharmacyService {
 					return inputDate.before(pharmacyDate);
 				else if (operator.equals("<"))
 					return inputDate.after(pharmacyDate);
-				else throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator");
+				else
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal operator, it must be only ==, >, <");
 			}
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Illegal request");
 		}
@@ -192,9 +199,11 @@ public class PharmacyService {
 	 * @throws IllegalArgumentException  when an illegal or inappropriate argument
 	 *                                   has been passed to a method
 	 * @throws InvocationTargetException wraps an exception thrown by an invoked
-	 *                                   method or constructor.
+	 *                                   method or constructor
 	 * @throws NoSuchMethodException     when a particular method cannot be found
 	 * @throws SecurityException         indicate a security violation
+	 * @throws ResponseStatusException to the Spring application if the request is
+	 *                                 not correct
 	 * @return temp vector made by the parmacies that met the conditions
 	 */
 	public Vector<Pharmacy> filter(Vector<Pharmacy> pharmacies, FilterParameters param) {
@@ -225,8 +234,9 @@ public class PharmacyService {
 		} catch (NoSuchMethodException e) {
 			System.out.println("The method get" + param.getFieldName().substring(0, 1).toUpperCase()
 					+ param.getFieldName().substring(1) + " cannot be found");
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The method get" + param.getFieldName().substring(0, 1).toUpperCase()
-					+ param.getFieldName().substring(1) + " cannot be found");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+					"The method get" + param.getFieldName().substring(0, 1).toUpperCase()
+							+ param.getFieldName().substring(1) + " cannot be found");
 		} catch (SecurityException e) {
 			System.out.println("Security violation");
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Security violation");

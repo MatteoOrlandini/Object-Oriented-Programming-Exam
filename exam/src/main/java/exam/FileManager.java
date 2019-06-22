@@ -55,7 +55,7 @@ public class FileManager {
 	 * Read text from a character-input stream, buffering characters.
 	 * 
 	 * @throws General exception produced by failed or interrupted I/O operations.
-	 * @return String str the read line
+	 * @return the line read
 	 */
 	public String readOneLine() {
 		String str = "";

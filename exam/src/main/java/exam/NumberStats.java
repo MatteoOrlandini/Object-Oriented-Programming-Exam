@@ -1,12 +1,16 @@
 package exam;
 
+/**
+ * Statistics returned by "/stats/{fieldName}" and "/filter/stats/{fieldName}".
+ *
+ */
 public class NumberStats {
 	private double avg;
 	private double min;
 	private double max;
 	private double std;
 	private double sum;
-	
+
 	public NumberStats(double avg, double min, double max, double std, double sum) {
 		this.avg = avg;
 		this.min = min;
@@ -54,6 +58,5 @@ public class NumberStats {
 	public void setSum(double sum) {
 		this.sum = sum;
 	}
-	
-	
+
 }
