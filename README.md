@@ -166,7 +166,7 @@ The formula used to calculate the distance is:
 $p1=(lon1,lat1)$ longitude and latitude in radians.  
 $p2=(lon2,lat2)$ longitude and latitude in radians.
 
-$dist=arccos(sin(lat1)∗sin(lat2)+cos(lat1)∗cos(lat2)∗cos(lon2−lon1))∗6371$ 
+$$dist=arccos(sin(lat1)∗sin(lat2)+cos(lat1)∗cos(lat2)∗cos(lon2−lon1))∗6371$$
 (6371 in the Earth radius in Km; dist is expressed in Km).
 
 _example:_
@@ -329,5 +329,5 @@ _response:_
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NjUwOTQ5N119
+eyJoaXN0b3J5IjpbLTE0MTQ0MzU4ODUsLTI3NjUwOTQ5N119
 -->
