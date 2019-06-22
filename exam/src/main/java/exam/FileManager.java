@@ -6,9 +6,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Used by both application and CSVParser. In the first case it
- * opens config file to get the url and the data-set destination. In the other
- * case it reads the CSV.
+ * Used by both application and CSVParser. In the first case it opens config
+ * file to get the url and the data-set destination. In the other case it reads
+ * the CSV.
  *
  */
 public class FileManager {

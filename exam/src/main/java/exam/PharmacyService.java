@@ -181,7 +181,7 @@ public class PharmacyService {
 					throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 							"Illegal operator, it must be only ==, >, <");
 			}
-		} 
+		}
 		return false;
 	}
 

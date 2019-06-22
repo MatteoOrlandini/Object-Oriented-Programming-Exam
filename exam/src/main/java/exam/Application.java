@@ -16,7 +16,7 @@ public class Application {
 		String url = fileManager.readOneLine();
 		String CSVfilename = fileManager.readOneLine();
 		fileManager.fileClose();
-		
+
 		JSONParser jsonParser = new JSONParser(CSVfilename, url);
 		// download the CSV file from the url
 		jsonParser.openConnection();

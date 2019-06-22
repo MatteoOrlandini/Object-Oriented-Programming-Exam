@@ -1,9 +1,8 @@
 package exam;
 
 /**
- * Used by {@link CSVParser} to store the first line with the
- * fields of the data-set.
- * It represents the attributes of a pharmacy.
+ * Used by {@link CSVParser} to store the first line with the fields of the
+ * data-set. It represents the attributes of a pharmacy.
  *
  */
 public class Metadata {
