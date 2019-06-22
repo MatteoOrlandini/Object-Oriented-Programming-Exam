@@ -131,17 +131,17 @@ $$ σ_x={1\over N}\sqrt{N\sum_{i=1}^N x_i^2−\bigg(\sum_{i=1}^N x_i\bigg)^2​}
 
 _example:_
 
-> GET localhost:8080/stats/longitude
+> localhost:8080/stats/longitude
 
 _response:_
 
 ```
 {
-    "avg": 12.560258521992118,
+    "avg": 12.560673320226854,
     "min": 6.731547284806,
     "max": 18.492467,
-    "std": 2.78865805163628,
-    "sum": 131053.73741846575
+    "std": 2.788876305175012,
+    "sum": 131108.3081165279
 }
 
 ```
@@ -417,5 +417,5 @@ because the GET/stats should only be used with numeric fields like "latitude" an
 
 [UML Sequence Diagram](http://drive-html-viewer.pansy.at/?state=%7B%22ids%22:%5B%221XAUzGJLAlYnL3DmjqJb7LRBxdb-NFm9Q%22%5D,%22action%22:%22open%22,%22userId%22:%22117028957555747698312%22%7D)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3NzMzNzA3LC01NzI1ODY1MDNdfQ==
+eyJoaXN0b3J5IjpbLTE3ODI1NzM5NDEsLTU3MjU4NjUwM119
 -->
