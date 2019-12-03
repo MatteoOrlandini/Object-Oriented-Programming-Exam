@@ -42,13 +42,12 @@ public class FileManager {
 	 * @throws FileNotFoundException checks the presence of the file name
 	 * @return bufferedReader the input stream buffer
 	 */
-	public BufferedReader openBufferStream() {
+	public void openBufferStream() {
 		try {
 			bufferedReader = new BufferedReader(new FileReader(fileName));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		return bufferedReader;
 	}
 
 	/**
